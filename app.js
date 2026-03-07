@@ -5,28 +5,42 @@ const playerSection = document.getElementById('player-section');
 const video = document.getElementById('tv-player');
 const unmuteOverlay = document.getElementById('unmute-overlay');
 let hls = new Hls();
-let currentData = null;
-let currentCountry = "";
-let currentType = "tv"; // Padrão é TV
 
+let tvData = {};
+let radioData = {};
+let currentType = 'tv'; 
+let currentCountry = "";
+
+// Configuração de Emojis e Bandeiras
 const countryMeta = {
     "Brazil": { emoji: "🇧🇷", code: "br" },
     "Portugal": { emoji: "🇵🇹", code: "pt" },
-    "USA": { emoji: "🇺🇸", code: "us" }
+    "USA": { emoji: "🇺🇸", code: "us" },
+    "Spain": { emoji: "🇪🇸", code: "es" }
 };
 
-// Relógio em Tempo Real
-setInterval(() => {
+// Relógio 1:16 AM style
+function updateClock() {
     const now = new Date();
     document.getElementById('time').innerText = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-}, 1000);
+}
+setInterval(updateClock, 1000);
+updateClock();
 
 async function init() {
     try {
-        const res = await fetch('./data/channels.json');
-        currentData = await res.json();
+        // Carrega os dois arquivos
+        const [resTv, resRadio] = await Promise.all([
+            fetch('./data/channels.json'),
+            fetch('./data/radios.json')
+        ]);
         
-        Object.keys(currentData).sort().forEach(country => {
+        tvData = await resTv.json();
+        radioData = await resRadio.json();
+        
+        // Cria a lista de países (usando as chaves do arquivo de TV como base)
+        const countries = Object.keys(tvData).sort();
+        countries.forEach(country => {
             const meta = countryMeta[country] || { emoji: "🏳️", code: "un" };
             const li = document.createElement('li');
             li.className = 'country-item';
@@ -40,31 +54,36 @@ async function init() {
             countryList.appendChild(li);
         });
 
-        currentCountry = Object.keys(currentData).sort()[0];
+        currentCountry = countries[0];
         renderList();
-    } catch (e) { console.error("Erro ao iniciar"); }
+    } catch (e) { console.error("Erro ao carregar arquivos JSON"); }
 }
 
 function switchType(type) {
     currentType = type;
     document.getElementById('btn-tv').classList.toggle('active', type === 'tv');
     document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
+    
+    // Se for rádio, podemos esconder o botão de tela cheia, já que não tem vídeo
+    document.getElementById('fs-btn').style.display = type === 'radio' ? 'none' : 'block';
+    
     renderList();
 }
 
 function renderList() {
     const meta = countryMeta[currentCountry] || { emoji: "🏳️", code: "un" };
+    const source = currentType === 'tv' ? tvData : radioData;
+    const items = source[currentCountry] || [];
+
     listHeader.innerHTML = `
-        <img src="https://flagcdn.com/w160/${meta.code}.png" class="country-icon">
+        <img src="https://flagcdn.com/w160/${meta.code}.png" class="country-icon" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2144/2144830.png'">
         <p class="heading">${meta.emoji} ${currentCountry}</p>
     `;
 
     channelList.innerHTML = '';
-    // Filtra os canais pelo tipo selecionado (TV ou Radio)
-    const items = currentData[currentCountry].filter(item => item.type === currentType);
-
+    
     if(items.length === 0) {
-        channelList.innerHTML = `<p style="color:black; text-align:center; padding:20px;">Nenhum item encontrado.</p>`;
+        channelList.innerHTML = `<p style="color:#999; text-align:center; padding:30px;">Nenhuma ${currentType === 'tv' ? 'TV' : 'Rádio'} disponível para este país.</p>`;
         return;
     }
 
@@ -77,7 +96,7 @@ function renderList() {
                 <img src="${item.logo}" class="logo-mini" onerror="this.src='https://via.placeholder.com/45'">
                 <div>
                     <p class="chan-name">${item.name}</p>
-                    <p class="chan-artist">${currentType === 'tv' ? 'TV Online' : 'Rádio Online'} HD</p>
+                    <p class="chan-artist">${currentType === 'tv' ? 'Canal de TV' : 'Estação de Rádio'} • HD</p>
                 </div>
             </div>
             <div class="play-btn-ui"></div>
@@ -90,15 +109,24 @@ window.playStream = (url) => {
     playerSection.style.display = 'block';
     video.muted = true;
     unmuteOverlay.style.display = 'block';
+
     if (Hls.isSupported()) {
-        hls.destroy(); hls = new Hls();
-        hls.loadSource(url); hls.attachMedia(video);
+        hls.destroy();
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-    } else { video.src = url; video.play(); }
+    } else {
+        video.src = url;
+        video.play();
+    }
 };
 
 window.unmuteVideo = () => { video.muted = false; unmuteOverlay.style.display = 'none'; };
-window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); };
-window.toggleFullScreen = () => { video.requestFullscreen?.() || video.webkitRequestFullscreen?.(); };
+window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); hls.destroy(); };
+window.toggleFullScreen = () => { 
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+};
 
 init();
