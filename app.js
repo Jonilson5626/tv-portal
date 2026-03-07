@@ -1,13 +1,12 @@
-const countryList = document.getElementById('country-list');
-const channelList = document.getElementById('channel-list');
-const listHeader = document.getElementById('list-header');
+// Seleção de elementos
+const video = document.getElementById('tv-player');
 const playerSection = document.getElementById('player-section');
 const playingNowText = document.getElementById('playing-now');
-const video = document.getElementById('tv-player');
+const channelList = document.getElementById('channel-list');
 
 let hls = new Hls();
-let currentType = 'canais'; 
-let currentCountryPath = ""; 
+let currentType = 'canais';
+let currentCountryPath = "";
 
 const countries = [
     { name: "Brasil", path: "brazil", code: "br", emoji: "🇧🇷" },
@@ -18,50 +17,43 @@ const countries = [
     { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
 ];
 
-// --- CONTROLES DO PLAYER ---
+// --- CONTROLES DE ÁUDIO E VÍDEO ---
 
-// Alternar Áudio (Liga/Desliga)
 window.toggleMute = () => {
-    const audioBtn = document.getElementById('btn-audio-toggle');
+    const btn = document.getElementById('btn-audio-toggle');
     if (video.muted) {
         video.muted = false;
-        audioBtn.style.background = "#334155"; // Cor normal
-        audioBtn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR SOM';
+        btn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR SOM';
+        btn.style.backgroundColor = "#334155"; // Cinza quando ligado
     } else {
         video.muted = true;
-        audioBtn.style.background = "#e11d48"; // Cor de destaque (vermelho)
-        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+        btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+        btn.style.backgroundColor = "#e11d48"; // Vermelho quando mudo
     }
 };
 
-// Alternar Tela Cheia
 window.toggleFullScreen = () => {
-    const fsBtn = document.getElementById('btn-fs-toggle');
     if (!document.fullscreenElement) {
-        if (video.requestFullscreen) video.requestFullscreen();
+        if (playerSection.requestFullscreen) playerSection.requestFullscreen();
         else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-        fsBtn.innerHTML = '<i class="fas fa-compress"></i> SAIR TELA';
     } else {
-        if (document.exitFullscreen) document.exitFullscreen();
-        fsBtn.innerHTML = '<i class="fas fa-expand"></i> TELA CHEIA';
+        document.exitFullscreen();
     }
 };
 
-// Função para dar Play
 window.playStream = (url, name) => {
     playingNowText.innerText = name;
     playerSection.style.display = 'block';
     document.getElementById('welcome-screen').style.display = 'none';
-    
-    // Sempre inicia mudo por causa das regras do navegador
-    video.muted = true;
-    const audioBtn = document.getElementById('btn-audio-toggle');
-    audioBtn.style.background = "#e11d48";
-    audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
 
-    if (hls) hls.destroy();
+    // Reset do áudio (Sempre inicia mudo para o navegador permitir o play)
+    video.muted = true;
+    const btn = document.getElementById('btn-audio-toggle');
+    btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+    btn.style.backgroundColor = "#e11d48";
 
     if (Hls.isSupported() && url.includes('m3u8')) {
+        hls.destroy();
         hls = new Hls();
         hls.loadSource(url);
         hls.attachMedia(video);
@@ -70,94 +62,57 @@ window.playStream = (url, name) => {
         video.src = url;
         video.play();
     }
-    window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
-// Fechar Player
 window.closePlayer = () => {
     playerSection.style.display = 'none';
     video.pause();
-    if(hls) hls.destroy();
+    hls.destroy();
     document.getElementById('welcome-screen').style.display = 'flex';
 };
 
-// --- FUNÇÕES DE INTERFACE ---
-
-setInterval(() => {
-    const timeEl = document.getElementById('time');
-    if(timeEl) timeEl.innerText = new Date().toLocaleTimeString('pt-BR', { hour: 'numeric', minute: '2-digit' });
-}, 1000);
-
-window.filterCountries = () => {
-    const term = document.getElementById('country-search').value.toLowerCase();
-    document.querySelectorAll('.country-item').forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(term) ? "block" : "none";
-    });
-};
-
-async function checkStatus(url) {
-    try {
-        const controller = new AbortController();
-        setTimeout(() => controller.abort(), 2000);
-        await fetch(url, { method: 'GET', mode: 'no-cors', signal: controller.signal });
-        return true;
-    } catch (e) { return false; }
-}
+// --- LÓGICA DE INTERFACE ---
 
 function init() {
-    countryList.innerHTML = '';
+    const list = document.getElementById('country-list');
     countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
-        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
+        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name} <sup>${c.code.toUpperCase()}</sup></button>`;
         li.onclick = () => {
             currentCountryPath = c.path;
-            document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('content-wrapper').style.display = 'block';
-            document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
-            li.classList.add('active');
             loadData();
         };
-        countryList.appendChild(li);
+        list.appendChild(li);
     });
 }
 
 async function loadData() {
-    const meta = countries.find(c => c.path === currentCountryPath);
-    listHeader.innerHTML = `<h2>${meta.emoji} ${meta.name}</h2>`;
-    channelList.innerHTML = '<p style="grid-column:1/-1; text-align:center;">A verificar canais...</p>';
+    channelList.innerHTML = '<p>Carregando...</p>';
     try {
-        const response = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
-        const data = await response.json();
+        const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
+        const data = await resp.json();
         renderList(data);
-    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiro."; }
+    } catch (e) { channelList.innerHTML = "Erro ao carregar lista."; }
 }
 
-async function renderList(data) {
+function renderList(data) {
     channelList.innerHTML = '';
-    const statusPromises = data.map(item => checkStatus(item.url));
-    const statuses = await Promise.all(statusPromises);
-    data.forEach((item, index) => {
-        const isOnline = statuses[index];
+    data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.onclick = () => playStream(item.url, item.name);
-        card.innerHTML = `
-            <img src="${item.logo}" class="item-logo" onerror="this.src='https://via.placeholder.com/60'">
-            <div class="item-details">
-                <p class="item-name">${item.name}</p>
-                <span class="status ${isOnline ? 'on' : 'off'}">${isOnline ? 'ONLINE' : 'OFFLINE'}</span>
-            </div>
-        `;
+        card.innerHTML = `<img src="${item.logo}" class="item-logo"><p>${item.name}</p>`;
         channelList.appendChild(card);
     });
 }
 
-function switchType(type) {
-    currentType = type === 'tv' ? 'canais' : 'radios';
-    document.getElementById('btn-tv').classList.toggle('active', type === 'tv');
-    document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
-    if(currentCountryPath) loadData();
-}
+// Relógio e Busca
+setInterval(() => { document.getElementById('time').innerText = new Date().toLocaleTimeString(); }, 1000);
+window.filterCountries = () => {
+    const term = document.getElementById('country-search').value.toLowerCase();
+    document.querySelectorAll('.country-item').forEach(i => i.style.display = i.innerText.toLowerCase().includes(term) ? "" : "none");
+};
 
 init();
