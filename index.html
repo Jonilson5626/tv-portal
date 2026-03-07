@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV & RÁDIO GLOBAL</title>
-    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
@@ -40,18 +38,18 @@
                         <i class="fas fa-arrow-left"></i> VOLTAR
                     </button>
                     
-                    <button id="btn-audio-nav" class="nav-btn" onclick="unmuteVideo()" style="background: #e11d48;">
+                    <button id="btn-audio-toggle" class="nav-btn btn-active" onclick="toggleMute()">
                         <i class="fas fa-volume-up"></i> ATIVAR SOM
                     </button>
 
-                    <button class="nav-btn btn-fs" onclick="toggleFullScreen()">
+                    <button id="btn-fs-toggle" class="nav-btn" onclick="toggleFullScreen()">
                         <i class="fas fa-expand"></i> TELA CHEIA
                     </button>
                 </div>
 
                 <div class="video-wrapper">
                     <video id="tv-player" playsinline></video>
-                    <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()">
+                    <div id="unmute-overlay" class="unmute-overlay" onclick="toggleMute()">
                         <div class="unmute-content">
                             <i class="fas fa-volume-up"></i>
                             <p>CLIQUE PARA ATIVAR O SOM</p>
@@ -69,12 +67,10 @@
 
                 <div id="content-wrapper" style="display: none;">
                     <div id="list-header" class="country-header"></div>
-                    
                     <div class="type-selector">
                         <button id="btn-tv" class="type-btn active" onclick="switchType('tv')"><i class="fas fa-tv"></i> CANAIS TV</button>
                         <button id="btn-radio" class="type-btn" onclick="switchType('radio')"><i class="fas fa-radio"></i> RÁDIOS</button>
                     </div>
-
                     <div id="channel-list" class="items-grid"></div>
                 </div>
             </div>
