@@ -2,18 +2,17 @@ const video = document.getElementById('tv-player');
 const playerSection = document.getElementById('player-section');
 const channelList = document.getElementById('channel-list');
 const playingNowText = document.getElementById('playing-now');
-
 let hls = new Hls();
 let currentType = 'canais';
 let currentCountryPath = "";
 
 const countries = [
-    { name: "Brasil", path: "brazil", code: "br", emoji: "🇧🇷" },
-    { name: "USA", path: "united_states", code: "us", emoji: "🇺🇸" },
-    { name: "Espanha", path: "spain", code: "es", emoji: "🇪🇸" },
-    { name: "Japão", path: "japan", code: "jp", emoji: "🇯🇵" },
-    { name: "China", path: "china", code: "cn", emoji: "🇨🇳" },
-    { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
+    { name: "Brasil", path: "brazil" },
+    { name: "USA", path: "united_states" },
+    { name: "Espanha", path: "spain" },
+    { name: "Japão", path: "japan" },
+    { name: "China", path: "china" },
+    { name: "Colômbia", path: "colombia" }
 ];
 
 function init() {
@@ -36,14 +35,12 @@ function init() {
 }
 
 async function loadData() {
-    const meta = countries.find(c => c.path === currentCountryPath);
-    document.getElementById('list-header').innerHTML = `<h2 style="margin-bottom:15px"> ${meta.name}</h2>`;
-    channelList.innerHTML = '<p>Carregando canais...</p>';
+    channelList.innerHTML = '<div style="grid-column: 1/-1; text-align: center;">Buscando...</div>';
     try {
         const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
         const data = await resp.json();
         renderList(data);
-    } catch (e) { channelList.innerHTML = "Erro ao carregar lista."; }
+    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiros JSON."; }
 }
 
 function renderList(data) {
@@ -52,37 +49,28 @@ function renderList(data) {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.onclick = () => playStream(item.url, item.name);
-        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/50'"><p>${item.name}</p>`;
+        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/70?text=TV'"><p>${item.name}</p>`;
         channelList.appendChild(card);
     });
 }
 
 window.playStream = (url, name) => {
-    playingNowText.innerText = name;
+    playingNowText.innerText = "Reproduzindo: " + name;
     playerSection.style.display = 'block';
     video.muted = true;
-    const btn = document.getElementById('btn-audio-toggle');
-    btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-    btn.classList.add('btn-danger');
-
     if (Hls.isSupported() && url.includes('m3u8')) {
         hls.destroy(); hls = new Hls();
         hls.loadSource(url); hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
     } else { video.src = url; video.play(); }
+    window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
 window.toggleMute = () => {
+    video.muted = !video.muted;
     const btn = document.getElementById('btn-audio-toggle');
-    if (video.muted) {
-        video.muted = false;
-        btn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR';
-        btn.classList.remove('btn-danger');
-    } else {
-        video.muted = true;
-        btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-        btn.classList.add('btn-danger');
-    }
+    btn.innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> DESATIVAR';
+    btn.style.background = video.muted ? "#e11d48" : "#334155";
 };
 
 window.switchType = (type) => {
