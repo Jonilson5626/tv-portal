@@ -1,8 +1,7 @@
-// Seleção de elementos
 const video = document.getElementById('tv-player');
 const playerSection = document.getElementById('player-section');
-const playingNowText = document.getElementById('playing-now');
 const channelList = document.getElementById('channel-list');
+const playingNowText = document.getElementById('playing-now');
 
 let hls = new Hls();
 let currentType = 'canais';
@@ -17,71 +16,19 @@ const countries = [
     { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
 ];
 
-// --- CONTROLES DE ÁUDIO E VÍDEO ---
-
-window.toggleMute = () => {
-    const btn = document.getElementById('btn-audio-toggle');
-    if (video.muted) {
-        video.muted = false;
-        btn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR SOM';
-        btn.style.backgroundColor = "#334155"; // Cinza quando ligado
-    } else {
-        video.muted = true;
-        btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-        btn.style.backgroundColor = "#e11d48"; // Vermelho quando mudo
-    }
-};
-
-window.toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-        if (playerSection.requestFullscreen) playerSection.requestFullscreen();
-        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-    } else {
-        document.exitFullscreen();
-    }
-};
-
-window.playStream = (url, name) => {
-    playingNowText.innerText = name;
-    playerSection.style.display = 'block';
-    document.getElementById('welcome-screen').style.display = 'none';
-
-    // Reset do áudio (Sempre inicia mudo para o navegador permitir o play)
-    video.muted = true;
-    const btn = document.getElementById('btn-audio-toggle');
-    btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-    btn.style.backgroundColor = "#e11d48";
-
-    if (Hls.isSupported() && url.includes('m3u8')) {
-        hls.destroy();
-        hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-    } else {
-        video.src = url;
-        video.play();
-    }
-};
-
-window.closePlayer = () => {
-    playerSection.style.display = 'none';
-    video.pause();
-    hls.destroy();
-    document.getElementById('welcome-screen').style.display = 'flex';
-};
-
-// --- LÓGICA DE INTERFACE ---
-
 function init() {
     const list = document.getElementById('country-list');
+    list.innerHTML = '';
     countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
-        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name} <sup>${c.code.toUpperCase()}</sup></button>`;
+        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
         li.onclick = () => {
             currentCountryPath = c.path;
-            document.getElementById('content-wrapper').style.display = 'block';
+            document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
+            li.classList.add('active');
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('list-container').style.display = 'block';
             loadData();
         };
         list.appendChild(li);
@@ -89,7 +36,9 @@ function init() {
 }
 
 async function loadData() {
-    channelList.innerHTML = '<p>Carregando...</p>';
+    const meta = countries.find(c => c.path === currentCountryPath);
+    document.getElementById('list-header').innerHTML = `<h2 style="margin-bottom:15px"> ${meta.name}</h2>`;
+    channelList.innerHTML = '<p>Carregando canais...</p>';
     try {
         const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
         const data = await resp.json();
@@ -103,16 +52,51 @@ function renderList(data) {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.onclick = () => playStream(item.url, item.name);
-        card.innerHTML = `<img src="${item.logo}" class="item-logo"><p>${item.name}</p>`;
+        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/50'"><p>${item.name}</p>`;
         channelList.appendChild(card);
     });
 }
 
-// Relógio e Busca
-setInterval(() => { document.getElementById('time').innerText = new Date().toLocaleTimeString(); }, 1000);
+window.playStream = (url, name) => {
+    playingNowText.innerText = name;
+    playerSection.style.display = 'block';
+    video.muted = true;
+    const btn = document.getElementById('btn-audio-toggle');
+    btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+    btn.classList.add('btn-danger');
+
+    if (Hls.isSupported() && url.includes('m3u8')) {
+        hls.destroy(); hls = new Hls();
+        hls.loadSource(url); hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    } else { video.src = url; video.play(); }
+};
+
+window.toggleMute = () => {
+    const btn = document.getElementById('btn-audio-toggle');
+    if (video.muted) {
+        video.muted = false;
+        btn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR';
+        btn.classList.remove('btn-danger');
+    } else {
+        video.muted = true;
+        btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+        btn.classList.add('btn-danger');
+    }
+};
+
+window.switchType = (type) => {
+    currentType = type === 'tv' ? 'canais' : 'radios';
+    document.getElementById('btn-tv').classList.toggle('active', type === 'tv');
+    document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
+    loadData();
+};
+
+window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); hls.destroy(); };
+window.toggleFullScreen = () => { if (video.requestFullscreen) video.requestFullscreen(); else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen(); };
 window.filterCountries = () => {
     const term = document.getElementById('country-search').value.toLowerCase();
     document.querySelectorAll('.country-item').forEach(i => i.style.display = i.innerText.toLowerCase().includes(term) ? "" : "none");
 };
-
+setInterval(() => { document.getElementById('time').innerText = new Date().toLocaleTimeString(); }, 1000);
 init();
