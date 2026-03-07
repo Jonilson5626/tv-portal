@@ -38,7 +38,7 @@
                         <i class="fas fa-arrow-left"></i> VOLTAR
                     </button>
                     
-                    <button id="btn-audio-toggle" class="nav-btn btn-active" onclick="toggleMute()">
+                    <button id="btn-audio-toggle" class="nav-btn" onclick="toggleMute()" style="background: #e11d48;">
                         <i class="fas fa-volume-up"></i> ATIVAR SOM
                     </button>
 
@@ -48,13 +48,7 @@
                 </div>
 
                 <div class="video-wrapper">
-                    <video id="tv-player" playsinline></video>
-                    <div id="unmute-overlay" class="unmute-overlay" onclick="toggleMute()">
-                        <div class="unmute-content">
-                            <i class="fas fa-volume-up"></i>
-                            <p>CLIQUE PARA ATIVAR O SOM</p>
-                        </div>
-                    </div>
+                    <video id="tv-player" playsinline muted></video>
                 </div>
             </div>
 
