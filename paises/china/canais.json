@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "CGTN English",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/CGTN_logo.svg/1200px-CGTN_logo.svg.png",
+    "url": "https://cgtn-global-en.akamaized.net/hls/live/2039236/cgtn-en/master.m3u8"
+  }
+]
