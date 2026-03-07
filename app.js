@@ -4,7 +4,6 @@ const listHeader = document.getElementById('list-header');
 const playerSection = document.getElementById('player-section');
 const playingNowText = document.getElementById('playing-now');
 const video = document.getElementById('tv-player');
-const unmuteOverlay = document.getElementById('unmute-overlay');
 
 let hls = new Hls();
 let currentType = 'canais'; 
@@ -19,53 +18,43 @@ const countries = [
     { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
 ];
 
-// --- FUNÇÕES DO PLAYER (TOGGLE) ---
+// --- CONTROLES DO PLAYER ---
 
-// 1. Alternar Som (Ativar/Desativar)
+// Alternar Áudio (Liga/Desliga)
 window.toggleMute = () => {
     const audioBtn = document.getElementById('btn-audio-toggle');
-    
     if (video.muted) {
         video.muted = false;
-        unmuteOverlay.style.display = 'none';
-        audioBtn.classList.remove('btn-active');
+        audioBtn.style.background = "#334155"; // Cor normal
         audioBtn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR SOM';
-        audioBtn.style.background = "#334155"; 
     } else {
         video.muted = true;
-        unmuteOverlay.style.display = 'flex';
-        audioBtn.classList.add('btn-active');
+        audioBtn.style.background = "#e11d48"; // Cor de destaque (vermelho)
         audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-        audioBtn.style.background = "#e11d48";
     }
 };
 
-// 2. Alternar Tela Cheia (Entrar/Sair)
+// Alternar Tela Cheia
 window.toggleFullScreen = () => {
     const fsBtn = document.getElementById('btn-fs-toggle');
-    
-    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-        // Entrar em Tela Cheia
+    if (!document.fullscreenElement) {
         if (video.requestFullscreen) video.requestFullscreen();
         else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-        fsBtn.innerHTML = '<i class="fas fa-compress"></i> SAIR TELA CHEIA';
+        fsBtn.innerHTML = '<i class="fas fa-compress"></i> SAIR TELA';
     } else {
-        // Sair da Tela Cheia
         if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         fsBtn.innerHTML = '<i class="fas fa-expand"></i> TELA CHEIA';
     }
 };
 
-// 3. Reproduzir Canal
+// Função para dar Play
 window.playStream = (url, name) => {
     playingNowText.innerText = name;
     playerSection.style.display = 'block';
     document.getElementById('welcome-screen').style.display = 'none';
     
-    // Inicia sempre Mudo (Padrão de Autoplay)
+    // Sempre inicia mudo por causa das regras do navegador
     video.muted = true;
-    unmuteOverlay.style.display = 'flex';
     const audioBtn = document.getElementById('btn-audio-toggle');
     audioBtn.style.background = "#e11d48";
     audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
@@ -84,7 +73,7 @@ window.playStream = (url, name) => {
     window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
-// 4. Voltar / Fechar Player
+// Fechar Player
 window.closePlayer = () => {
     playerSection.style.display = 'none';
     video.pause();
@@ -92,7 +81,7 @@ window.closePlayer = () => {
     document.getElementById('welcome-screen').style.display = 'flex';
 };
 
-// --- RESTANTE DA LÓGICA (BUSCA E LISTAGEM) ---
+// --- FUNÇÕES DE INTERFACE ---
 
 setInterval(() => {
     const timeEl = document.getElementById('time');
@@ -117,7 +106,7 @@ async function checkStatus(url) {
 
 function init() {
     countryList.innerHTML = '';
-    countries.sort((a,b) => a.name.localeCompare(b.name)).forEach(c => {
+    countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
         li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
