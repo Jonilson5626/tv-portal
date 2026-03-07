@@ -12,8 +12,7 @@
 
     <header class="top-header">
         <div class="header-container">
-            <div class="loader"></div>
-            <h1 class="site-title">TV Online</h1>
+            <div class="loader-top"></div> <h1 class="site-title">TV Online Global</h1>
         </div>
     </header>
 
@@ -27,16 +26,21 @@
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                    <button class="nav-btn expand-btn" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
                     <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()" style="display: none;">
-                        <i class="fas fa-volume-up"></i> ATIVAR SOM
+                        <i class="fas fa-volume-up"></i> CLIQUE PARA ATIVAR SOM
                     </div>
                 </div>
             </div>
-            <div id="channel-grid" class="channel-grid"></div>
+
+            <div class="spotify-main-card">
+                <div id="list-header" class="currentplaying-header">
+                    </div>
+                <div id="channel-list" class="songs-list">
+                    </div>
+            </div>
         </section>
     </main>
 
