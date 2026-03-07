@@ -14,7 +14,7 @@
         <div class="header-container">
             <div class="loader-top"></div>
             <h1 class="site-title">TV & RÁDIO GLOBAL</h1>
-            <p class="local-time"><span id="time">1:16 AM</span></p>
+            <p class="local-time"><span id="time">00:00 AM</span></p>
         </div>
     </header>
 
@@ -33,20 +33,33 @@
                 <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
                     <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()">
-                        <i class="fas fa-volume-up"></i> ATIVAR SOM
+                        <i class="fas fa-volume-up"></i> CLIQUE PARA ATIVAR SOM
                     </div>
                 </div>
             </div>
 
             <div class="spotify-main-card">
-                <div id="list-header" class="currentplaying-header"></div>
                 
-                <div class="type-selector">
-                    <button id="btn-tv" class="type-btn active" onclick="switchType('tv')"><i class="fas fa-tv"></i> CANAIS TV</button>
-                    <button id="btn-radio" class="type-btn" onclick="switchType('radio')"><i class="fas fa-radio"></i> RÁDIOS</button>
+                <div id="welcome-screen" class="welcome-screen">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <h2>Explore o Mundo</h2>
+                    <p>Selecione um país ao lado para ver os canais de TV e as Rádios disponíveis.</p>
                 </div>
 
-                <div id="channel-list" class="songs-list"></div>
+                <div id="content-wrapper" style="display: none;">
+                    <div id="list-header" class="currentplaying-header"></div>
+                    
+                    <div class="type-selector">
+                        <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">
+                            <i class="fas fa-tv"></i> CANAIS TV
+                        </button>
+                        <button id="btn-radio" class="type-btn" onclick="switchType('radio')">
+                            <i class="fas fa-radio"></i> ESTAÇÕES RÁDIO
+                        </button>
+                    </div>
+
+                    <div id="channel-list" class="songs-list"></div>
+                </div>
             </div>
         </section>
     </main>
