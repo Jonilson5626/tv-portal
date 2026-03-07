@@ -1,121 +1,58 @@
-/* Configurações Gerais */
 :root {
-    --primary: #3b82f6;
-    --dark-bg: #0a0f1d;
-    --sidebar-bg: #111827;
-    --card-white: #ffffff;
+    --bg: #0a0f1d;
+    --sidebar: #111827;
+    --accent: #3b82f6;
+    --danger: #e11d48;
+    --card: #1e293b;
+    --text: #f8fafc;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-body { 
-    background: var(--dark-bg); 
-    color: white; 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh;
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.top-header { background: #000; padding: 15px; border-bottom: 2px solid var(--accent); text-align: center; }
+.clock { font-size: 0.9rem; color: var(--accent); margin-top: 5px; }
+
+.main-layout { display: flex; flex-direction: column; }
+
+/* Sidebar sem fundos brancos */
+.sidebar { width: 100%; background: var(--sidebar); padding: 15px; }
+.search-box input { 
+    width: 100%; padding: 12px; background: #000; border: 1px solid #334155; 
+    color: white; border-radius: 8px; margin-bottom: 15px;
 }
-
-/* Header Responsivo */
-.top-header { 
-    background: #000; 
-    padding: 10px 15px; 
-    border-bottom: 2px solid var(--primary);
-    text-align: center;
+.country-item { list-style: none; margin-bottom: 5px; }
+.country-item button { 
+    width: 100%; padding: 12px; background: transparent; border: none; 
+    color: #94a3b8; text-align: left; cursor: pointer; border-radius: 8px;
 }
+.country-item.active button { background: var(--accent); color: white; }
 
-/* Layout Principal */
-.main-layout { 
-    display: flex; 
-    flex: 1; 
-}
+/* Content e Player */
+.content-area { flex: 1; padding: 15px; }
+.player-container { background: #000; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid #334155; }
+.player-nav { display: flex; gap: 5px; padding: 10px; background: var(--sidebar); }
+.nav-btn { flex: 1; padding: 12px 5px; border: none; border-radius: 6px; background: #334155; color: white; cursor: pointer; font-size: 0.8rem; }
+.btn-danger { background: var(--danger); }
+.video-wrapper { position: relative; padding-top: 56.25%; background: #000; }
+video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-/* Sidebar - No PC fica na esquerda, no Celular fica em cima ou some */
-.sidebar { 
-    width: 250px; 
-    background: var(--sidebar-bg); 
-    border-right: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-}
+/* Seletor de Tipo Estilizado */
+.type-selector { display: flex; background: var(--sidebar); padding: 5px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #334155; }
+.type-btn { flex: 1; padding: 12px; border: none; background: transparent; color: #94a3b8; font-weight: bold; cursor: pointer; border-radius: 8px; }
+.type-btn.active { background: var(--accent); color: white; }
 
-/* Área de Conteúdo */
-.content-area { 
-    flex: 1; 
-    padding: 15px; 
-    overflow-y: auto;
-}
+/* Grid de Canais (Cards) */
+.items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+.item-card { background: var(--card); padding: 20px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.2s; border: 1px solid transparent; }
+.item-card:hover { border-color: var(--accent); transform: scale(1.03); }
+.item-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
+.item-card p { font-size: 0.85rem; font-weight: bold; }
 
-/* Player de Vídeo Responsivo */
-.player-container {
-    background: #000;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* Mantém proporção 16:9 */
-}
-
-video {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    border-radius: 0 0 12px 12px;
-}
-
-/* Ajustes dos Botões para Celular */
-.player-nav {
-    display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha se não couber */
-    gap: 5px;
-    padding: 10px;
-}
-
-.nav-btn {
-    flex: 1; /* Faz os botões terem o mesmo tamanho */
-    min-width: 100px;
-    padding: 12px 5px;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    border: none;
-    background: #334155;
-    color: white;
-    cursor: pointer;
-}
-
-/* Grid de Canais Responsivo */
-.items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-}
-
-/* --- REGRAS PARA CELULAR (TELAS PEQUENAS) --- */
-@media (max-width: 768px) {
-    .main-layout { 
-        flex-direction: column; /* Coloca a sidebar em cima do conteúdo */
-    }
-
-    .sidebar { 
-        width: 100%; 
-        height: auto; 
-        max-height: 250px; /* Limita o tamanho da lista de países no celular */
-    }
-
-    .content-area {
-        padding: 10px;
-    }
-
-    .playing-info h2 {
-        font-size: 1.1rem;
-    }
-
-    .nav-btn {
-        font-size: 0.7rem;
-        padding: 10px 2px;
-    }
+/* Responsividade PC */
+@media (min-width: 768px) {
+    .main-layout { flex-direction: row; height: calc(100vh - 80px); }
+    .sidebar { width: 280px; overflow-y: auto; }
+    .content-area { overflow-y: auto; }
 }
