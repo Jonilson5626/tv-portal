@@ -10,7 +10,6 @@ let hls = new Hls();
 let currentType = 'canais'; 
 let currentCountryPath = ""; 
 
-// Configuração dos países conforme as tuas pastas
 const countries = [
     { name: "Brasil", path: "brazil", code: "br", emoji: "🇧🇷" },
     { name: "USA", path: "united_states", code: "us", emoji: "🇺🇸" },
@@ -20,13 +19,86 @@ const countries = [
     { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
 ];
 
-// Relógio Digital
+// --- FUNÇÕES DO PLAYER (TOGGLE) ---
+
+// 1. Alternar Som (Ativar/Desativar)
+window.toggleMute = () => {
+    const audioBtn = document.getElementById('btn-audio-toggle');
+    
+    if (video.muted) {
+        video.muted = false;
+        unmuteOverlay.style.display = 'none';
+        audioBtn.classList.remove('btn-active');
+        audioBtn.innerHTML = '<i class="fas fa-volume-mute"></i> DESATIVAR SOM';
+        audioBtn.style.background = "#334155"; 
+    } else {
+        video.muted = true;
+        unmuteOverlay.style.display = 'flex';
+        audioBtn.classList.add('btn-active');
+        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+        audioBtn.style.background = "#e11d48";
+    }
+};
+
+// 2. Alternar Tela Cheia (Entrar/Sair)
+window.toggleFullScreen = () => {
+    const fsBtn = document.getElementById('btn-fs-toggle');
+    
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        // Entrar em Tela Cheia
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        fsBtn.innerHTML = '<i class="fas fa-compress"></i> SAIR TELA CHEIA';
+    } else {
+        // Sair da Tela Cheia
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        fsBtn.innerHTML = '<i class="fas fa-expand"></i> TELA CHEIA';
+    }
+};
+
+// 3. Reproduzir Canal
+window.playStream = (url, name) => {
+    playingNowText.innerText = name;
+    playerSection.style.display = 'block';
+    document.getElementById('welcome-screen').style.display = 'none';
+    
+    // Inicia sempre Mudo (Padrão de Autoplay)
+    video.muted = true;
+    unmuteOverlay.style.display = 'flex';
+    const audioBtn = document.getElementById('btn-audio-toggle');
+    audioBtn.style.background = "#e11d48";
+    audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+
+    if (hls) hls.destroy();
+
+    if (Hls.isSupported() && url.includes('m3u8')) {
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    } else {
+        video.src = url;
+        video.play();
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+// 4. Voltar / Fechar Player
+window.closePlayer = () => {
+    playerSection.style.display = 'none';
+    video.pause();
+    if(hls) hls.destroy();
+    document.getElementById('welcome-screen').style.display = 'flex';
+};
+
+// --- RESTANTE DA LÓGICA (BUSCA E LISTAGEM) ---
+
 setInterval(() => {
     const timeEl = document.getElementById('time');
     if(timeEl) timeEl.innerText = new Date().toLocaleTimeString('pt-BR', { hour: 'numeric', minute: '2-digit' });
 }, 1000);
 
-// Busca/Filtro de Países
 window.filterCountries = () => {
     const term = document.getElementById('country-search').value.toLowerCase();
     document.querySelectorAll('.country-item').forEach(item => {
@@ -34,7 +106,6 @@ window.filterCountries = () => {
     });
 };
 
-// Verificador de sinal Online/Offline
 async function checkStatus(url) {
     try {
         const controller = new AbortController();
@@ -44,13 +115,12 @@ async function checkStatus(url) {
     } catch (e) { return false; }
 }
 
-// Inicializar Sidebar
 function init() {
     countryList.innerHTML = '';
     countries.sort((a,b) => a.name.localeCompare(b.name)).forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
-        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name} ${c.emoji}</button>`;
+        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
         li.onclick = () => {
             currentCountryPath = c.path;
             document.getElementById('welcome-screen').style.display = 'none';
@@ -63,26 +133,21 @@ function init() {
     });
 }
 
-// Carregar dados do JSON do país
 async function loadData() {
     const meta = countries.find(c => c.path === currentCountryPath);
     listHeader.innerHTML = `<h2>${meta.emoji} ${meta.name}</h2>`;
     channelList.innerHTML = '<p style="grid-column:1/-1; text-align:center;">A verificar canais...</p>';
-
     try {
         const response = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
         const data = await response.json();
         renderList(data);
-    } catch (e) {
-        channelList.innerHTML = "Erro ao carregar ficheiro JSON.";
-    }
+    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiro."; }
 }
 
 async function renderList(data) {
     channelList.innerHTML = '';
     const statusPromises = data.map(item => checkStatus(item.url));
     const statuses = await Promise.all(statusPromises);
-
     data.forEach((item, index) => {
         const isOnline = statuses[index];
         const card = document.createElement('div');
@@ -105,58 +170,5 @@ function switchType(type) {
     document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
     if(currentCountryPath) loadData();
 }
-
-// PLAYER: PLAY
-window.playStream = (url, name) => {
-    playingNowText.innerText = name;
-    playerSection.style.display = 'block';
-    video.muted = true; // Inicia mudo para garantir o autoplay
-    unmuteOverlay.style.display = 'flex';
-    
-    // Reset do botão de áudio na barra
-    const audioBtn = document.getElementById('btn-audio-nav');
-    if(audioBtn) {
-        audioBtn.style.background = "#e11d48";
-        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
-    }
-
-    if (hls) hls.destroy();
-
-    if (Hls.isSupported() && url.includes('m3u8')) {
-        hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-    } else {
-        video.src = url;
-        video.play();
-    }
-    window.scrollTo({top: 0, behavior: 'smooth'});
-};
-
-// PLAYER: UNMUTE
-window.unmuteVideo = () => {
-    video.muted = false;
-    unmuteOverlay.style.display = 'none';
-    const audioBtn = document.getElementById('btn-audio-nav');
-    if(audioBtn) {
-        audioBtn.style.background = "#334155";
-        audioBtn.innerHTML = '<i class="fas fa-volume-up"></i> SOM ATIVO';
-    }
-};
-
-// PLAYER: VOLTAR
-window.closePlayer = () => {
-    playerSection.style.display = 'none';
-    video.pause();
-    if(hls) hls.destroy();
-    document.getElementById('welcome-screen').style.display = 'flex';
-};
-
-// PLAYER: FULLSCREEN
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) video.requestFullscreen();
-    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-};
 
 init();
