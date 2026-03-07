@@ -4,15 +4,12 @@ const playerSection = document.getElementById('player-section');
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
-// Iniciar o site carregando o JSON
 async function init() {
     try {
-        const response = await fetch('./data/channels.json');
-        const data = await response.json();
+        const res = await fetch('./data/channels.json');
+        const data = await res.json();
         
-        // Renderizar Sidebar
-        countryList.innerHTML = '';
-        Object.keys(data).sort().forEach(country => {
+        Object.keys(data).forEach(country => {
             const li = document.createElement('li');
             li.className = 'country-item';
             li.innerHTML = `<button>${country}</button>`;
@@ -24,18 +21,11 @@ async function init() {
             countryList.appendChild(li);
         });
 
-        // Abrir Brasil por padrão
-        const defaultCountry = Object.keys(data).find(c => c.includes("Brasil")) || Object.keys(data)[0];
-        if(defaultCountry) {
-            renderChannels(data[defaultCountry]);
-            // Marcar como ativo na sidebar
-            Array.from(countryList.children).forEach(li => {
-                if(li.innerText === defaultCountry) li.classList.add('active');
-            });
-        }
+        const first = Object.keys(data)[0];
+        if(first) renderChannels(data[first]);
 
     } catch (err) {
-        channelGrid.innerHTML = `<p style="color:red">Erro ao carregar banco de dados JSON.</p>`;
+        channelGrid.innerHTML = "Erro ao carregar canais.";
     }
 }
 
@@ -45,10 +35,9 @@ function renderChannels(channels) {
         const card = document.createElement('div');
         card.className = 'channel-card';
         card.innerHTML = `
-            <div class="badge-live">AO VIVO</div>
-            <img src="${chan.logo}" class="channel-logo" onerror="this.src='https://via.placeholder.com/80?text=TV'">
-            <p style="margin-bottom:15px"><strong>${chan.name}</strong></p>
-            <button class="btn-play" onclick="playStream('${chan.url}')">ASSISTIR AGORA</button>
+            <img src="${chan.logo}" class="channel-logo">
+            <p style="font-size:0.8rem; margin-bottom:10px;">${chan.name}</p>
+            <button class="btn-play" onclick="playStream('${chan.url}')">ASSISTIR</button>
         `;
         channelGrid.appendChild(card);
     });
@@ -56,11 +45,9 @@ function renderChannels(channels) {
 
 window.playStream = (url) => {
     playerSection.style.display = 'block';
-    // Scroll suave para o topo para ver o player
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
+    channelGrid.style.display = 'none'; // Esconde a grade no celular para o player brilhar
     if (Hls.isSupported()) {
-        hls.destroy(); // Limpa player anterior
+        hls.destroy();
         hls = new Hls();
         hls.loadSource(url);
         hls.attachMedia(video);
@@ -73,8 +60,8 @@ window.playStream = (url) => {
 
 window.closePlayer = () => {
     playerSection.style.display = 'none';
+    channelGrid.style.display = 'grid';
     video.pause();
-    video.src = ""; // Para o download do vídeo
     if(hls) hls.destroy();
 };
 
