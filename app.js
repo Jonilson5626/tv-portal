@@ -1,92 +1,68 @@
+const M3U_URL = "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8";
 const video = document.getElementById('tv-player');
-const playerSection = document.getElementById('player-section');
-const channelList = document.getElementById('channel-list');
-const playingNowText = document.getElementById('playing-now');
+const grid = document.getElementById('channel-grid');
 let hls = new Hls();
-let currentType = 'canais';
-let currentCountryPath = "";
+let allChannels = [];
 
-const countries = [
-    { name: "Brasil", path: "brazil" },
-    { name: "USA", path: "united_states" },
-    { name: "Espanha", path: "spain" },
-    { name: "Japão", path: "japan" },
-    { name: "China", path: "china" },
-    { name: "Colômbia", path: "colombia" }
-];
-
-function init() {
-    const list = document.getElementById('country-list');
-    list.innerHTML = '';
-    countries.forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'country-item';
-        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
-        li.onclick = () => {
-            currentCountryPath = c.path;
-            document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
-            li.classList.add('active');
-            document.getElementById('welcome-screen').style.display = 'none';
-            document.getElementById('list-container').style.display = 'block';
-            loadData();
-        };
-        list.appendChild(li);
-    });
-}
-
-async function loadData() {
-    channelList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 20px;">A carregar...</div>';
+async function loadIPTV() {
     try {
-        const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json?v=${Date.now()}`); // Força atualização do JSON
-        const data = await resp.json();
-        renderList(data);
-    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiro."; }
+        const response = await fetch(M3U_URL);
+        const data = await response.text();
+        const lines = data.split('\n');
+        
+        let current = {};
+        lines.forEach(line => {
+            if (line.startsWith('#EXTINF:')) {
+                current.name = line.split(',')[1] || "Canal";
+                const logoMatch = line.match(/tvg-logo="([^"]+)"/);
+                current.logo = logoMatch ? logoMatch[1] : 'https://via.placeholder.com/60';
+            } else if (line.startsWith('http')) {
+                current.url = line.trim();
+                allChannels.push(current);
+                current = {};
+            }
+        });
+        render(allChannels.slice(0, 100)); // Mostra os primeiros 100
+        document.getElementById('loading-status').innerText = "Canais carregados com sucesso!";
+    } catch (e) {
+        document.getElementById('loading-status').innerText = "Erro ao conectar com a fonte.";
+    }
 }
 
-function renderList(data) {
-    channelList.innerHTML = '';
-    data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'item-card';
-        card.onclick = () => playStream(item.url, item.name);
-        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/50?text=TV'"><p>${item.name}</p>`;
-        channelList.appendChild(card);
+function render(list) {
+    grid.innerHTML = '';
+    list.forEach(ch => {
+        const div = document.createElement('div');
+        div.className = 'item-card';
+        div.onclick = () => play(ch.url, ch.name);
+        div.innerHTML = `<img src="${ch.logo}"><p>${ch.name}</p>`;
+        grid.appendChild(div);
     });
 }
 
-window.playStream = (url, name) => {
-    playingNowText.innerText = "A transmitir: " + name;
-    playerSection.style.display = 'block';
+function play(url, name) {
+    document.getElementById('player-section').style.display = 'block';
+    document.getElementById('playing-now').innerText = name;
     video.muted = true;
     if (Hls.isSupported() && url.includes('m3u8')) {
         hls.destroy(); hls = new Hls();
         hls.loadSource(url); hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
     } else { video.src = url; video.play(); }
-};
+}
 
 window.toggleMute = () => {
     video.muted = !video.muted;
-    const btn = document.getElementById('btn-audio-toggle');
-    btn.innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> DESATIVAR';
-    btn.style.background = video.muted ? "#e11d48" : "#334155";
+    document.getElementById('btn-audio').classList.toggle('btn-danger', video.muted);
+    document.getElementById('btn-audio').innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> MUDO';
 };
 
-window.switchType = (type) => {
-    currentType = type === 'tv' ? 'canais' : 'radios';
-    document.getElementById('btn-tv').classList.toggle('active', type === 'tv');
-    document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
-    loadData();
+window.filterChannels = () => {
+    const val = document.getElementById('search').value.toLowerCase();
+    const filtered = allChannels.filter(c => c.name.toLowerCase().includes(val));
+    render(filtered.slice(0, 100));
 };
 
-window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); hls.destroy(); };
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) video.requestFullscreen();
-    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-};
-window.filterCountries = () => {
-    const term = document.getElementById('country-search').value.toLowerCase();
-    document.querySelectorAll('.country-item').forEach(i => i.style.display = i.innerText.toLowerCase().includes(term) ? "" : "none");
-};
-setInterval(() => { document.getElementById('time').innerText = new Date().toLocaleTimeString(); }, 1000);
-init();
+window.closePlayer = () => { document.getElementById('player-section').style.display = 'none'; video.pause(); };
+
+loadIPTV();
