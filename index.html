@@ -1,60 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TV Global</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Online Global - Brasil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/716/716429.png">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
-
 <body>
 
-<header class="header">
+    <header class="top-header">
+        <h1 class="site-title">📺 TV Online Global</h1>
+    </header>
 
-<div class="logo">
-📺 TV Global
-</div>
+    <main class="main-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">🌍 SELECIONE O PAÍS</div>
+            <ul id="country-list" class="country-list custom-scroll">
+                </ul>
+        </aside>
 
-<input type="text" id="search" placeholder="Buscar canal...">
+        <section class="content-area custom-scroll">
+            
+            <div id="player-section" class="player-section" style="display: none;">
+                <div class="player-controls-top">
+                    <button class="back-btn" onclick="closePlayer()">⬅ Voltar para a Lista</button>
+                </div>
+                <div class="player-wrapper">
+                    <video id="tv-player" controls playsinline></video>
+                </div>
+            </div>
 
-</header>
+            <div id="channel-grid" class="channel-grid">
+                <p class="placeholder-msg">Carregando canais...</p>
+            </div>
+        </section>
+    </main>
 
-<div class="layout">
-
-<aside class="sidebar">
-
-<h2>Países</h2>
-
-<ul id="country-list"></ul>
-
-</aside>
-
-<main class="content">
-
-<div id="player-section" class="player">
-
-<video id="tv-player" controls></video>
-
-<button class="close-player" onclick="closePlayer()">✖</button>
-
-</div>
-
-<div id="channel-grid" class="grid"></div>
-
-</main>
-
-</div>
-
-<script src="app.js"></script>
-
+    <script src="app.js"></script>
 </body>
 </html>
