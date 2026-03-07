@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "Caracol TV",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Caracol_Televisi%C3%B3n_Logo.svg/1200px-Caracol_Televisi%C3%B3n_Logo.svg.png",
+    "url": "https://caracol-vubiquity-samsung.amagi.tv/playlist.m3u8"
+  }
+]
