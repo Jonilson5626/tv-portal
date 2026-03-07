@@ -1,93 +1,71 @@
-:root {
-    --bg-black: #05070a;
-    --sidebar-blue: #0f172a;
-    --accent-blue: #2563eb;
-    --card-bg: #1e293b;
-    --text-main: #f8fafc;
+/* Reset total para evitar bugs de telemóvel */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body { 
+    background-color: #05070a; 
+    color: #f8fafc; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+/* Header */
+.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid #2563eb; }
+.clock { color: #60a5fa; font-size: 0.8rem; margin-top: 5px; }
 
-body { background: var(--bg-black); color: var(--text-main); line-height: 1.6; }
+/* Layout Geral */
+.main-layout { display: flex; flex-direction: column; width: 100%; }
 
-/* Cabeçalho */
-.top-header { 
-    background: #000; padding: 20px; text-align: center; 
-    border-bottom: 2px solid var(--accent-blue);
+/* Sidebar (Lista de Países) */
+.sidebar { width: 100%; background: #0f172a; padding: 15px; }
+.search-box input { 
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; 
+    background: #000; color: white; margin-bottom: 10px;
 }
-
-/* Layout Principal - Flexbox para organizar colunas */
-.main-layout { display: flex; flex-direction: column; min-height: 100vh; }
-
-/* Barra Lateral de Países */
-.sidebar { 
-    width: 100%; background: var(--sidebar-blue); padding: 20px;
-    border-bottom: 1px solid #334155;
+.country-list { list-style: none; display: flex; flex-wrap: wrap; gap: 5px; } /* Em linha no telemóvel */
+.country-item { flex: 1; min-width: 100px; }
+.country-item button { 
+    width: 100%; padding: 10px; background: #1e293b; border: none; 
+    color: #f8fafc; border-radius: 5px; font-size: 0.8rem; cursor: pointer;
 }
+.country-item.active button { background: #2563eb; }
 
-.search-box input {
-    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155;
-    background: #000; color: white; margin-bottom: 20px;
-}
+/* Área de Conteúdo */
+.content-area { padding: 15px; width: 100%; }
 
-/* Lista de Países Limpa (Sem fundos estranhos) */
-.country-list { list-style: none; }
-.country-item { margin-bottom: 8px; }
-.country-item button {
-    width: 100%; padding: 12px; background: transparent; border: none;
-    color: #94a3b8; text-align: left; cursor: pointer; border-radius: 8px;
-    font-weight: 500; transition: 0.3s;
-}
-.country-item button:hover, .country-item.active button {
-    background: var(--accent-blue); color: white;
-}
-
-/* Área de Conteúdo Central */
-.content-area { flex: 1; padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-/* Player Moderno */
-.player-container { 
-    background: #000; border-radius: 15px; overflow: hidden; 
-    margin-bottom: 30px; border: 1px solid #334155;
-}
-.player-nav { display: flex; gap: 10px; padding: 15px; background: #1e293b; flex-wrap: wrap; }
-.nav-btn { 
-    flex: 1; min-width: 120px; padding: 12px; border: none; border-radius: 8px;
-    background: #334155; color: white; cursor: pointer; font-weight: bold;
-}
+/* Player */
+.player-container { background: #000; border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid #334155; }
+.player-nav { display: flex; gap: 5px; padding: 8px; background: #1e293b; }
+.nav-btn { flex: 1; padding: 12px 5px; border: none; border-radius: 5px; background: #334155; color: white; font-size: 0.75rem; font-weight: bold; }
 .btn-danger { background: #e11d48; }
-
 .video-wrapper { position: relative; padding-top: 56.25%; width: 100%; }
 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.playing-title { padding: 10px; font-size: 1rem; text-align: center; color: #fff; }
 
 /* Seletor TV/Rádio */
-.type-selector {
-    display: flex; gap: 10px; margin-bottom: 25px; background: #1e293b;
-    padding: 8px; border-radius: 12px;
-}
-.type-btn {
-    flex: 1; padding: 12px; border: none; background: transparent;
-    color: #94a3b8; font-weight: bold; cursor: pointer; border-radius: 10px;
-}
-.type-btn.active { background: var(--accent-blue); color: white; }
+.type-selector { display: flex; gap: 5px; margin-bottom: 15px; background: #1e293b; padding: 5px; border-radius: 8px; }
+.type-btn { flex: 1; padding: 10px; border: none; background: transparent; color: #94a3b8; font-weight: bold; border-radius: 5px; }
+.type-btn.active { background: #2563eb; color: white; }
 
-/* GRADE DE CANAIS (Aqui resolve a bagunça) */
-.items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+/* A Grelha de Canais (Cards) */
+.items-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
+    gap: 10px; 
+    width: 100%;
 }
-.item-card {
-    background: var(--card-bg); padding: 20px; border-radius: 15px;
-    text-align: center; cursor: pointer; transition: 0.3s;
-    border: 1px solid transparent;
+.item-card { 
+    background: #1e293b; padding: 15px; border-radius: 10px; 
+    text-align: center; border: 1px solid transparent; 
 }
-.item-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
-.item-card img { width: 70px; height: 70px; object-fit: contain; margin-bottom: 12px; }
-.item-card p { font-size: 0.9rem; font-weight: bold; color: white; }
+.item-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 8px; }
+.item-card p { font-size: 0.75rem; color: #fff; font-weight: bold; }
 
-/* Ajuste para Computadores */
+/* Ajuste para PC */
 @media (min-width: 1024px) {
     .main-layout { flex-direction: row; }
-    .sidebar { width: 300px; border-right: 1px solid #334155; border-bottom: none; height: 100vh; position: sticky; top: 0; }
+    .sidebar { width: 280px; height: 100vh; position: sticky; top: 0; border-right: 1px solid #334155; }
+    .country-list { flex-direction: column; }
+    .content-area { flex: 1; max-width: 1100px; margin: 0 auto; }
 }
+
+.welcome { text-align: center; padding: 40px; color: #334155; }
+.welcome i { font-size: 3rem; margin-bottom: 15px; }
