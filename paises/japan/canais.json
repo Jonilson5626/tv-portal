@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "NHK World Japan",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/NHK_World_Japan_logo.svg/1200px-NHK_World_Japan_logo.svg.png",
+    "url": "https://nhkwlive-ojp.akamaized.net/hls/live/2003459/nhkwlive-ojp-en/index.m3u8"
+  }
+]
