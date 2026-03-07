@@ -15,7 +15,7 @@
     </header>
 
     <main class="main-layout">
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar">
             <div class="sidebar-header">PAÍSES</div>
             <ul id="country-list" class="country-list custom-scroll"></ul>
         </aside>
@@ -23,8 +23,11 @@
         <section class="content-area custom-scroll">
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
-                    <button class="back-btn" onclick="closePlayer()">
+                    <button class="nav-btn" onclick="closePlayer()">
                         <i class="fas fa-arrow-left"></i> VOLTAR
+                    </button>
+                    <button class="nav-btn expand-btn" onclick="toggleFullScreen()">
+                        <i class="fas fa-expand"></i> TELA CHEIA
                     </button>
                 </div>
                 <div class="video-wrapper">
