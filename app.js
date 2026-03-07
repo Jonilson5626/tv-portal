@@ -1,105 +1,81 @@
-const countryList=document.getElementById("country-list")
-const channelGrid=document.getElementById("channel-grid")
-const playerSection=document.getElementById("player-section")
-const video=document.getElementById("tv-player")
-const search=document.getElementById("search")
+const countryList = document.getElementById('country-list');
+const channelGrid = document.getElementById('channel-grid');
+const playerSection = document.getElementById('player-section');
+const video = document.getElementById('tv-player');
+let hls = new Hls();
 
-let hls
-let data={}
+// Iniciar o site carregando o JSON
+async function init() {
+    try {
+        const response = await fetch('./data/channels.json');
+        const data = await response.json();
+        
+        // Renderizar Sidebar
+        countryList.innerHTML = '';
+        Object.keys(data).sort().forEach(country => {
+            const li = document.createElement('li');
+            li.className = 'country-item';
+            li.innerHTML = `<button>${country}</button>`;
+            li.onclick = () => {
+                document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
+                li.classList.add('active');
+                renderChannels(data[country]);
+            };
+            countryList.appendChild(li);
+        });
 
-async function init(){
+        // Abrir Brasil por padrão
+        const defaultCountry = Object.keys(data).find(c => c.includes("Brasil")) || Object.keys(data)[0];
+        if(defaultCountry) {
+            renderChannels(data[defaultCountry]);
+            // Marcar como ativo na sidebar
+            Array.from(countryList.children).forEach(li => {
+                if(li.innerText === defaultCountry) li.classList.add('active');
+            });
+        }
 
-const res=await fetch("data/channels.json")
-data=await res.json()
-
-renderCountries()
-
-displayChannels(Object.keys(data)[0])
-
+    } catch (err) {
+        channelGrid.innerHTML = `<p style="color:red">Erro ao carregar banco de dados JSON.</p>`;
+    }
 }
 
-function renderCountries(){
-
-countryList.innerHTML=""
-
-Object.keys(data).forEach(country=>{
-
-const li=document.createElement("li")
-
-li.className="country-item"
-
-li.innerText=country
-
-li.onclick=()=>displayChannels(country)
-
-countryList.appendChild(li)
-
-})
-
+function renderChannels(channels) {
+    channelGrid.innerHTML = '';
+    channels.forEach(chan => {
+        const card = document.createElement('div');
+        card.className = 'channel-card';
+        card.innerHTML = `
+            <div class="badge-live">AO VIVO</div>
+            <img src="${chan.logo}" class="channel-logo" onerror="this.src='https://via.placeholder.com/80?text=TV'">
+            <p style="margin-bottom:15px"><strong>${chan.name}</strong></p>
+            <button class="btn-play" onclick="playStream('${chan.url}')">ASSISTIR AGORA</button>
+        `;
+        channelGrid.appendChild(card);
+    });
 }
 
-function displayChannels(country){
+window.playStream = (url) => {
+    playerSection.style.display = 'block';
+    // Scroll suave para o topo para ver o player
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-channelGrid.innerHTML=""
+    if (Hls.isSupported()) {
+        hls.destroy(); // Limpa player anterior
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    } else {
+        video.src = url;
+        video.play();
+    }
+};
 
-data[country].forEach(chan=>{
+window.closePlayer = () => {
+    playerSection.style.display = 'none';
+    video.pause();
+    video.src = ""; // Para o download do vídeo
+    if(hls) hls.destroy();
+};
 
-const card=document.createElement("div")
-
-card.className="channel-card"
-
-card.innerHTML=`
-
-<img src="${chan.logo}" class="channel-logo">
-
-<h3>${chan.name}</h3>
-
-<button class="btn-play">Assistir</button>
-
-`
-
-card.querySelector("button").onclick=()=>playStream(chan.url)
-
-channelGrid.appendChild(card)
-
-})
-
-}
-
-function playStream(url){
-
-playerSection.style.display="block"
-
-window.scrollTo({top:0,behavior:"smooth"})
-
-if(Hls.isSupported()){
-
-if(hls)hls.destroy()
-
-hls=new Hls()
-
-hls.loadSource(url)
-
-hls.attachMedia(video)
-
-video.play()
-
-}else{
-
-video.src=url
-
-video.play()
-
-}
-
-}
-
-function closePlayer(){
-
-playerSection.style.display="none"
-
-video.pause()
-
-}
-
-init()
+init();
