@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TV Online Global</title>
+    <title>TV & Rádio Global</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -13,13 +13,14 @@
     <header class="top-header">
         <div class="header-container">
             <div class="loader-top"></div>
-            <h1 class="site-title">TV Online Global</h1>
+            <h1 class="site-title">TV & Rádio Global</h1>
+            <p class="local-time"><span id="time">00:00 AM</span></p>
         </div>
     </header>
 
     <main class="main-layout">
         <aside class="sidebar">
-            <div class="sidebar-header">PAÍSES</div>
+            <div class="sidebar-header">🌎 PAÍSES</div>
             <ul id="country-list" class="country-list custom-scroll"></ul>
         </aside>
 
@@ -27,20 +28,25 @@
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+                    <button class="nav-btn btn-fs" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
-                    <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()" style="display: none;">
-                        <i class="fas fa-volume-up"></i> CLIQUE PARA ATIVAR SOM
+                    <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()">
+                        <i class="fas fa-volume-up"></i> ATIVAR SOM
                     </div>
                 </div>
             </div>
 
             <div class="spotify-main-card">
                 <div id="list-header" class="currentplaying-header"></div>
-                <div id="channel-list" class="songs-list">
-                    <p style="color: #666; text-align: center; padding: 20px;">Carregando canais...</p>
+                
+                <div class="type-selector">
+                    <button id="btn-tv" class="type-btn active" onclick="switchType('tv')"><i class="fas fa-tv"></i> TV</button>
+                    <button id="btn-radio" class="type-btn" onclick="switchType('radio')"><i class="fas fa-radio"></i> RÁDIO</button>
                 </div>
+
+                <div id="channel-list" class="songs-list"></div>
             </div>
         </section>
     </main>
