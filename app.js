@@ -1,43 +1,15 @@
-function renderChannels(countryName, channels) {
-    // Definimos uma imagem de bandeira genérica ou baseada no nome
-    const flagUrl = `https://flagcdn.com/w80/${getCountryCode(countryName)}.png`;
+const countryList = document.getElementById('country-list');
+const channelList = document.getElementById('channel-list');
+const listHeader = document.getElementById('list-header');
+const playerSection = document.getElementById('player-section');
+const video = document.getElementById('tv-player');
+const unmuteOverlay = document.getElementById('unmute-overlay');
+let hls = new Hls();
 
-    channelGrid.innerHTML = `
-        <div class="currentplaying">
-            <img src="${flagUrl}" class="country-flag-header" onerror="this.src='https://cdn-icons-png.flaticon.com/512/44/44386.png'">
-            <p class="heading">${countryName}</p>
-        </div>
-    `;
-
-    channels.forEach(chan => {
-        const row = document.createElement('div');
-        row.className = 'channel-row';
-        row.onclick = () => playStream(chan.url);
-
-        row.innerHTML = `
-            <div class="channel-info-group">
-                <img src="${chan.logo}" class="channel-logo-mini" onerror="this.src='https://via.placeholder.com/40'">
-                <div class="song-details">
-                    <p class="channel-name">${chan.name}</p>
-                    <p class="channel-category">TV Online</p>
-                </div>
-            </div>
-            <div class="play-icon"></div>
-        `;
-        channelGrid.appendChild(row);
-    });
-}
-
-// Função auxiliar para pegar código da bandeira (exemplo simples)
-function getCountryCode(name) {
-    const codes = { "Brasil": "br", "Portugal": "pt", "EUA": "us", "Espanha": "es" };
-    return codes[name] || "un"; // 'un' para desconhecido
-}
-
-// Ajuste na chamada do init() para passar o nome do país
 async function init() {
     try {
         const res = await fetch('./data/channels.json');
+        if (!res.ok) throw new Error();
         const data = await res.json();
         
         Object.keys(data).sort().forEach(country => {
@@ -45,12 +17,76 @@ async function init() {
             li.className = 'country-item';
             li.innerHTML = `<button>${country}</button>`;
             li.onclick = () => {
+                document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
+                li.classList.add('active');
                 renderChannels(country, data[country]);
             };
             countryList.appendChild(li);
         });
 
-        const first = Object.keys(data)[0];
-        renderChannels(first, data[first]);
-    } catch (err) { console.error(err); }
+        const firstCountry = Object.keys(data)[0];
+        if(firstCountry) renderChannels(firstCountry, data[firstCountry]);
+
+    } catch (err) {
+        console.error("Erro ao carregar canais");
+    }
 }
+
+function renderChannels(countryName, channels) {
+    // Cabeçalho da Lista
+    listHeader.innerHTML = `
+        <img src="https://cdn-icons-png.flaticon.com/512/323/323310.png" class="country-icon">
+        <p class="heading">${countryName}</p>
+    `;
+
+    channelList.innerHTML = ''; 
+
+    channels.forEach(chan => {
+        const row = document.createElement('div');
+        row.className = 'channel-row';
+        row.onclick = () => playStream(chan.url);
+
+        row.innerHTML = `
+            <div class="channel-info">
+                <img src="${chan.logo}" class="logo-mini" onerror="this.src='https://via.placeholder.com/40'">
+                <div class="name-group">
+                    <p class="chan-name">${chan.name}</p>
+                    <p class="chan-artist">TV Online HD</p>
+                </div>
+            </div>
+            <div class="play-btn-ui"></div>
+        `;
+        channelList.appendChild(row);
+    });
+}
+
+window.playStream = (url) => {
+    playerSection.style.display = 'block';
+    video.muted = true;
+    unmuteOverlay.style.display = 'block';
+
+    if (Hls.isSupported()) {
+        hls.destroy();
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    } else {
+        video.src = url;
+        video.play();
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+window.unmuteVideo = () => {
+    video.muted = false;
+    unmuteOverlay.style.display = 'none';
+};
+
+window.closePlayer = () => {
+    playerSection.style.display = 'none';
+    video.pause();
+    if(hls) hls.destroy();
+};
+
+init();
