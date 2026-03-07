@@ -11,14 +11,19 @@
       "url": "https://26503.live.streamtheworld.com/BANDNEWS_FM_SP_SC"
     },
     {
-      "name": "Rádio Gaúcha",
-      "logo": "https://upload.wikimedia.org/wikipedia/pt/4/4c/Logotipo_da_R%C3%A1dio_Ga%C3%BAcha.png",
-      "url": "https://23193.live.streamtheworld.com/GAUCHA_SP"
+      "name": "Alpha FM",
+      "logo": "https://upload.wikimedia.org/wikipedia/pt/0/05/Logo_Alpha_FM.png",
+      "url": "https://20833.live.streamtheworld.com/ALPHAFM_SP_SC"
     },
     {
-      "name": "CBN São Paulo",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Logo_CBN.png/1200px-Logo_CBN.png",
-      "url": "https://20833.live.streamtheworld.com/CBN_SP_SC"
+      "name": "Rádio Guaíba",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Logo_Radio_Guaiba.png",
+      "url": "https://shm.painelcast.com/8052/stream"
+    },
+    {
+      "name": "Metropolitana FM",
+      "logo": "https://upload.wikimedia.org/wikipedia/pt/thumb/e/e9/Logotipo_da_Metropolitana_FM.png/250px-Logotipo_da_Metropolitana_FM.png",
+      "url": "https://painel.fabricahost.com.br/8040/stream"
     }
   ],
   "Portugal": [
@@ -31,6 +36,18 @@
       "name": "RFM",
       "logo": "https://rfm.sapo.pt/assets/img/logo_rfm.png",
       "url": "https://20723.live.streamtheworld.com/RFM_SC"
+    },
+    {
+      "name": "Rádio Renascença",
+      "logo": "https://rr.sapo.pt/assets/img/logo_rr.png",
+      "url": "https://20833.live.streamtheworld.com/RR_SC"
+    }
+  ],
+  "USA": [
+    {
+      "name": "Jazz24",
+      "logo": "https://www.jazz24.org/wp-content/uploads/2014/11/Jazz24-Logo.png",
+      "url": "https://live.wostreaming.net/direct/knkx-jazz24mp3-ibc1"
     }
   ]
 }
