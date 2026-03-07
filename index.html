@@ -14,34 +14,36 @@
 
     <header class="top-header">
         <div class="header-container">
-            <h1 class="site-title"><i class="fas fa-play-circle" style="color: #3b82f6;"></i> TV & RÁDIO GLOBAL</h1>
-            <p class="local-time"><span id="time">00:00</span></p>
+            <h1 class="site-title"><i class="fas fa-broadcast-tower"></i> TV & RÁDIO GLOBAL</h1>
+            <p class="local-time"><span id="time">00:00 AM</span></p>
         </div>
     </header>
 
     <main class="main-layout">
-        
         <aside class="sidebar">
             <div class="sidebar-header">🌎 PAÍSES</div>
             <div class="search-box">
                 <input type="text" id="country-search" placeholder="Procurar país..." onkeyup="filterCountries()">
             </div>
-            <ul id="country-list" class="country-list custom-scroll">
-                </ul>
+            <ul id="country-list" class="country-list custom-scroll"></ul>
         </aside>
 
         <section class="content-area custom-scroll">
-            
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="playing-info">
                     <span class="live-indicator">LIVE</span>
-                    <h2 id="playing-now">Nome do Canal</h2>
+                    <h2 id="playing-now">A carregar...</h2>
                 </div>
 
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()">
                         <i class="fas fa-arrow-left"></i> VOLTAR
                     </button>
+                    
+                    <button id="btn-audio-nav" class="nav-btn" onclick="unmuteVideo()" style="background: #e11d48;">
+                        <i class="fas fa-volume-up"></i> ATIVAR SOM
+                    </button>
+
                     <button class="nav-btn btn-fs" onclick="toggleFullScreen()">
                         <i class="fas fa-expand"></i> TELA CHEIA
                     </button>
@@ -49,7 +51,6 @@
 
                 <div class="video-wrapper">
                     <video id="tv-player" playsinline></video>
-                    
                     <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()">
                         <div class="unmute-content">
                             <i class="fas fa-volume-up"></i>
@@ -60,28 +61,21 @@
             </div>
 
             <div class="main-card">
-                
                 <div id="welcome-screen" class="welcome-screen">
-                    <i class="fas fa-globe-americas" style="font-size: 4rem; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <i class="fas fa-globe-americas"></i>
                     <h2>Selecione um País</h2>
-                    <p>Escolha um destino na barra lateral para listar os canais e rádios disponíveis.</p>
+                    <p>Escolha um país na barra lateral para ver os canais.</p>
                 </div>
 
                 <div id="content-wrapper" style="display: none;">
-                    <div id="list-header" class="country-header">
-                        </div>
+                    <div id="list-header" class="country-header"></div>
                     
                     <div class="type-selector">
-                        <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">
-                            <i class="fas fa-tv"></i> CANAIS TV
-                        </button>
-                        <button id="btn-radio" class="type-btn" onclick="switchType('radio')">
-                            <i class="fas fa-radio"></i> ESTAÇÕES RÁDIO
-                        </button>
+                        <button id="btn-tv" class="type-btn active" onclick="switchType('tv')"><i class="fas fa-tv"></i> CANAIS TV</button>
+                        <button id="btn-radio" class="type-btn" onclick="switchType('radio')"><i class="fas fa-radio"></i> RÁDIOS</button>
                     </div>
 
-                    <div id="channel-list" class="items-grid">
-                        </div>
+                    <div id="channel-list" class="items-grid"></div>
                 </div>
             </div>
         </section>
