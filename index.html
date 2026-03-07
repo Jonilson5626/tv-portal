@@ -10,12 +10,12 @@
 </head>
 <body>
 
-   <header class="top-header">
-    <div class="header-container">
-        <div class="loader"></div>
-        <h1 class="site-title">TV Online Global</h1>
-    </div>
-</header>
+    <header class="top-header">
+        <div class="header-container">
+            <div class="loader"></div>
+            <h1 class="site-title">TV Online</h1>
+        </div>
+    </header>
 
     <main class="main-layout">
         <aside class="sidebar">
@@ -31,6 +31,9 @@
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
+                    <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()" style="display: none;">
+                        <i class="fas fa-volume-up"></i> ATIVAR SOM
+                    </div>
                 </div>
             </div>
             <div id="channel-grid" class="channel-grid"></div>
