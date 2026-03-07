@@ -10,7 +10,6 @@ let hls = new Hls();
 let currentType = 'canais'; 
 let currentCountryPath = ""; 
 
-// LISTA DE PAÍSES (Ajustada aos nomes das suas pastas)
 const countries = [
     { name: "Brasil", path: "brazil", code: "br", emoji: "🇧🇷" },
     { name: "USA", path: "united_states", code: "us", emoji: "🇺🇸" },
@@ -20,42 +19,99 @@ const countries = [
     { name: "Colômbia", path: "colombia", code: "co", emoji: "🇨🇴" }
 ];
 
-// Relógio
-setInterval(() => {
-    const timeDisplay = document.getElementById('time');
-    if(timeDisplay) {
-        timeDisplay.innerText = new Date().toLocaleTimeString('pt-BR', { hour: 'numeric', minute: '2-digit' });
-    }
-}, 1000);
+// 1. FUNÇÃO PARA REPRODUZIR (CORRIGIDA)
+window.playStream = (url, name) => {
+    console.log("Tentando reproduzir:", url);
+    playingNowText.innerText = name;
+    
+    // Mostra o player e esconde a mensagem de boas-vindas
+    playerSection.style.display = 'block';
+    document.getElementById('welcome-screen').style.display = 'none';
+    
+    // Configuração inicial do áudio (MUDO para permitir autoplay)
+    video.muted = true;
+    unmuteOverlay.style.display = 'flex';
 
-// Filtro de Busca
-window.filterCountries = () => {
-    const term = document.getElementById('country-search').value.toLowerCase();
-    document.querySelectorAll('.country-item').forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(term) ? "block" : "none";
-    });
+    // Limpa instâncias anteriores do HLS para evitar travamentos
+    if (hls) {
+        hls.destroy();
+    }
+
+    if (Hls.isSupported() && url.includes('m3u8')) {
+        hls = new Hls({
+            // Configurações para links difíceis como JMVStream
+            xhrSetup: function(xhr, url) { xhr.withCredentials = false; }
+        });
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            video.play().catch(e => console.log("Erro no autoplay:", e));
+        });
+        
+        // Se houver erro de rede, tenta recuperar uma vez
+        hls.on(Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+                switch(data.type) {
+                    case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                    case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                }
+            }
+        });
+    } else {
+        // Para navegadores com suporte nativo (Safari) ou links MP4/MP3
+        video.src = url;
+        video.play().catch(e => console.log("Erro no play nativo:", e));
+    }
+    
+    // Rola a tela para o topo para ver o player no celular
+    window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
-// Verificador de Status
+// 2. BOTÃO VOLTAR
+window.closePlayer = () => {
+    playerSection.style.display = 'none';
+    video.pause();
+    if (hls) hls.destroy();
+    video.src = "";
+    document.getElementById('welcome-screen').style.display = 'flex';
+};
+
+// 3. BOTÃO ATIVAR ÁUDIO
+window.unmuteVideo = () => {
+    video.muted = false;
+    unmuteOverlay.style.display = 'none';
+};
+
+// 4. BOTÃO TELA CHEIA
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) { /* Safari */
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE11 */
+        video.msRequestFullscreen();
+    }
+};
+
+// --- Funções de interface (Mantidas) ---
+
 async function checkStatus(url) {
     try {
         const controller = new AbortController();
         setTimeout(() => controller.abort(), 2000);
-        await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal });
+        await fetch(url, { method: 'GET', mode: 'no-cors', signal: controller.signal });
         return true;
     } catch (e) { return false; }
 }
 
-// Inicializar Sidebar
 function init() {
     countryList.innerHTML = '';
     countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
-        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name} ${c.emoji}</button>`;
+        li.innerHTML = `<button><i class="fas fa-flag"></i> ${c.name}</button>`;
         li.onclick = () => {
             currentCountryPath = c.path;
-            document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('content-wrapper').style.display = 'block';
             document.querySelectorAll('.country-item').forEach(el => el.classList.remove('active'));
             li.classList.add('active');
@@ -65,74 +121,33 @@ function init() {
     });
 }
 
-// Carregar JSON do País
 async function loadData() {
     const meta = countries.find(c => c.path === currentCountryPath);
-    listHeader.innerHTML = `
-        <div class="header-info">
-            <img src="https://flagcdn.com/w80/${meta.code}.png" class="flag-img">
-            <h2>${meta.name} ${meta.emoji}</h2>
-        </div>
-    `;
-    
-    channelList.innerHTML = '<p class="loading-msg">Sincronizando sinais...</p>';
-
+    listHeader.innerHTML = `<h2>${meta.emoji} ${meta.name}</h2>`;
     try {
         const response = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
         const data = await response.json();
         renderList(data);
-    } catch (e) {
-        channelList.innerHTML = `<p class="error-msg">Erro ao carregar ./paises/${currentCountryPath}/${currentType}.json</p>`;
-    }
-}
-
-function switchType(type) {
-    currentType = type === 'tv' ? 'canais' : 'radios';
-    document.getElementById('btn-tv').classList.toggle('active', type === 'tv');
-    document.getElementById('btn-radio').classList.toggle('active', type === 'radio');
-    if(currentCountryPath) loadData();
+    } catch (e) { channelList.innerHTML = "Erro ao carregar lista."; }
 }
 
 async function renderList(data) {
     channelList.innerHTML = '';
-    const statusPromises = data.map(item => checkStatus(item.url));
-    const statuses = await Promise.all(statusPromises);
-
-    data.forEach((item, index) => {
-        const isOnline = statuses[index];
+    for (const item of data) {
+        const isOnline = await checkStatus(item.url);
         const card = document.createElement('div');
         card.className = 'item-card';
+        // Passamos o URL e o Nome para a função playStream
         card.onclick = () => playStream(item.url, item.name);
         card.innerHTML = `
-            <img src="${item.logo}" class="item-logo" onerror="this.src='https://via.placeholder.com/60?text=TV'">
+            <img src="${item.logo}" class="item-logo">
             <div class="item-details">
                 <p class="item-name">${item.name}</p>
                 <span class="status ${isOnline ? 'on' : 'off'}">${isOnline ? 'ONLINE' : 'OFFLINE'}</span>
             </div>
         `;
         channelList.appendChild(card);
-    });
-}
-
-// Play
-window.playStream = (url, name) => {
-    playingNowText.innerText = name;
-    playerSection.style.display = 'block';
-    video.muted = true;
-    unmuteOverlay.style.display = 'flex';
-
-    if (Hls.isSupported() && url.includes('m3u8')) {
-        hls.destroy(); hls = new Hls();
-        hls.loadSource(url); hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-    } else {
-        hls.destroy(); video.src = url; video.play();
     }
-    window.scrollTo({top: 0, behavior: 'smooth'});
-};
-
-window.unmuteVideo = () => { video.muted = false; unmuteOverlay.style.display = 'none'; };
-window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); hls.destroy(); };
-window.toggleFullScreen = () => { if(video.requestFullscreen) video.requestFullscreen(); };
+}
 
 init();
