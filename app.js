@@ -9,7 +9,7 @@ async function init() {
         const res = await fetch('./data/channels.json');
         const data = await res.json();
         
-        Object.keys(data).forEach(country => {
+        Object.keys(data).sort().forEach(country => {
             const li = document.createElement('li');
             li.className = 'country-item';
             li.innerHTML = `<button>${country}</button>`;
@@ -21,8 +21,9 @@ async function init() {
             countryList.appendChild(li);
         });
 
-        const first = Object.keys(data)[0];
-        if(first) renderChannels(data[first]);
+        // Tenta carregar Brasil primeiro
+        const br = Object.keys(data).find(k => k.toLowerCase().includes('brasil'));
+        if(br) renderChannels(data[br]);
 
     } catch (err) {
         channelGrid.innerHTML = "Erro ao carregar canais.";
@@ -35,8 +36,8 @@ function renderChannels(channels) {
         const card = document.createElement('div');
         card.className = 'channel-card';
         card.innerHTML = `
-            <img src="${chan.logo}" class="channel-logo">
-            <p style="font-size:0.8rem; margin-bottom:10px;">${chan.name}</p>
+            <img src="${chan.logo}" class="channel-logo" onerror="this.src='https://via.placeholder.com/60?text=TV'">
+            <p style="font-size:0.85rem; margin-bottom:12px; height: 32px; overflow: hidden;"><strong>${chan.name}</strong></p>
             <button class="btn-play" onclick="playStream('${chan.url}')">ASSISTIR</button>
         `;
         channelGrid.appendChild(card);
@@ -45,7 +46,9 @@ function renderChannels(channels) {
 
 window.playStream = (url) => {
     playerSection.style.display = 'block';
-    channelGrid.style.display = 'none'; // Esconde a grade no celular para o player brilhar
+    channelGrid.style.display = 'none'; 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     if (Hls.isSupported()) {
         hls.destroy();
         hls = new Hls();
@@ -62,7 +65,19 @@ window.closePlayer = () => {
     playerSection.style.display = 'none';
     channelGrid.style.display = 'grid';
     video.pause();
+    video.src = "";
     if(hls) hls.destroy();
+};
+
+// Função de Tela Cheia
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) { /* Safari */
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE11 */
+        video.msRequestFullscreen();
+    }
 };
 
 init();
