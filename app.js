@@ -35,12 +35,12 @@ function init() {
 }
 
 async function loadData() {
-    channelList.innerHTML = '<div style="grid-column: 1/-1; text-align: center;">Buscando...</div>';
+    channelList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 20px;">A carregar...</div>';
     try {
-        const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json`);
+        const resp = await fetch(`./paises/${currentCountryPath}/${currentType}.json?v=${Date.now()}`); // Força atualização do JSON
         const data = await resp.json();
         renderList(data);
-    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiros JSON."; }
+    } catch (e) { channelList.innerHTML = "Erro ao carregar ficheiro."; }
 }
 
 function renderList(data) {
@@ -49,13 +49,13 @@ function renderList(data) {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.onclick = () => playStream(item.url, item.name);
-        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/70?text=TV'"><p>${item.name}</p>`;
+        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/50?text=TV'"><p>${item.name}</p>`;
         channelList.appendChild(card);
     });
 }
 
 window.playStream = (url, name) => {
-    playingNowText.innerText = "Reproduzindo: " + name;
+    playingNowText.innerText = "A transmitir: " + name;
     playerSection.style.display = 'block';
     video.muted = true;
     if (Hls.isSupported() && url.includes('m3u8')) {
@@ -63,7 +63,6 @@ window.playStream = (url, name) => {
         hls.loadSource(url); hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
     } else { video.src = url; video.play(); }
-    window.scrollTo({top: 0, behavior: 'smooth'});
 };
 
 window.toggleMute = () => {
@@ -81,7 +80,10 @@ window.switchType = (type) => {
 };
 
 window.closePlayer = () => { playerSection.style.display = 'none'; video.pause(); hls.destroy(); };
-window.toggleFullScreen = () => { if (video.requestFullscreen) video.requestFullscreen(); else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen(); };
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+};
 window.filterCountries = () => {
     const term = document.getElementById('country-search').value.toLowerCase();
     document.querySelectorAll('.country-item').forEach(i => i.style.display = i.innerText.toLowerCase().includes(term) ? "" : "none");
