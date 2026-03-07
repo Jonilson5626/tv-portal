@@ -1,36 +1,44 @@
 :root { --blue: #2563eb; --dark: #0f172a; --card: #1e293b; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #05070a; color: white; font-family: sans-serif; }
+body { background: #05070a; color: white; font-family: 'Segoe UI', sans-serif; }
 
-.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--blue); }
-#loading-status { font-size: 0.7rem; color: #60a5fa; margin-top: 5px; }
+.top-header { background: #000; padding: 20px; text-align: center; border-bottom: 2px solid var(--blue); }
+#loading-status { font-size: 0.8rem; color: #60a5fa; margin-top: 8px; font-weight: bold; }
 
-.main-layout { display: flex; flex-direction: column; }
-.sidebar { padding: 15px; background: var(--dark); }
-.search-box input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #000; color: white; }
+.main-layout { display: flex; flex-direction: column; width: 100%; }
 
+.sidebar { padding: 15px; background: var(--dark); border-bottom: 1px solid #334155; }
+.search-box input { 
+    width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #334155; 
+    background: #000; color: white; font-size: 1rem;
+}
+
+/* A Mágica da Grade de Canais */
 .items-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
-    gap: 15px; padding: 15px; 
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
+    gap: 15px; padding: 20px; 
 }
 .item-card { 
-    background: var(--card); padding: 15px; border-radius: 12px; 
-    text-align: center; cursor: pointer; transition: 0.2s; border: 1px solid transparent;
+    background: var(--card); padding: 15px; border-radius: 15px; 
+    text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid transparent;
 }
-.item-card:hover { border-color: var(--blue); transform: translateY(-5px); }
-.item-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 8px; border-radius: 5px; }
-.item-card p { font-size: 0.75rem; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.item-card:hover { border-color: var(--blue); background: #2d3748; }
+.item-card img { width: 100%; height: 70px; object-fit: contain; margin-bottom: 10px; border-radius: 8px; }
+.item-card p { font-size: 0.8rem; font-weight: bold; color: #cbd5e1; }
 
-.player-container { background: #000; border-radius: 10px; overflow: hidden; margin: 15px; border: 1px solid #334155; }
-.player-nav { display: flex; gap: 5px; padding: 10px; }
-.nav-btn { flex: 1; padding: 12px; border: none; border-radius: 5px; background: #334155; color: white; font-weight: bold; }
+/* Player */
+.player-container { background: #000; border-radius: 15px; overflow: hidden; margin: 15px; border: 1px solid #334155; }
+.player-nav { display: flex; gap: 10px; padding: 12px; background: #1a202c; }
+.nav-btn { flex: 1; padding: 14px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; cursor: pointer; }
 .btn-danger { background: #e11d48; }
-.video-wrapper { position: relative; padding-top: 56.25%; }
+.video-wrapper { position: relative; padding-top: 56.25%; background: #000; }
 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+#playing-now { padding: 15px; text-align: center; font-size: 1.1rem; }
 
+/* Ajuste PC */
 @media (min-width: 1024px) {
-    .main-layout { flex-direction: row; height: calc(100vh - 75px); }
-    .sidebar { width: 300px; border-right: 1px solid #334155; }
-    .content-area { flex: 1; overflow-y: auto; }
+    .main-layout { flex-direction: row; }
+    .sidebar { width: 320px; border-right: 1px solid #334155; height: 100vh; position: sticky; top: 0; }
+    .content-area { flex: 1; height: 100vh; overflow-y: auto; }
 }
