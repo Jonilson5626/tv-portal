@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Online Global - Brasil</title>
+    <title>TV Online Global</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/716/716429.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
     <header class="top-header">
-        <h1 class="site-title">📺 TV Online Global</h1>
+        <h1><i class="fas fa-tv"></i> TV Online Global</h1>
     </header>
 
     <main class="main-layout">
-        <aside class="sidebar">
-            <div class="sidebar-header">🌍 SELECIONE O PAÍS</div>
-            <ul id="country-list" class="country-list custom-scroll">
-                </ul>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">PAÍSES</div>
+            <ul id="country-list" class="country-list custom-scroll"></ul>
         </aside>
 
         <section class="content-area custom-scroll">
             
-            <div id="player-section" class="player-section" style="display: none;">
-                <div class="player-controls-top">
-                    <button class="back-btn" onclick="closePlayer()">⬅ Voltar para a Lista</button>
+            <div id="player-section" class="player-container" style="display: none;">
+                <div class="player-nav">
+                    <button class="back-btn" onclick="closePlayer()">
+                        <i class="fas fa-arrow-left"></i> Voltar para a lista
+                    </button>
                 </div>
-                <div class="player-wrapper">
+                <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
                 </div>
             </div>
 
             <div id="channel-grid" class="channel-grid">
-                <p class="placeholder-msg">Carregando canais...</p>
-            </div>
+                </div>
         </section>
     </main>
 
