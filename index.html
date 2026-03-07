@@ -28,7 +28,7 @@
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                    <button class="nav-btn btn-fs" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
+                    <button id="fs-btn" class="nav-btn btn-fs" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" controls playsinline></video>
@@ -42,8 +42,12 @@
                 <div id="list-header" class="currentplaying-header"></div>
                 
                 <div class="type-selector">
-                    <button id="btn-tv" class="type-btn active" onclick="switchType('tv')"><i class="fas fa-tv"></i> TV</button>
-                    <button id="btn-radio" class="type-btn" onclick="switchType('radio')"><i class="fas fa-radio"></i> RÁDIO</button>
+                    <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">
+                        <i class="fas fa-tv"></i> CANAIS TV
+                    </button>
+                    <button id="btn-radio" class="type-btn" onclick="switchType('radio')">
+                        <i class="fas fa-radio"></i> ESTAÇÕES RÁDIO
+                    </button>
                 </div>
 
                 <div id="channel-list" class="songs-list"></div>
