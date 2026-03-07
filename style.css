@@ -1,44 +1,48 @@
-:root { --blue: #2563eb; --dark: #0f172a; --card: #1e293b; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #05070a; color: white; font-family: 'Segoe UI', sans-serif; }
+:root { --blue: #2563eb; --dark: #0f172a; --card: #1e293b; --danger: #e11d48; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { background: #05070a; color: white; font-family: 'Segoe UI', Roboto, sans-serif; }
 
-.top-header { background: #000; padding: 20px; text-align: center; border-bottom: 2px solid var(--blue); }
-#loading-status { font-size: 0.8rem; color: #60a5fa; margin-top: 8px; font-weight: bold; }
+.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--blue); }
+.status { font-size: 0.75rem; color: #60a5fa; margin-top: 5px; font-weight: bold; }
 
 .main-layout { display: flex; flex-direction: column; width: 100%; }
-
 .sidebar { padding: 15px; background: var(--dark); border-bottom: 1px solid #334155; }
-.search-box input { 
-    width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #334155; 
-    background: #000; color: white; font-size: 1rem;
-}
+.search-box input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #000; color: white; outline: none; }
 
-/* A Mágica da Grade de Canais */
+.content-area { padding: 10px; flex: 1; }
+
+/* Grid de Canais Profissional */
 .items-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
-    gap: 15px; padding: 20px; 
+    gap: 12px; 
+    padding: 10px;
 }
 .item-card { 
-    background: var(--card); padding: 15px; border-radius: 15px; 
-    text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid transparent;
+    background: var(--card); padding: 12px; border-radius: 12px; 
+    text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.3s;
 }
 .item-card:hover { border-color: var(--blue); background: #2d3748; }
-.item-card img { width: 100%; height: 70px; object-fit: contain; margin-bottom: 10px; border-radius: 8px; }
-.item-card p { font-size: 0.8rem; font-weight: bold; color: #cbd5e1; }
+.item-card img { width: 100%; height: 60px; object-fit: contain; margin-bottom: 8px; border-radius: 5px; }
+.item-card p { font-size: 0.75rem; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Badges (Ⓖ, Ⓨ, Ⓢ) */
+.tags { display: flex; gap: 4px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+.badge { font-size: 0.55rem; padding: 2px 4px; border-radius: 3px; font-weight: 900; }
+.geo { background: #eab308; color: black; } /* Bloqueio Geo */
+.yt { background: var(--danger); } /* YouTube */
+.sd { background: #64748b; } /* SD */
+.group-tag { font-size: 0.6rem; color: #60a5fa; display: block; margin-top: 4px; text-transform: uppercase; }
 
 /* Player */
-.player-container { background: #000; border-radius: 15px; overflow: hidden; margin: 15px; border: 1px solid #334155; }
-.player-nav { display: flex; gap: 10px; padding: 12px; background: #1a202c; }
-.nav-btn { flex: 1; padding: 14px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; cursor: pointer; }
-.btn-danger { background: #e11d48; }
-.video-wrapper { position: relative; padding-top: 56.25%; background: #000; }
+.player-container { background: #000; border-radius: 12px; overflow: hidden; margin-bottom: 20px; border: 1px solid #334155; }
+.player-nav { display: flex; gap: 8px; padding: 10px; background: #1a202c; }
+.nav-btn { flex: 1; padding: 12px; border: none; border-radius: 6px; background: #334155; color: white; font-weight: bold; cursor: pointer; }
+.btn-danger { background: var(--danger); }
+.video-wrapper { position: relative; padding-top: 56.25%; }
 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-#playing-now { padding: 15px; text-align: center; font-size: 1.1rem; }
 
-/* Ajuste PC */
 @media (min-width: 1024px) {
     .main-layout { flex-direction: row; }
-    .sidebar { width: 320px; border-right: 1px solid #334155; height: 100vh; position: sticky; top: 0; }
-    .content-area { flex: 1; height: 100vh; overflow-y: auto; }
+    .sidebar { width: 280px; height: 100vh; position: sticky; top: 0; border-right: 1px solid #334155; }
 }
