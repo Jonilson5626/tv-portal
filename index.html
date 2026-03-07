@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TV GLOBAL - FREE IPTV</title>
+    <title>TV GLOBAL PRO</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -11,25 +11,25 @@
 <body>
 
     <header class="top-header">
-        <h1><i class="fas fa-globe-americas"></i> IPTV GLOBAL</h1>
-        <div id="loading-status" class="status">Sincronizando canais...</div>
+        <h1><i class="fas fa-globe"></i> IPTV GLOBAL AUTO</h1>
+        <div id="status-info" class="clock">Carregando lista global...</div>
     </header>
 
     <main class="main-layout">
         <aside class="sidebar">
             <div class="search-box">
-                <input type="text" id="search" placeholder="🔍 Buscar canal ou país..." onkeyup="filterChannels()">
+                <input type="text" id="main-search" placeholder="Buscar canal ou país..." onkeyup="filterContent()">
             </div>
-            <div class="info-footer">
-                <small>Fonte: Free-TV/IPTV</small>
-            </div>
+            <div id="category-list" class="country-list">
+                </div>
         </aside>
 
         <section class="content-area">
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-times"></i> FECHAR</button>
-                    <button id="btn-audio" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
+                    <button id="btn-audio-toggle" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> SOM</button>
+                    <button class="nav-btn" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> FULL</button>
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" playsinline muted></video>
@@ -37,7 +37,8 @@
                 <h2 id="playing-now" class="playing-title"></h2>
             </div>
 
-            <div id="channel-grid" class="items-grid"></div>
+            <div id="channel-grid" class="items-grid">
+                </div>
         </section>
     </main>
 
