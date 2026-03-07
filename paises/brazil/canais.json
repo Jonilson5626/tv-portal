@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "name": "Adesso TV",
+    "logo": "https://www.adessotv.com.br/images/layout/logo.png",
+    "url": "https://cdn.live.br1.jmvstream.com/w/LVW-9715/LVW9715_12B26T62tm/chunklist.m3u8"
+  }
+]
