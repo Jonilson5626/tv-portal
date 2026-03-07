@@ -2,52 +2,74 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TV & Rádio Global</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV & RÁDIO GLOBAL</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
     <header class="top-header">
         <div class="header-container">
-            <div class="loader-top"></div>
-            <h1 class="site-title">TV & RÁDIO GLOBAL</h1>
-            <p class="local-time"><span id="time">00:00 AM</span></p>
+            <h1 class="site-title"><i class="fas fa-play-circle" style="color: #3b82f6;"></i> TV & RÁDIO GLOBAL</h1>
+            <p class="local-time"><span id="time">00:00</span></p>
         </div>
     </header>
 
     <main class="main-layout">
+        
         <aside class="sidebar">
             <div class="sidebar-header">🌎 PAÍSES</div>
-            <ul id="country-list" class="country-list custom-scroll"></ul>
+            <div class="search-box">
+                <input type="text" id="country-search" placeholder="Procurar país..." onkeyup="filterCountries()">
+            </div>
+            <ul id="country-list" class="country-list custom-scroll">
+                </ul>
         </aside>
 
         <section class="content-area custom-scroll">
+            
             <div id="player-section" class="player-container" style="display: none;">
-                <div class="player-nav">
-                    <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                    <button id="fs-btn" class="nav-btn btn-fs" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
+                <div class="playing-info">
+                    <span class="live-indicator">LIVE</span>
+                    <h2 id="playing-now">Nome do Canal</h2>
                 </div>
+
+                <div class="player-nav">
+                    <button class="nav-btn" onclick="closePlayer()">
+                        <i class="fas fa-arrow-left"></i> VOLTAR
+                    </button>
+                    <button class="nav-btn btn-fs" onclick="toggleFullScreen()">
+                        <i class="fas fa-expand"></i> TELA CHEIA
+                    </button>
+                </div>
+
                 <div class="video-wrapper">
-                    <video id="tv-player" controls playsinline></video>
+                    <video id="tv-player" playsinline></video>
+                    
                     <div id="unmute-overlay" class="unmute-overlay" onclick="unmuteVideo()">
-                        <i class="fas fa-volume-up"></i> CLIQUE PARA ATIVAR SOM
+                        <div class="unmute-content">
+                            <i class="fas fa-volume-up"></i>
+                            <p>CLIQUE PARA ATIVAR O SOM</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="spotify-main-card">
+            <div class="main-card">
                 
                 <div id="welcome-screen" class="welcome-screen">
-                    <i class="fas fa-broadcast-tower"></i>
-                    <h2>Explore o Mundo</h2>
-                    <p>Selecione um país ao lado para ver os canais de TV e as Rádios disponíveis.</p>
+                    <i class="fas fa-globe-americas" style="font-size: 4rem; color: #3b82f6; margin-bottom: 20px;"></i>
+                    <h2>Selecione um País</h2>
+                    <p>Escolha um destino na barra lateral para listar os canais e rádios disponíveis.</p>
                 </div>
 
                 <div id="content-wrapper" style="display: none;">
-                    <div id="list-header" class="currentplaying-header"></div>
+                    <div id="list-header" class="country-header">
+                        </div>
                     
                     <div class="type-selector">
                         <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">
@@ -58,7 +80,8 @@
                         </button>
                     </div>
 
-                    <div id="channel-list" class="songs-list"></div>
+                    <div id="channel-list" class="items-grid">
+                        </div>
                 </div>
             </div>
         </section>
