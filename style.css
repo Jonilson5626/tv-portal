@@ -9,47 +9,45 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
 body { background: var(--dark); color: var(--text); height: 100vh; display: flex; flex-direction: column; }
 
-.top-header { background: #000; padding: 10px; text-align: center; border-bottom: 2px solid var(--primary); }
+.top-header { background: #000; padding: 12px; text-align: center; border-bottom: 2px solid var(--primary); }
 .main-layout { display: flex; flex: 1; overflow: hidden; }
 
 /* Sidebar */
-.sidebar { width: 200px; background: var(--side); border-right: 1px solid #334155; }
+.sidebar { width: 220px; background: var(--side); border-right: 1px solid #334155; }
 .country-list button { width: 100%; padding: 15px; background: none; border: none; color: white; text-align: left; cursor: pointer; border-bottom: 1px solid #1e293b; }
 .country-item.active { background: var(--primary); }
 
-/* Conteúdo e Grid */
-.content-area { flex: 1; padding: 15px; overflow-y: auto; }
-.channel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-.channel-card { background: var(--card); padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #334155; }
-.channel-logo { width: 50px; height: 50px; object-fit: contain; background: white; border-radius: 50%; padding: 5px; margin-bottom: 10px; }
-.btn-play { width: 100%; padding: 8px; background: var(--primary); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+/* Conteúdo */
+.content-area { flex: 1; padding: 15px; overflow-y: auto; background: #0a0f1e; }
+.channel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+.channel-card { background: var(--card); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #334155; transition: 0.3s; }
+.channel-logo { width: 60px; height: 60px; object-fit: contain; background: white; border-radius: 50%; padding: 5px; margin-bottom: 10px; }
+.btn-play { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
 
-/* Player */
-.player-container { background: #000; border-radius: 8px; margin-bottom: 20px; width: 100%; }
-.video-wrapper video { width: 100%; display: block; }
-.player-nav { padding: 10px; }
-.back-btn { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+/* Player Section */
+.player-container { background: #000; border-radius: 12px; margin-bottom: 20px; width: 100%; max-width: 900px; margin-inline: auto; }
+.player-nav { padding: 10px; display: flex; justify-content: space-between; background: #1a1a1a; }
+.nav-btn { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
+.expand-btn { background: #475569; }
 
-/* --- RESPONSIVIDADE PARA CELULAR --- */
+.video-wrapper video { width: 100%; display: block; border-radius: 0 0 12px 12px; }
+
+/* --- RESPONSIVIDADE MOBILE --- */
 @media (max-width: 768px) {
-    .main-layout { flex-direction: column; } /* Joga a sidebar para cima ou baixo */
-    
-    .sidebar { 
-        width: 100%; 
-        height: auto; 
-        max-height: 150px; /* Limita a sidebar no celular */
-        overflow-x: auto; 
-    }
+    .main-layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; max-height: 120px; overflow-x: auto; }
+    .country-list { display: flex; flex-direction: row; }
+    .country-list button { white-space: nowrap; padding: 12px 20px; }
 
-    .country-list { display: flex; flex-direction: row; } /* Países viram botões lado a lado */
-    .country-list button { white-space: nowrap; border-bottom: none; border-right: 1px solid #1e293b; }
-
-    /* Player maior no celular (estilo 720x720 aproximado pelo aspect-ratio) */
+    /* Player no Celular (Formato 1:1 para dar o efeito 720x720) */
     .video-wrapper video {
-        aspect-ratio: 1/1; /* Deixa o player quadrado 720x720 como você pediu */
-        max-height: 70vh;
-        object-fit: cover; /* Garante que preencha o espaço */
+        aspect-ratio: 1 / 1; 
+        object-fit: cover;
+        max-height: 80vh;
     }
 
     .channel-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
 }
+
+.custom-scroll::-webkit-scrollbar { width: 5px; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
