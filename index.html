@@ -11,10 +11,8 @@
 <body>
 
     <header class="top-header">
-        <div class="header-container">
-            <h1 class="site-title"><i class="fas fa-broadcast-tower"></i> TV & RÁDIO GLOBAL</h1>
-            <p class="local-time"><span id="time">00:00 AM</span></p>
-        </div>
+        <h1 class="site-title"><i class="fas fa-broadcast-tower"></i> TV & RÁDIO GLOBAL</h1>
+        <div id="time" class="clock">00:00:00</div>
     </header>
 
     <main class="main-layout">
@@ -23,28 +21,21 @@
             <div class="search-box">
                 <input type="text" id="country-search" placeholder="Procurar país..." onkeyup="filterCountries()">
             </div>
-            <ul id="country-list" class="country-list custom-scroll"></ul>
+            <ul id="country-list" class="country-list"></ul>
         </aside>
 
-        <section class="content-area custom-scroll">
+        <section class="content-area">
+            
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="playing-info">
-                    <span class="live-indicator">LIVE</span>
-                    <h2 id="playing-now">A carregar...</h2>
+                    <span class="live-dot"></span>
+                    <h2 id="playing-now">Selecionado</h2>
                 </div>
 
                 <div class="player-nav">
-                    <button class="nav-btn" onclick="closePlayer()">
-                        <i class="fas fa-arrow-left"></i> VOLTAR
-                    </button>
-                    
-                    <button id="btn-audio-toggle" class="nav-btn btn-danger" onclick="toggleMute()">
-                        <i class="fas fa-volume-up"></i> ATIVAR SOM
-                    </button>
-
-                    <button id="btn-fs-toggle" class="nav-btn" onclick="toggleFullScreen()">
-                        <i class="fas fa-expand"></i> TELA CHEIA
-                    </button>
+                    <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
+                    <button id="btn-audio-toggle" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
+                    <button class="nav-btn" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
                 </div>
 
                 <div class="video-wrapper">
@@ -52,19 +43,20 @@
                 </div>
             </div>
 
-            <div class="main-card">
+            <div id="main-content" class="main-card">
                 <div id="welcome-screen" class="welcome-screen">
                     <i class="fas fa-globe-americas"></i>
                     <h2>Selecione um País</h2>
-                    <p>Escolha um país na barra lateral para ver os canais.</p>
                 </div>
 
-                <div id="content-wrapper" style="display: none;">
-                    <div id="list-header" class="country-header"></div>
+                <div id="list-container" style="display: none;">
+                    <div id="list-header" class="country-title-header"></div>
+                    
                     <div class="type-selector">
                         <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">CANAIS TV</button>
                         <button id="btn-radio" class="type-btn" onclick="switchType('radio')">RÁDIOS</button>
                     </div>
+
                     <div id="channel-list" class="items-grid"></div>
                 </div>
             </div>
