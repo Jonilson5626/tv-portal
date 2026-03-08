@@ -1,74 +1,65 @@
 :root {
-    --bg-black: #05070a;
-    --sidebar-blue: #0f172a;
-    --accent-blue: #2563eb;
-    --card-bg: #1e293b;
-    --text-white: #f8fafc;
+    --bg-dark: #05070a;
+    --sidebar: #0f172a;
+    --accent: #2563eb;
+    --card: #1e293b;
+    --text: #f8fafc;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body { 
-    background-color: var(--bg-black); 
-    color: var(--text-white); 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark); 
+    color: var(--text); 
+    font-family: 'Segoe UI', system-ui, sans-serif;
     overflow-x: hidden;
 }
 
-/* Header */
-.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--accent-blue); }
+.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--accent); }
 .status-bar { font-size: 0.75rem; color: #60a5fa; margin-top: 5px; }
 
-/* Layout Responsivo */
 .main-layout { display: flex; flex-direction: column; width: 100%; }
 
-/* Sidebar */
-.sidebar { width: 100%; background: var(--sidebar-blue); padding: 15px; border-bottom: 1px solid #334155; }
+.sidebar { width: 100%; background: var(--sidebar); padding: 15px; border-bottom: 1px solid #334155; }
 .search-box input { 
     width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; 
     background: #000; color: white; margin-bottom: 10px;
 }
 .country-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
 .country-item button { 
-    padding: 8px 12px; background: var(--card-bg); border: none; color: white; 
-    border-radius: 5px; cursor: pointer; font-size: 0.85rem; 
+    padding: 10px 14px; background: var(--card); border: none; color: white; 
+    border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500;
 }
-.country-item.active button { background: var(--accent-blue); }
+.country-item.active button { background: var(--accent); }
 
-/* Grade de Canais (Aqui resolve o "esmagado") */
 .items-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
-    gap: 15px; padding: 15px;
+    gap: 15px; padding: 20px;
 }
 .item-card { 
-    background: var(--card-bg); padding: 15px; border-radius: 12px; 
-    text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.3s;
+    background: var(--card); padding: 15px; border-radius: 12px; 
+    text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s;
 }
-.item-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
-.item-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 8px; }
-.item-card p { font-size: 0.75rem; font-weight: bold; }
+.item-card:hover { border-color: var(--accent); background: #2d3748; }
+.item-card img { width: 100%; height: 65px; object-fit: contain; margin-bottom: 10px; border-radius: 5px; }
+.item-card p { font-size: 0.8rem; font-weight: bold; }
 
-/* Player */
-.player-container { background: #000; margin: 15px; border-radius: 12px; overflow: hidden; border: 1px solid #334155; }
-.player-nav { display: flex; gap: 10px; padding: 10px; background: #1a202c; }
-.nav-btn { flex: 1; padding: 12px; border: none; border-radius: 6px; background: #334155; color: white; font-weight: bold; cursor: pointer; }
+.player-container { background: #000; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid #334155; }
+.player-nav { display: flex; gap: 10px; padding: 12px; background: #1a202c; }
+.nav-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; }
 .btn-danger { background: #e11d48; }
 .video-wrapper { position: relative; padding-top: 56.25%; width: 100%; }
 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.playing-title { padding: 10px; text-align: center; font-size: 1rem; }
 
-/* Seletor */
-.type-selector { display: flex; gap: 10px; padding: 15px; }
-.type-btn { flex: 1; padding: 10px; border: none; background: #1e293b; color: white; border-radius: 8px; cursor: pointer; }
-.type-btn.active { background: var(--accent-blue); }
+.type-selector { display: flex; gap: 10px; padding: 15px; justify-content: center; }
+.type-btn { padding: 10px 25px; border: none; background: #1e293b; color: #94a3b8; border-radius: 20px; cursor: pointer; font-weight: bold; }
+.type-btn.active { background: var(--accent); color: white; }
 
-.welcome-msg { text-align: center; padding: 50px; color: #475569; }
-.welcome-msg i { font-size: 3rem; margin-bottom: 15px; }
+.welcome-msg { text-align: center; padding: 80px 20px; color: #475569; }
 
-/* Ajuste para Desktop */
 @media (min-width: 1024px) {
-    .main-layout { flex-direction: row; height: calc(100vh - 70px); }
+    .main-layout { flex-direction: row; height: calc(100vh - 75px); }
     .sidebar { width: 300px; height: 100%; overflow-y: auto; border-right: 1px solid #334155; }
     .country-list { flex-direction: column; }
     .content-area { flex: 1; overflow-y: auto; }
