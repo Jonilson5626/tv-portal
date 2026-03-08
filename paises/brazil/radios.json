@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "name": "Jovem Pan FM",
+    "logo": "https://static.mytuner.mobi/media/tvos_radios/601/jovem-pan-fm-sao-paulo.c88a6569.png",
+    "url": "https://stream-147.zeno.fm/c45wbq2us3buv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJjNDV3YnEydXMzYnV2IiwiaG9zdCI6InN0cmVhbS0xNDcuemVuby5mbSIsInJ0dGwiOjUsImp0aSI6IjJwdklSenJlUmE2ZFFkcS12Yl9lM3ciLCJpYXQiOjE3NzI5MzQ4MzEsImV4cCI6MTc3MjkzNDg5MX0.AeC5M_f6qLCDWA3xpwTGXFGfqwQFXgjgKamAeIM1J4A"
+  },
+  {
+    "name": "Rádio Mix FM",
+    "logo": "https://static.mytuner.mobi/media/tvos_radios/793/mix-fm-sao-paulo.73ddc0d4.png",
+    "url": "https://26433.live.streamtheworld.com/MIXFM_SAOPAULO_SC"
+  },
+  {
+    "name": "Rádio Gaúcha",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/07/Radio_Gaucha_logo.png",
+    "url": "https://25613.live.streamtheworld.com/RADIO_GAUCHAAC_SC"
+  },
+  {
+    "name": "Antena 1",
+    "logo": "https://www.antena1.com.br/assets/images/logo-antena1.png",
+    "url": "https://stream.antena1.com.br/stream"
+  }
+]
