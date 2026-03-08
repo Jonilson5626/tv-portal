@@ -12,7 +12,7 @@
 
     <header class="top-header">
         <h1><i class="fas fa-satellite-dish"></i> TV PORTAL</h1>
-        <div id="status-msg" class="status-bar">Explore programas de TV e Rádios Gratuitos</div>
+        <div id="status-msg" class="status-bar">Explore programas de TV gratuitos</div>
     </header>
 
     <main class="main-layout">
@@ -35,35 +35,6 @@
                     <video id="tv-player" playsinline muted></video>
                 </div>
                 <h2 id="playing-now" class="playing-title"></h2>
-            </div>
-
-            <div id="radio-player-section" class="radio-container" style="display: none;">
-                <div class="player-nav">
-                    <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                </div>
-                
-                <div class="radio-content">
-                    <img id="radio-logo" src="" alt="Logo Rádio" class="radio-big-logo">
-                    
-                    <div class="player-bx">
-                        <div class="sm-ct">
-                            <div class="play-control">
-                                <span class="play-btn" id="BTN-PLAY" onclick="handleRadioPlay()"></span>
-                            </div>
-                            <div class="info">
-                                <span class="title">STATUS:</span>
-                                <span id="radio-song" class="song">Conectando...</span>
-                            </div>
-                        </div>
-                        
-                        <div class="volume-box">
-                            <i class="fas fa-volume-down"></i>
-                            <input type="range" id="radio-volume" min="0" max="1" step="0.1" value="1" oninput="changeRadioVolume(this.value)">
-                            <i class="fas fa-volume-up"></i>
-                        </div>
-                    </div>
-                </div>
-                <h2 id="radio-playing-name" class="playing-title"></h2>
             </div>
 
             <div id="list-container" style="display: none;">
