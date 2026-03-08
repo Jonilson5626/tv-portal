@@ -1,4 +1,4 @@
-// Lista completa dos países baseada nas suas pastas do GitHub
+// Lista exata das pastas no seu GitHub
 const countries = [
     { name: "Brasil", path: "brazil" },
     { name: "China", path: "china" },
@@ -13,10 +13,10 @@ let currentType = "canais";
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
-// Inicia a lista lateral
+// Inicia a lista lateral de países
 function init() {
     const list = document.getElementById('country-list');
-    list.innerHTML = "";
+    list.innerHTML = ""; // Limpa a lista antes de preencher
     countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
@@ -31,24 +31,24 @@ function init() {
     });
 }
 
-// Carrega os canais do arquivo JSON do país
+// Busca o arquivo JSON dentro da pasta do país selecionado
 async function loadJSON() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('list-container').style.display = 'block';
     const grid = document.getElementById('channel-grid');
-    grid.innerHTML = "<p style='padding:20px;'>Carregando...</p>";
+    grid.innerHTML = "<p style='padding:20px;'>Carregando conteúdo...</p>";
 
     try {
         const response = await fetch(`./paises/${currentCountry}/${currentType}.json`);
-        if (!response.ok) throw new Error();
+        if (!response.ok) throw new Error("Arquivo não encontrado");
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro: JSON não encontrado em /paises/${currentCountry}/</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro: Não foi possível carregar os canais de ${currentCountry}. Verifique se o arquivo JSON existe na pasta.</p>`;
     }
 }
 
-// Desenha os quadradinhos (cards) dos canais
+// Renderiza os cards dos canais
 function renderGrid(data) {
     const grid = document.getElementById('channel-grid');
     grid.innerHTML = '';
@@ -64,7 +64,7 @@ function renderGrid(data) {
     });
 }
 
-// Inicia a transmissão
+// Função do Player de Vídeo
 function playChannel(url, name) {
     document.getElementById('player-section').style.display = 'block';
     document.getElementById('playing-now').innerText = "Assistindo: " + name;
@@ -82,17 +82,6 @@ function playChannel(url, name) {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// FUNÇÃO DE TELA CHEIA
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) {
-        video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-    }
-};
 
 window.toggleMute = () => {
     video.muted = !video.muted;
