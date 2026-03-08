@@ -8,73 +8,64 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-body { background-color: var(--bg-dark); color: var(--text); font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text); 
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    overflow-x: hidden;
+}
 
 .top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--accent); }
+.status-bar { font-size: 0.75rem; color: #60a5fa; margin-top: 5px; }
 
 .main-layout { display: flex; flex-direction: column; width: 100%; }
 
-/* Sidebar */
 .sidebar { width: 100%; background: var(--sidebar); padding: 15px; border-bottom: 1px solid #334155; }
-.search-box input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #000; color: white; margin-bottom: 15px; }
+.search-box input { 
+    width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; 
+    background: #000; color: white; margin-bottom: 10px; outline: none;
+}
+
 .country-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
-.country-item button { padding: 10px 14px; background: var(--card); border: none; color: white; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+.country-item button { 
+    padding: 10px 14px; background: var(--card); border: none; color: white; 
+    border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500;
+}
 .country-item.active button { background: var(--accent); }
 
-/* Grid de Canais */
-.items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; padding: 20px; }
-.item-card { background: var(--card); padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
+.items-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+    gap: 15px; padding: 20px;
+}
+.item-card { 
+    background: var(--card); padding: 15px; border-radius: 12px; 
+    text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s;
+}
 .item-card:hover { border-color: var(--accent); background: #2d3748; }
-.item-card img { width: 100%; height: 65px; object-fit: contain; margin-bottom: 10px; }
+.item-card img { width: 100%; height: 65px; object-fit: contain; margin-bottom: 10px; border-radius: 5px; }
 .item-card p { font-size: 0.8rem; font-weight: bold; }
 
-/* Players */
-.player-container, .radio-container { background: #000; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid #334155; }
+.player-container { background: #000; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid #334155; }
 .player-nav { display: flex; gap: 8px; padding: 12px; background: #1a202c; flex-wrap: wrap; }
-.nav-btn { flex: 1; min-width: 90px; padding: 12px 5px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; cursor: pointer; font-size: 0.75rem; }
+.nav-btn { flex: 1; min-width: 100px; padding: 12px 5px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
 .btn-danger { background: #e11d48; }
 .btn-fullscreen { background: #0ea5e9; }
+
 .video-wrapper { position: relative; padding-top: 56.25%; width: 100%; background: #000; }
 video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.playing-title { padding: 15px; text-align: center; font-size: 1.1rem; color: #fff; }
+.playing-title { padding: 10px; text-align: center; font-size: 1rem; color: #94a3b8; }
 
-/* Design do Player de Rádio */
-.radio-content { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; background: linear-gradient(180deg, #1e293b 0%, #05070a 100%); }
-.radio-big-logo { width: 180px; height: 180px; object-fit: contain; border-radius: 50%; border: 5px solid var(--accent); margin-bottom: 25px; background: white; padding: 10px; box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
-.player-bx { background: #1a202c; padding: 25px; border-radius: 60px; display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; max-width: 400px; }
-.sm-ct { display: flex; align-items: center; gap: 20px; width: 100%; justify-content: center; }
-
-/* Botão Play Rádio */
-.play-btn { width: 70px; height: 70px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
-.play-btn::after { content: '\f04b'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: white; font-size: 28px; margin-left: 5px; }
-.play-btn.playing::after { content: '\f04c'; margin-left: 0; }
-.play-btn:hover { transform: scale(1.1); background: #3b82f6; }
-
-.info { display: flex; flex-direction: column; }
-.title { color: var(--accent); font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; }
-.song { color: white; font-size: 1.2rem; font-weight: bold; }
-
-/* Spinner e Live */
-.spinner { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,.2); border-radius: 50%; border-top-color: #fff; animation: spin 0.8s linear infinite; margin-right: 8px; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.live-indicator { display: inline-block; width: 12px; height: 12px; background: #ff0000; border-radius: 50%; margin-right: 8px; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0% { opacity: 0.5; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0.5; transform: scale(0.8); } }
-
-.volume-box { display: flex; align-items: center; gap: 12px; width: 80%; margin-top: 10px; }
-.volume-box input { flex: 1; accent-color: var(--accent); cursor: pointer; }
-
-/* Seletores */
 .type-selector { display: flex; gap: 10px; padding: 15px; justify-content: center; }
-.type-btn { padding: 12px 30px; border: none; background: #1e293b; color: #94a3b8; border-radius: 25px; cursor: pointer; font-weight: bold; }
+.type-btn { padding: 10px 25px; border: none; background: #1e293b; color: #94a3b8; border-radius: 20px; cursor: pointer; font-weight: bold; }
 .type-btn.active { background: var(--accent); color: white; }
 
-.welcome-msg { text-align: center; padding: 100px 20px; color: #475569; }
-.welcome-msg i { font-size: 5rem; margin-bottom: 20px; }
+.welcome-msg { text-align: center; padding: 80px 20px; color: #475569; }
+.welcome-msg i { font-size: 4rem; margin-bottom: 20px; }
 
 @media (min-width: 1024px) {
     .main-layout { flex-direction: row; height: calc(100vh - 75px); }
-    .sidebar { width: 320px; height: 100%; overflow-y: auto; border-right: 1px solid #334155; }
+    .sidebar { width: 300px; height: 100%; overflow-y: auto; border-right: 1px solid #334155; border-bottom: none; }
     .country-list { flex-direction: column; }
     .content-area { flex: 1; overflow-y: auto; }
 }
