@@ -12,7 +12,6 @@ let currentType = "canais";
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
-// Inicializa a lista lateral de países
 function init() {
     const list = document.getElementById('country-list');
     list.innerHTML = "";
@@ -30,24 +29,22 @@ function init() {
     });
 }
 
-// Carrega os arquivos JSON (canais ou radios)
 async function loadJSON() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('list-container').style.display = 'block';
     const grid = document.getElementById('channel-grid');
-    grid.innerHTML = "<p style='padding:20px; text-align:center;'>Carregando lista...</p>";
+    grid.innerHTML = "<p style='padding:20px; text-align:center;'>Buscando lista...</p>";
 
     try {
-        const response = await fetch(`./paises/${currentCountry}/${currentType}.json`);
+        const response = await fetch(`./paises/${currentCountry}/${currentType}.json?v=${new Date().getTime()}`);
         if (!response.ok) throw new Error();
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444; text-align:center;'>⚠️ Lista não encontrada em /paises/${currentCountry}/</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444; text-align:center;'>⚠️ Erro ao carregar /paises/${currentCountry}/</p>`;
     }
 }
 
-// Cria os cards na tela
 function renderGrid(data) {
     const grid = document.getElementById('channel-grid');
     grid.innerHTML = '';
@@ -55,28 +52,25 @@ function renderGrid(data) {
         const card = document.createElement('div');
         card.className = 'item-card';
         card.onclick = () => playMedia(item);
-        card.innerHTML = `
-            <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/150?text=LOGO'">
-            <p>${item.name}</p>
-        `;
+        card.innerHTML = `<img src="${item.logo}" onerror="this.src='https://via.placeholder.com/150?text=RADIO'"><p>${item.name}</p>`;
         grid.appendChild(card);
     });
 }
 
-// Lógica Principal de Reprodução
 function playMedia(item) {
     const radioBtn = document.getElementById('BTN-PLAY');
     const radioStatus = document.getElementById('radio-song');
 
+    // RESET TOTAL DO PLAYER (Para evitar travamentos)
+    video.pause();
+    video.removeAttribute('src'); 
+    video.load();
+
     if (currentType === "canais") {
-        // MODO TV
         document.getElementById('player-section').style.display = 'block';
         document.getElementById('radio-player-section').style.display = 'none';
         document.getElementById('playing-now').innerText = "Assistindo: " + item.name;
         
-        video.pause();
-        video.src = "";
-
         if (Hls.isSupported() && item.url.includes('.m3u8')) {
             hls.destroy(); hls = new Hls();
             hls.loadSource(item.url); hls.attachMedia(video);
@@ -92,35 +86,37 @@ function playMedia(item) {
         document.getElementById('radio-logo').src = item.logo;
         document.getElementById('radio-playing-name').innerText = item.name;
         
-        // Efeito de carregamento
-        radioStatus.innerHTML = '<span class="spinner"></span> Sintonizando rádio...';
+        radioStatus.innerHTML = '<span class="spinner"></span> Conectando...';
         radioBtn.classList.remove('playing');
 
-        video.pause();
+        // Configura o novo link
         video.src = item.url;
-        video.load(); 
+        video.crossOrigin = "anonymous"; // Tenta evitar erros de CORS
 
-        video.play().then(() => {
-            radioStatus.innerHTML = '<span class="live-indicator"></span> AO VIVO';
-            radioBtn.classList.add('playing');
-        }).catch(() => {
-            radioStatus.innerHTML = '⚠️ Clique no Play para iniciar';
-            radioBtn.classList.remove('playing');
-        });
+        // Tenta tocar com delay para dar tempo ao buffer
+        setTimeout(() => {
+            video.play().then(() => {
+                radioStatus.innerHTML = '<span class="live-indicator"></span> AO VIVO';
+                radioBtn.classList.add('playing');
+            }).catch(err => {
+                console.error("Erro no Play:", err);
+                radioStatus.innerHTML = '⚠️ Erro ou Link HTTP Bloqueado';
+                radioBtn.classList.remove('playing');
+            });
+        }, 500);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Controles de Rádio
 window.handleRadioPlay = () => {
     const btn = document.getElementById('BTN-PLAY');
     const status = document.getElementById('radio-song');
     if (video.paused) {
-        status.innerHTML = '<span class="spinner"></span> Conectando...';
+        status.innerHTML = '<span class="spinner"></span> Reconectando...';
         video.play().then(() => {
             btn.classList.add('playing');
             status.innerHTML = '<span class="live-indicator"></span> AO VIVO';
-        });
+        }).catch(() => status.innerHTML = '⚠️ Erro ao tocar');
     } else {
         video.pause();
         btn.classList.remove('playing');
@@ -129,24 +125,13 @@ window.handleRadioPlay = () => {
 };
 
 window.changeRadioVolume = (val) => { video.volume = val; };
-
-// Funções de Sistema
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) video.requestFullscreen();
-    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-};
-
-window.toggleMute = () => {
-    video.muted = !video.muted;
-    document.getElementById('btn-audio').innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> MUDO';
-};
-
+window.toggleFullScreen = () => { if (video.requestFullscreen) video.requestFullscreen(); };
+window.toggleMute = () => { video.muted = !video.muted; };
 window.closePlayer = () => {
     document.getElementById('player-section').style.display = 'none';
     document.getElementById('radio-player-section').style.display = 'none';
     video.pause();
     video.src = "";
-    if(hls) hls.destroy();
 };
 
 window.switchType = (type) => {
