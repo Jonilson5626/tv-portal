@@ -12,7 +12,7 @@
 
     <header class="top-header">
         <h1><i class="fas fa-satellite-dish"></i> TV PORTAL</h1>
-        <div id="status-msg" class="status-bar">Explore programas de TV gratuitos</div>
+        <div id="status-msg" class="status-bar">Selecione um país para começar</div>
     </header>
 
     <main class="main-layout">
@@ -28,9 +28,8 @@
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
                     <button id="btn-audio" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
-                    <button class="nav-btn btn-fullscreen" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
                 </div>
-                <div class="video-wrapper" id="video-container">
+                <div class="video-wrapper">
                     <video id="tv-player" playsinline muted></video>
                 </div>
                 <h2 id="playing-now" class="playing-title"></h2>
