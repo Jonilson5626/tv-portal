@@ -61,41 +61,67 @@ function renderGrid(data) {
 }
 
 function playMedia(item) {
+    const radioBtn = document.getElementById('BTN-PLAY');
+    const radioStatus = document.getElementById('radio-song');
+
     if (currentType === "canais") {
-        // MODO TV
         document.getElementById('player-section').style.display = 'block';
         document.getElementById('radio-player-section').style.display = 'none';
         document.getElementById('playing-now').innerText = item.name;
         
+        video.pause();
+        video.src = ""; // Limpa buffer anterior
+
         if (Hls.isSupported() && item.url.includes('.m3u8')) {
             hls.destroy(); hls = new Hls();
             hls.loadSource(item.url); hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-        } else { video.src = item.url; video.play(); }
+        } else { 
+            video.src = item.url; 
+            video.play(); 
+        }
     } else {
-        // MODO RÁDIO
+        // MODO RÁDIO - AJUSTADO PARA MAIOR COMPATIBILIDADE
         document.getElementById('radio-player-section').style.display = 'block';
         document.getElementById('player-section').style.display = 'none';
         
         document.getElementById('radio-logo').src = item.logo;
         document.getElementById('radio-playing-name').innerText = item.name;
-        document.getElementById('radio-song').innerText = "Reproduzindo Rádio Live";
         
+        // Feedback visual de carregamento
+        radioStatus.innerText = "Carregando sinal...";
+        radioBtn.classList.remove('playing');
+
+        video.pause();
         video.src = item.url;
-        video.play();
-        document.getElementById('BTN-PLAY').classList.add('playing');
+        video.load(); // Força o navegador a buscar o novo stream imediatamente
+
+        // Tenta dar o play e gerencia o erro se o navegador bloquear
+        video.play().then(() => {
+            radioStatus.innerText = "AO VIVO";
+            radioBtn.classList.add('playing');
+        }).catch(error => {
+            radioStatus.innerText = "Clique no Play para ouvir";
+            console.log("Play automático bloqueado pelo navegador.");
+        });
     }
 }
 
-// Funções de Rádio
+// Funções de Controle de Rádio
 window.handleRadioPlay = () => {
     const btn = document.getElementById('BTN-PLAY');
+    const radioStatus = document.getElementById('radio-song');
+
     if (video.paused) {
-        video.play();
-        btn.classList.add('playing');
+        radioStatus.innerText = "Conectando...";
+        video.play().then(() => {
+            btn.classList.add('playing');
+            radioStatus.innerText = "AO VIVO";
+        });
     } else {
         video.pause();
         btn.classList.remove('playing');
+        radioStatus.innerText = "Pausado";
     }
 };
 
@@ -103,7 +129,6 @@ window.changeRadioVolume = (val) => {
     video.volume = val;
 };
 
-// Funções Gerais
 window.toggleFullScreen = () => {
     if (video.requestFullscreen) video.requestFullscreen();
     else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
@@ -118,6 +143,7 @@ window.closePlayer = () => {
     document.getElementById('player-section').style.display = 'none';
     document.getElementById('radio-player-section').style.display = 'none';
     video.pause();
+    video.src = ""; // Mata o processo de rede ao fechar
 };
 
 window.switchType = (type) => {
