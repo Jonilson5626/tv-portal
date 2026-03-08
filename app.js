@@ -1,4 +1,3 @@
-// Lista completa dos países baseada nas suas pastas do GitHub
 const countries = [
     { name: "Brasil", path: "brazil" },
     { name: "China", path: "china" },
@@ -13,7 +12,6 @@ let currentType = "canais";
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
-// Inicia a lista lateral
 function init() {
     const list = document.getElementById('country-list');
     list.innerHTML = "";
@@ -31,7 +29,6 @@ function init() {
     });
 }
 
-// Carrega os canais do arquivo JSON do país
 async function loadJSON() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('list-container').style.display = 'block';
@@ -44,66 +41,83 @@ async function loadJSON() {
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro: JSON não encontrado em /paises/${currentCountry}/</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro ao carregar lista.</p>`;
     }
 }
 
-// Desenha os quadradinhos (cards) dos canais
 function renderGrid(data) {
     const grid = document.getElementById('channel-grid');
     grid.innerHTML = '';
     data.forEach(item => {
         const card = document.createElement('div');
         card.className = 'item-card';
-        card.onclick = () => playChannel(item.url, item.name);
+        card.onclick = () => playMedia(item);
         card.innerHTML = `
-            <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/80?text=TV'">
+            <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/80?text=Logo'">
             <p>${item.name}</p>
         `;
         grid.appendChild(card);
     });
 }
 
-// Inicia a transmissão
-function playChannel(url, name) {
-    document.getElementById('player-section').style.display = 'block';
-    document.getElementById('playing-now').innerText = "Assistindo: " + name;
-    video.muted = true;
-
-    if (Hls.isSupported() && url.includes('.m3u8')) {
-        hls.destroy();
-        hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+function playMedia(item) {
+    if (currentType === "canais") {
+        // MODO TV
+        document.getElementById('player-section').style.display = 'block';
+        document.getElementById('radio-player-section').style.display = 'none';
+        document.getElementById('playing-now').innerText = item.name;
+        
+        if (Hls.isSupported() && item.url.includes('.m3u8')) {
+            hls.destroy(); hls = new Hls();
+            hls.loadSource(item.url); hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+        } else { video.src = item.url; video.play(); }
     } else {
-        video.src = url;
+        // MODO RÁDIO
+        document.getElementById('radio-player-section').style.display = 'block';
+        document.getElementById('player-section').style.display = 'none';
+        
+        document.getElementById('radio-logo').src = item.logo;
+        document.getElementById('radio-playing-name').innerText = item.name;
+        document.getElementById('radio-song').innerText = "Reproduzindo Rádio Live";
+        
+        video.src = item.url;
         video.play();
+        document.getElementById('BTN-PLAY').classList.add('playing');
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// FUNÇÃO DE TELA CHEIA
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) {
-        video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
+// Funções de Rádio
+window.handleRadioPlay = () => {
+    const btn = document.getElementById('BTN-PLAY');
+    if (video.paused) {
+        video.play();
+        btn.classList.add('playing');
+    } else {
+        video.pause();
+        btn.classList.remove('playing');
     }
+};
+
+window.changeRadioVolume = (val) => {
+    video.volume = val;
+};
+
+// Funções Gerais
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
 };
 
 window.toggleMute = () => {
     video.muted = !video.muted;
-    const btn = document.getElementById('btn-audio');
-    btn.innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> MUDO';
+    document.getElementById('btn-audio').innerHTML = video.muted ? 'ATIVAR SOM' : 'MUDO';
 };
 
 window.closePlayer = () => {
     document.getElementById('player-section').style.display = 'none';
+    document.getElementById('radio-player-section').style.display = 'none';
     video.pause();
-    if(hls) hls.destroy();
 };
 
 window.switchType = (type) => {
