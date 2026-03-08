@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TV & RÁDIO GLOBAL</title>
+    <title>TV PORTAL GLOBAL</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -11,14 +11,14 @@
 <body>
 
     <header class="top-header">
-        <h1><i class="fas fa-tv"></i> TV GLOBAL</h1>
-        <div id="time" class="clock"></div>
+        <h1><i class="fas fa-satellite-dish"></i> TV PORTAL</h1>
+        <div id="status-msg" class="status-bar">Selecione um país para começar</div>
     </header>
 
     <main class="main-layout">
         <aside class="sidebar">
             <div class="search-box">
-                <input type="text" id="country-search" placeholder="Procurar país..." onkeyup="filterCountries()">
+                <input type="text" id="country-search" placeholder="🔍 Procurar país..." onkeyup="filterCountries()">
             </div>
             <ul id="country-list" class="country-list"></ul>
         </aside>
@@ -27,7 +27,7 @@
             <div id="player-section" class="player-container" style="display: none;">
                 <div class="player-nav">
                     <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                    <button id="btn-audio-toggle" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
+                    <button id="btn-audio" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
                 </div>
                 <div class="video-wrapper">
                     <video id="tv-player" playsinline muted></video>
@@ -37,15 +37,15 @@
 
             <div id="list-container" style="display: none;">
                 <div class="type-selector">
-                    <button id="btn-tv" class="type-btn active" onclick="switchType('tv')">CANAIS TV</button>
-                    <button id="btn-radio" class="type-btn" onclick="switchType('radio')">RÁDIOS</button>
+                    <button id="btn-tv" class="type-btn active" onclick="switchType('canais')">CANAIS TV</button>
+                    <button id="btn-radio" class="type-btn" onclick="switchType('radios')">RÁDIOS</button>
                 </div>
-                <div id="channel-list" class="items-grid"></div>
+                <div id="channel-grid" class="items-grid"></div>
             </div>
 
-            <div id="welcome-screen" class="welcome">
-                <i class="fas fa-globe-americas"></i>
-                <h2>Selecione um país ao lado</h2>
+            <div id="welcome-screen" class="welcome-msg">
+                <i class="fas fa-globe"></i>
+                <h2>Escolha um país na lista lateral</h2>
             </div>
         </section>
     </main>
