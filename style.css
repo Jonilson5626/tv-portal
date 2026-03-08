@@ -1,63 +1,34 @@
-:root {
-    --bg-dark: #05070a;
-    --sidebar: #0f172a;
-    --accent: #2563eb;
-    --card: #1e293b;
-    --text: #f8fafc;
+/* Animação do Spinner de Carregamento */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 
-body { background-color: var(--bg-dark); color: var(--text); font-family: sans-serif; overflow-x: hidden; }
+/* Efeito pulsante para quando estiver AO VIVO */
+.live-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px #ef4444;
+    animation: pulse 1.5s infinite;
+}
 
-.top-header { background: #000; padding: 15px; text-align: center; border-bottom: 2px solid var(--accent); }
-.main-layout { display: flex; flex-direction: column; width: 100%; }
-
-/* Sidebar */
-.sidebar { width: 100%; background: var(--sidebar); padding: 15px; }
-.search-box input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #000; color: white; margin-bottom: 10px; }
-.country-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
-.country-item button { padding: 10px 14px; background: var(--card); border: none; color: white; border-radius: 6px; cursor: pointer; }
-.country-item.active button { background: var(--accent); }
-
-/* Grid */
-.items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; padding: 20px; }
-.item-card { background: var(--card); padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; border: 1px solid transparent; }
-.item-card:hover { border-color: var(--accent); }
-.item-card img { width: 100%; height: 65px; object-fit: contain; margin-bottom: 10px; }
-
-/* Player TV */
-.player-container, .radio-container { background: #000; margin: 15px; border-radius: 15px; overflow: hidden; border: 1px solid #334155; }
-.player-nav { display: flex; gap: 8px; padding: 12px; background: #1a202c; }
-.nav-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; background: #334155; color: white; font-weight: bold; cursor: pointer; }
-.btn-danger { background: #e11d48; }
-.btn-fullscreen { background: #0ea5e9; }
-.video-wrapper { position: relative; padding-top: 56.25%; width: 100%; }
-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-/* PLAYER DE RÁDIO ESTILIZADO */
-.radio-content { display: flex; flex-direction: column; align-items: center; padding: 30px; background: linear-gradient(180deg, #1e293b 0%, #05070a 100%); }
-.radio-big-logo { width: 150px; height: 150px; object-fit: contain; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 20px; background: white; padding: 10px; }
-
-.player-bx { background: #1a202c; padding: 20px; border-radius: 50px; display: flex; align-items: center; gap: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-.play-btn { width: 60px; height: 60px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; }
-.play-btn::after { content: '\f04b'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: white; font-size: 24px; margin-left: 4px; }
-.play-btn.playing::after { content: '\f04c'; margin-left: 0; }
-
-.info { display: flex; flex-direction: column; }
-.title { color: var(--accent); font-weight: bold; font-size: 0.8rem; }
-.song { color: white; font-size: 1.1rem; font-weight: bold; }
-
-.volume-box { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
-.volume-box input { cursor: pointer; accent-color: var(--accent); }
-
-.type-selector { display: flex; gap: 10px; padding: 15px; justify-content: center; }
-.type-btn { padding: 10px 25px; border: none; background: #1e293b; color: #94a3b8; border-radius: 20px; cursor: pointer; }
-.type-btn.active { background: var(--accent); color: white; }
-
-.welcome-msg { text-align: center; padding: 80px 20px; color: #475569; }
-
-@media (min-width: 1024px) {
-    .main-layout { flex-direction: row; }
-    .sidebar { width: 300px; height: 100vh; overflow-y: auto; }
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
 }
