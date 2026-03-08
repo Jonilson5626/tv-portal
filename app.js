@@ -12,6 +12,7 @@ let currentType = "canais";
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
+// Inicializa a lista lateral de países
 function init() {
     const list = document.getElementById('country-list');
     list.innerHTML = "";
@@ -29,11 +30,12 @@ function init() {
     });
 }
 
+// Carrega os arquivos JSON (canais ou radios)
 async function loadJSON() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('list-container').style.display = 'block';
     const grid = document.getElementById('channel-grid');
-    grid.innerHTML = "<p style='padding:20px;'>Carregando...</p>";
+    grid.innerHTML = "<p style='padding:20px; text-align:center;'>Carregando lista...</p>";
 
     try {
         const response = await fetch(`./paises/${currentCountry}/${currentType}.json`);
@@ -41,10 +43,11 @@ async function loadJSON() {
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro ao carregar lista.</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444; text-align:center;'>⚠️ Lista não encontrada em /paises/${currentCountry}/</p>`;
     }
 }
 
+// Cria os cards na tela
 function renderGrid(data) {
     const grid = document.getElementById('channel-grid');
     grid.innerHTML = '';
@@ -53,24 +56,26 @@ function renderGrid(data) {
         card.className = 'item-card';
         card.onclick = () => playMedia(item);
         card.innerHTML = `
-            <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/80?text=Logo'">
+            <img src="${item.logo}" onerror="this.src='https://via.placeholder.com/150?text=LOGO'">
             <p>${item.name}</p>
         `;
         grid.appendChild(card);
     });
 }
 
+// Lógica Principal de Reprodução
 function playMedia(item) {
     const radioBtn = document.getElementById('BTN-PLAY');
     const radioStatus = document.getElementById('radio-song');
 
     if (currentType === "canais") {
+        // MODO TV
         document.getElementById('player-section').style.display = 'block';
         document.getElementById('radio-player-section').style.display = 'none';
-        document.getElementById('playing-now').innerText = item.name;
+        document.getElementById('playing-now').innerText = "Assistindo: " + item.name;
         
         video.pause();
-        video.src = ""; // Limpa buffer anterior
+        video.src = "";
 
         if (Hls.isSupported() && item.url.includes('.m3u8')) {
             hls.destroy(); hls = new Hls();
@@ -81,54 +86,51 @@ function playMedia(item) {
             video.play(); 
         }
     } else {
-        // MODO RÁDIO - AJUSTADO PARA MAIOR COMPATIBILIDADE
+        // MODO RÁDIO
         document.getElementById('radio-player-section').style.display = 'block';
         document.getElementById('player-section').style.display = 'none';
-        
         document.getElementById('radio-logo').src = item.logo;
         document.getElementById('radio-playing-name').innerText = item.name;
         
-        // Feedback visual de carregamento
-        radioStatus.innerText = "Carregando sinal...";
+        // Efeito de carregamento
+        radioStatus.innerHTML = '<span class="spinner"></span> Sintonizando rádio...';
         radioBtn.classList.remove('playing');
 
         video.pause();
         video.src = item.url;
-        video.load(); // Força o navegador a buscar o novo stream imediatamente
+        video.load(); 
 
-        // Tenta dar o play e gerencia o erro se o navegador bloquear
         video.play().then(() => {
-            radioStatus.innerText = "AO VIVO";
+            radioStatus.innerHTML = '<span class="live-indicator"></span> AO VIVO';
             radioBtn.classList.add('playing');
-        }).catch(error => {
-            radioStatus.innerText = "Clique no Play para ouvir";
-            console.log("Play automático bloqueado pelo navegador.");
+        }).catch(() => {
+            radioStatus.innerHTML = '⚠️ Clique no Play para iniciar';
+            radioBtn.classList.remove('playing');
         });
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Funções de Controle de Rádio
+// Controles de Rádio
 window.handleRadioPlay = () => {
     const btn = document.getElementById('BTN-PLAY');
-    const radioStatus = document.getElementById('radio-song');
-
+    const status = document.getElementById('radio-song');
     if (video.paused) {
-        radioStatus.innerText = "Conectando...";
+        status.innerHTML = '<span class="spinner"></span> Conectando...';
         video.play().then(() => {
             btn.classList.add('playing');
-            radioStatus.innerText = "AO VIVO";
+            status.innerHTML = '<span class="live-indicator"></span> AO VIVO';
         });
     } else {
         video.pause();
         btn.classList.remove('playing');
-        radioStatus.innerText = "Pausado";
+        status.innerHTML = 'Pausado';
     }
 };
 
-window.changeRadioVolume = (val) => {
-    video.volume = val;
-};
+window.changeRadioVolume = (val) => { video.volume = val; };
 
+// Funções de Sistema
 window.toggleFullScreen = () => {
     if (video.requestFullscreen) video.requestFullscreen();
     else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
@@ -136,14 +138,15 @@ window.toggleFullScreen = () => {
 
 window.toggleMute = () => {
     video.muted = !video.muted;
-    document.getElementById('btn-audio').innerHTML = video.muted ? 'ATIVAR SOM' : 'MUDO';
+    document.getElementById('btn-audio').innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> MUDO';
 };
 
 window.closePlayer = () => {
     document.getElementById('player-section').style.display = 'none';
     document.getElementById('radio-player-section').style.display = 'none';
     video.pause();
-    video.src = ""; // Mata o processo de rede ao fechar
+    video.src = "";
+    if(hls) hls.destroy();
 };
 
 window.switchType = (type) => {
