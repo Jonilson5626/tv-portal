@@ -1,12 +1,352 @@
 [
   {
-    "name": "RTVE La 1",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/La_1_logo_2008.svg/1200px-La_1_logo_2008.svg.png",
-    "url": "https://rtvehlsvvlive.akamaized.net/hls/live/2043236/la1hv/master.m3u8"
+    "name": "La 1",
+    "logo": "https://i.imgur.com/NbesiPn.png",
+    "url": "https://dh6vo1bovy43s.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-x3gcl32l5ffq2/La_1_ES.m3u8"
   },
   {
-    "name": "24h TVE",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Canal_24_Horas_logo_2008.svg/1200px-Canal_24_Horas_logo_2008.svg.png",
-    "url": "https://rtvehlsvvlive.akamaized.net/hls/live/2043241/24h/master.m3u8"
+    "name": "La 2",
+    "logo": "https://i.imgur.com/DmuTwDw.png",
+    "url": "https://di2qeq48iv8ps.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-o8u23e6v7vptv/La_2_ES.m3u8"
+  },
+  {
+    "name": "Antena 3",
+    "logo": "https://i.imgur.com/j3SP4BS.png",
+    "url": "http://185.189.225.150:85/Antena3HD/index.m3u8"
+  },
+  {
+    "name": "Cuatro",
+    "logo": "https://i.imgur.com/zROxNap.png",
+    "url": "http://185.189.225.150:85/CuatroHD/index.m3u8"
+  },
+  {
+    "name": "Telecinco",
+    "logo": "https://i.imgur.com/JECsKdk.png",
+    "url": "http://185.189.225.150:85/TeleCincoHD/index.m3u8"
+  },
+  {
+    "name": "La Sexta",
+    "logo": "https://i.imgur.com/b59MxgM.png",
+    "url": "http://185.189.225.150:85/LaSexta/index.m3u8"
+  },
+  {
+    "name": "24h",
+    "logo": "https://i.imgur.com/ZKR2jKr.png",
+    "url": "https://d3pfmk89wc0vm9.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-nlow3qkp9tmdm/24H_ES.m3u8"
+  },
+  {
+    "name": "tdp",
+    "logo": "https://i.imgur.com/HliegRJ.png",
+    "url": "https://rtvelivestream.akamaized.net/rtvesec/tdp/tdp_main.m3u8"
+  },
+  {
+    "name": "clan",
+    "logo": "https://i.imgur.com/38xIfQ3.png",
+    "url": "https://rtvelivestream.akamaized.net/rtvesec/clan/clan_main_dvr.m3u8"
+  },
+  {
+    "name": "TVE Internacional Europe-Asia",
+    "logo": "https://i.imgur.com/ow1HArj.png",
+    "url": "https://rtvelivestream.akamaized.net/rtvesec/int/tvei_eu_main_dvr.m3u8"
+  },
+  {
+    "name": "Neox Ⓢ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/neox-es.png",
+    "url": "http://185.189.225.150:85/neox/index.m3u8"
+  },
+  {
+    "name": "Nova Ⓢ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/nova-es.png",
+    "url": "http://185.189.225.150:85/nova/index.m3u8"
+  },
+  {
+    "name": "Mega Ⓢ",
+    "logo": "https://i.imgur.com/Udrt2eK.png",
+    "url": "http://185.189.225.150:85/mega/index.m3u8"
+  },
+  {
+    "name": "Atreseries Ⓢ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/atreseries-es.png",
+    "url": "http://181.78.109.48:8000/play/a00l/index.m3u8"
+  },
+  {
+    "name": "FDF",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/fdf-es.png",
+    "url": "http://185.189.225.150:85/fdf/index.m3u8"
+  },
+  {
+    "name": "Divinity Ⓖ",
+    "logo": "https://i.imgur.com/o7fvEr6.png",
+    "url": "https://directos.divinity.es/orilinear04/live/linear04/main/main.isml/main-audio_spa=128000-video=1500000.m3u8"
+  },
+  {
+    "name": "Energy Ⓖ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/energy-es.png",
+    "url": "https://directos.energytv.es/orilinear03/live/linear03/main/main.isml/main-audio_spa=128000-video=1500000.m3u8"
+  },
+  {
+    "name": "Boing",
+    "logo": "https://i.imgur.com/nUYuCAP.png",
+    "url": "http://185.189.225.150:85/boing/index.m3u8"
+  },
+  {
+    "name": "Be Mad Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Be_Mad_TV.svg/512px-Be_Mad_TV.svg.png",
+    "url": "https://directos.bemad.es/orilinear02/live/linear02/main/main.isml/main-audio_spa=128000-video=1500000.m3u8"
+  },
+  {
+    "name": "Paramount Network",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Paramount_Network.svg/512px-Paramount_Network.svg.png",
+    "url": "http://185.189.225.150:85/Paramount/index.m3u8"
+  },
+  {
+    "name": "RNE para todos",
+    "logo": "https://graph.facebook.com/radionacionalrne/picture?width=200&height=200",
+    "url": "https://rtvelivestream.akamaized.net/rtvesec/rne/rne_para_todos_main.m3u8"
+  },
+  {
+    "name": "euronews",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/international/euro-news-int.png",
+    "url": "https://euronews-live-spa-es.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6571/bitok/eyJzdGlkIjoiMDA0YjY0NTMtYjY2MC00ZTZkLTlkNzEtMTk3YTM3ZDZhZWIxIiwibWt0IjoiZXMiLCJjaCI6NjU3MSwicHRmIjoxfQ==/26034/euronews-es.m3u8"
+  },
+  {
+    "name": "El País",
+    "logo": "https://graph.facebook.com/elpais/picture?width=200&height=200",
+    "url": "https://d2xqbi89ghm9hh.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-79fx3huimw4xc-ssai-prd/fast-channel-el-pais.m3u8"
+  },
+  {
+    "name": "Negocios",
+    "logo": "https://pbs.twimg.com/profile_images/1321367703731523584/bNMmbetI_200x200.jpg",
+    "url": "https://streaming013.gestec-video.com/hls/negociostv.m3u8"
+  },
+  {
+    "name": "Squirrel",
+    "logo": "https://i.imgur.com/urF0kYA.png",
+    "url": "https://tsw.streamingwebtv24.it:1936/inteccdn1/inteccdn1/playlist.m3u8"
+  },
+  {
+    "name": "BOM Cine",
+    "logo": "https://i.imgur.com/cqhofMU.png",
+    "url": "https://tsw.streamingwebtv24.it:1936/inteccdn3/inteccdn3/playlist.m3u8"
+  },
+  {
+    "name": "Telemadrid",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/TeleMadrid.svg/512px-TeleMadrid.svg.png",
+    "url": "https://telemadrid-23-secure2.akamaized.net/master.m3u8"
+  },
+  {
+    "name": "La Otra",
+    "logo": "https://i.imgur.com/W1UZyXH.png",
+    "url": "https://laotra-1-23-secure2.akamaized.net/master.m3u8"
+  },
+  {
+    "name": "Canal Sur Andalucía",
+    "logo": "https://i.imgur.com/WcVOXPr.png",
+    "url": "https://d35x6iaiw8f75z.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-kbwsl0jk1bvoo/canal_sur_andalucia_es.m3u8"
+  },
+  {
+    "name": "La 8 Mediterráneo",
+    "logo": "https://graph.facebook.com/la8mediterraneo/picture?width=200&height=200",
+    "url": "https://streaming004.gestec-video.com/hls/8TV.m3u8"
+  },
+  {
+    "name": "Televisión Canaria Ⓨ",
+    "logo": "https://i.imgur.com/68LNS8e.png",
+    "url": "https://www.youtube.com/user/TelevisionCanaria/live"
+  },
+  {
+    "name": "IB3 Global Ⓨ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/ib3-es.png",
+    "url": "https://www.youtube.com/c/ib3/live"
+  },
+  {
+    "name": "Canal Extremadura",
+    "logo": "https://i.imgur.com/xBeywIA.png",
+    "url": "https://cdnapisec.kaltura.com/p/5581662/sp/558166200/playManifest/entryId/1_1u7ssdy3/protocol/https/format/applehttp/flavorIds/1_8xbndriw/a.m3u8"
+  },
+  {
+    "name": "Aragón TV Ⓢ",
+    "logo": "https://i.imgur.com/8H3Q07b.png",
+    "url": "https://cartv.streaming.aranova.es/hls/live/aragontv_canal1.m3u8"
+  },
+  {
+    "name": "ETB1",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/ETB1_2022_logo.svg/512px-ETB1_2022_logo.svg.png",
+    "url": "https://multimedia.eitb.eus/live-content/etb1hd-hls/master.m3u8"
+  },
+  {
+    "name": "ETB2",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/ETB2_2022_logo.svg/512px-ETB2_2022_logo.svg.png",
+    "url": "https://multimedia.eitb.eus/live-content/etb2hd-hls/master.m3u8"
+  },
+  {
+    "name": "TV3",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/TV3.svg/300px-TV3.svg.png",
+    "url": "http://185.189.225.150:85/tv3/index.m3u8"
+  },
+  {
+    "name": "TV3Cat Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/TV3CAT.svg/512px-TV3CAT.svg.png",
+    "url": "https://directes3-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8"
+  },
+  {
+    "name": "3/24",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/3-24-es.png",
+    "url": "https://directes-tv-int.3catdirectes.cat/live-origin/canal324-hls/master.m3u8"
+  },
+  {
+    "name": "Bon Dia",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Logo_Bon_Dia_TV.png",
+    "url": "https://directes-tv-int.3catdirectes.cat/live-content/bondia-hls/master.m3u8"
+  },
+  {
+    "name": "SX3 Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/SX3_logo.svg/2880px-SX3_logo.svg.png",
+    "url": "https://directes-tv-cat.3catdirectes.cat/live-content/super3-hls/master.m3u8"
+  },
+  {
+    "name": "El 33 Ⓖ",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/el-33-es.png",
+    "url": "https://directes-tv-cat.3catdirectes.cat/live-origin/c33-super3-hls/master.m3u8"
+  },
+  {
+    "name": "Esport3 Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Esport3.svg/1200px-Esport3.svg.png",
+    "url": "https://directes-tv-es.3catdirectes.cat/live-origin/esport3-hls/master.m3u8"
+  },
+  {
+    "name": "Canal TE24",
+    "logo": "https://i.ibb.co/3ynghbW/logox2.png",
+    "url": "https://ingest1-video.streaming-pro.com/esportsteABR/etestream/playlist.m3u8"
+  },
+  {
+    "name": "À Punt TV",
+    "logo": "https://i.imgur.com/M88LoNl.png",
+    "url": "https://bcovlive-a.akamaihd.net/8499d938ef904e39b58a4adec2ddeada/eu-west-1/6057955885001/playlist_dvr.m3u8"
+  },
+  {
+    "name": "7 Región de Murcia Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/La_7_logo.svg/150px-La_7_logo.svg.png",
+    "url": "https://rtv-murcia-live.globalmest.com/principal/smil:principal.smil/playlist.m3u8"
+  },
+  {
+    "name": "Canal 4 Tenerife",
+    "logo": "https://i.imgur.com/Egymir4.png",
+    "url": "https://videoserver.tmcreativos.com:19360/ccxwhsfcnq/ccxwhsfcnq.m3u8"
+  },
+  {
+    "name": "Televisión Melilla",
+    "logo": "https://raw.githubusercontent.com/tv-logo/tv-logos/refs/heads/main/countries/spain/television-melilla-es.png",
+    "url": "https://tvmelilla-hls-rm-lw.flumotion.com/playlist.m3u8"
+  },
+  {
+    "name": "La 1 (Catalunya)",
+    "logo": "https://i.imgur.com/NbesiPn.png",
+    "url": "https://rtvelivestream-clnx.rtve.es/rtvesec/cat/la1_cat_main_dvr.m3u8"
+  },
+  {
+    "name": "La 1 (Canarias)",
+    "logo": "https://i.imgur.com/NbesiPn.png",
+    "url": "https://rtvelivestream-clnx.rtve.es/rtvesec/can/la1_can_main_720.m3u8"
+  },
+  {
+    "name": "La 2 (Catalunya)",
+    "logo": "https://i.imgur.com/DmuTwDw.png",
+    "url": "https://rtvelivestream.akamaized.net/rtvesec/cat/la2_cat_main_dvr.m3u8"
+  },
+  {
+    "name": "La 2 (Canarias)",
+    "logo": "https://i.imgur.com/DmuTwDw.png",
+    "url": "https://ztnr.rtve.es/ztnr/5468585.m3u8"
+  },
+  {
+    "name": "HQM Arabic",
+    "logo": "https://hqm.es/wp-content/uploads/arabic-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/39596c72840d27b213caf4e58c39599a6f2ed203/master.m3u8"
+  },
+  {
+    "name": "HQM Baladas",
+    "logo": "https://hqm.es/wp-content/uploads/baladas-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/5d7d2c21e0ec7a8a99fd1fdbc52cbdc0782f77fc/master.m3u8"
+  },
+  {
+    "name": "HQM Blues",
+    "logo": "https://hqm.es/wp-content/uploads/blues-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/81c601f370e44dc566113fd752204be5f5f53b61/master.m3u8"
+  },
+  {
+    "name": "HQM Chill Out",
+    "logo": "https://hqm.es/wp-content/uploads/chill-out-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/183a351ddb0e57af6d735256226e6033c32219ab/master.m3u8"
+  },
+  {
+    "name": "HQM Classic",
+    "logo": "https://hqm.es/wp-content/uploads/classic-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/f04129475945936b248aa723de56519ea2ff10fc/master.m3u8"
+  },
+  {
+    "name": "HQM Dance",
+    "logo": "https://hqm.es/wp-content/uploads/dance-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/57cf2f51b07ff21988a7a6f0270a66d41086d4a4/master.m3u8"
+  },
+  {
+    "name": "HQM Folk",
+    "logo": "https://hqm.es/wp-content/uploads/folk-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/9f5310c179e8e840188d183be235f755b18cf703/master.m3u8"
+  },
+  {
+    "name": "HQM Gym",
+    "logo": "https://hqm.es/wp-content/uploads/gym-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/abb87f329d0ed03072b1930e9636a53e8076c8d5/master.m3u8"
+  },
+  {
+    "name": "HQM Hip Hop",
+    "logo": "https://hqm.es/wp-content/uploads/hip-hop-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/8327abc87895df4c76db1155435fdca6a3607bbd/master.m3u8"
+  },
+  {
+    "name": "HQM Hits",
+    "logo": "https://hqm.es/wp-content/uploads/hits-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/5e2db2017a8fd03f73b40ede363d1a586db4e9a6/master.m3u8"
+  },
+  {
+    "name": "HQM Jazz",
+    "logo": "https://hqm.es/wp-content/uploads/jazz-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/f204aa5b3f0691e69851b54b7746ef09ede26f6a/master.m3u8"
+  },
+  {
+    "name": "HQM Kids",
+    "logo": "https://hqm.es/wp-content/uploads/kids-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/e4bc12dafe33c3ceb3e382e3acc0ec2c012cf7fd/master.m3u8"
+  },
+  {
+    "name": "HQM Latin",
+    "logo": "https://hqm.es/wp-content/uploads/latin-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/9a4da7871ec57b4b63ed49597a13d09869172be0/master.m3u8"
+  },
+  {
+    "name": "HQM Pop",
+    "logo": "https://hqm.es/wp-content/uploads/pop-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/eb2fa68a058a701fa5bd2c80f6c8a6075896f71d/master.m3u8"
+  },
+  {
+    "name": "HQM Relax",
+    "logo": "https://hqm.es/wp-content/uploads/relax-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/dc1b71c6fda2e687050facaa7242062cbf5a7f2a/master.m3u8"
+  },
+  {
+    "name": "HQM Remember",
+    "logo": "https://hqm.es/wp-content/uploads/remember-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/57c98e2e295a0b69b52dc5f84edc4b1b68783ba2/master.m3u8"
+  },
+  {
+    "name": "HQM Rock",
+    "logo": "https://hqm.es/wp-content/uploads/rock-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/0d6c7ccfac89946bfd41ae34c527e8d94734065c/master.m3u8"
+  },
+  {
+    "name": "HQM Spanish",
+    "logo": "https://hqm.es/wp-content/uploads/spanish-hqm-logo.png",
+    "url": "https://livelist01.yowi.tv/lista/8635ae40f8d1a32eccd63d1f58b55662c9c98f9f/master.m3u8"
   }
 ]
