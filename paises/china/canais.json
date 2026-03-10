@@ -1,7 +1,87 @@
 [
   {
-    "name": "CGTN English",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/CGTN_logo.svg/1200px-CGTN_logo.svg.png",
-    "url": "https://cgtn-global-en.akamaized.net/hls/live/2039236/cgtn-en/master.m3u8"
+    "name": "CCTV-1 综合",
+    "logo": "https://i.imgur.com/uHU6Vc0.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV1HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-2 财经",
+    "logo": "https://i.imgur.com/6C9JEYt.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV2HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-4 中文国际（亚） Ⓨ",
+    "logo": "https://i.imgur.com/ovUSVEQ.png",
+    "url": "https://www.youtube.com/channel/UC4K_LI-Tn3-LshNgG0-YypQ/live"
+  },
+  {
+    "name": "CCTV-4 中文国际（美） Ⓢ",
+    "logo": "https://i.imgur.com/1TPiRqR.png",
+    "url": "https://global.cgtn.cicc.media.caton.cloud/master/cgtn-america.m3u8"
+  },
+  {
+    "name": "CCTV-5 体育",
+    "logo": "https://i.imgur.com/Mut2omN.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV5HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-5+ 体育赛事",
+    "logo": "https://i.imgur.com/UNjmQVS.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV5PHD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-7 国防军事",
+    "logo": "https://i.imgur.com/GhXlUpM.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV7HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-8 电视剧",
+    "logo": "https://i.imgur.com/Qg1opg9.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV8HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-9 纪录",
+    "logo": "https://i.imgur.com/Ruyzhu5.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV9HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-10 科教",
+    "logo": "https://i.imgur.com/W8JNs1s.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV10HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-13 新闻",
+    "logo": "https://i.imgur.com/pPO8uJN.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV13HD/hls.m3u8"
+  },
+  {
+    "name": "CCTV-17 农业农村",
+    "logo": "https://i.imgur.com/XMsoHut.png",
+    "url": "https://node1.olelive.com:6443/live/CCTV17HD/hls.m3u8"
+  },
+  {
+    "name": "CETV-1",
+    "logo": "https://i.imgur.com/AMcIAOV.png",
+    "url": "http://txycsbl.centv.cn/zb/0628cetv1.m3u8"
+  },
+  {
+    "name": "CETV-2",
+    "logo": "https://i.imgur.com/a9mvoeP.png",
+    "url": "http://txycsbl.centv.cn/zb/0822cetv2.m3u8"
+  },
+  {
+    "name": "CETV-3",
+    "logo": "https://i.imgur.com/t8o5ZKt.png",
+    "url": "http://txycsbl.centv.cn/zb/0822cetv3.m3u8"
+  },
+  {
+    "name": "CETV-4",
+    "logo": "https://i.imgur.com/BRe0ybV.png",
+    "url": "http://txycsbl.centv.cn/zb/0822cetv4.m3u8"
+  },
+  {
+    "name": "TV BRICS Chinese",
+    "logo": "https://i.imgur.com/896132Z.png",
+    "url": "https://brics.bonus-tv.ru/cdn/brics/chinese/playlist.m3u8"
   }
 ]
