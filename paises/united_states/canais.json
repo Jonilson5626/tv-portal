@@ -1,1 +1,807 @@
-[]
+[
+  {
+    "name": "ABC",
+    "logo": "https://i.imgur.com/5CVl5EF.png",
+    "url": "https://c.mjh.nz/101002210221/"
+  },
+  {
+    "name": "TVSN",
+    "logo": "https://i.imgur.com/p3QCBOo.png",
+    "url": "https://tvsn-i.akamaihd.net/hls/live/261837/tvsn/tvsn_750.m3u8"
+  },
+  {
+    "name": "ABC Me",
+    "logo": "https://i.imgur.com/gBh54wY.png",
+    "url": "https://c.mjh.nz/101002210224/"
+  },
+  {
+    "name": "ABC News",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/df/ABC_News_Channel.svg/640px-ABC_News_Channel.svg.png",
+    "url": "https://abc-iview-mediapackagestreams-2.akamaized.net/out/v1/6e1cc6d25ec0480ea099a5399d73bc4b/index.m3u8"
+  },
+  {
+    "name": "M4TV",
+    "logo": "https://i.imgur.com/HZohlNk.png",
+    "url": "https://5a32c05065c79.streamlock.net/live/stream/playlist.m3u8"
+  },
+  {
+    "name": "Racing.com",
+    "logo": "https://i.imgur.com/pma0OCf.png",
+    "url": "https://racingvic-i.akamaized.net/hls/live/598695/racingvic/1500.m3u8"
+  },
+  {
+    "name": "9Go! Ⓖ",
+    "logo": "https://i.imgur.com/1CFGu5O.png",
+    "url": "https://9now-livestreams.akamaized.net/hls/live/2008312/go-syd/master.m3u8"
+  },
+  {
+    "name": "9Life Ⓖ",
+    "logo": "https://i.imgur.com/ZCUiqlL.png",
+    "url": "https://9now-livestreams.akamaized.net/hls/live/2008313/life-syd/master.m3u8"
+  },
+  {
+    "name": "9Rush Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/c/c2/Logo_of_9RUSH.png",
+    "url": "https://9now-livestreams.akamaized.net/hls/live/2010626/rush-syd/master.m3u8"
+  },
+  {
+    "name": "ORF 1 Ⓖ",
+    "logo": "https://i.imgur.com/ft2LuRl.jpg",
+    "url": "https://orf1.mdn.ors.at/out/u/orf1/q8c/manifest.m3u8"
+  },
+  {
+    "name": "ORF 2 Ⓖ",
+    "logo": "https://i.imgur.com/yPVDaXv.png",
+    "url": "https://orf2.mdn.ors.at/out/u/orf2/q8c/manifest.m3u8"
+  },
+  {
+    "name": "ORF III Ⓖ",
+    "logo": "https://i.imgur.com/6BuiUE7.png",
+    "url": "https://orf3.mdn.ors.at/out/u/orf3/q8c/manifest.m3u8"
+  },
+  {
+    "name": "ORF Sport + Ⓖ",
+    "logo": "https://i.imgur.com/MVNZ4gf.png",
+    "url": "https://orfs.mdn.ors.at/out/u/orfs/q8c/manifest.m3u8"
+  },
+  {
+    "name": "Servus TV Ⓖ",
+    "logo": "https://i.imgur.com/zDWhSxq.png",
+    "url": "https://rbmn-live.akamaized.net/hls/live/2002825/geoSTVATweb/master.m3u8"
+  },
+  {
+    "name": "oe24",
+    "logo": "https://i.imgur.com/8UTkcPn.png",
+    "url": "https://varoe24live.sf.apa.at/oe24-live1/oe24.smil/chunklist_b1900000.m3u8"
+  },
+  {
+    "name": "W24",
+    "logo": "https://i.imgur.com/PGb4wYw.png",
+    "url": "https://ms01.w24.at/W24/smil:liveevent.smil/playlist.m3u8"
+  },
+  {
+    "name": "P3TV",
+    "logo": "https://i.imgur.com/1sPhZ57.png",
+    "url": "http://p3-6.mov.at:1935/live/weekstream/playlist.m3u8"
+  },
+  {
+    "name": "RTV",
+    "logo": "https://i.imgur.com/oD7GQxT.png",
+    "url": "http://iptv.rtv-ooe.at/stream.m3u8"
+  },
+  {
+    "name": "RTS Ⓖ",
+    "logo": "https://i.imgur.com/Bhv7lvy.png",
+    "url": "https://58b42f6c8c9bf.streamlock.net:8080/live/RTS2015/playlist.m3u8"
+  },
+  {
+    "name": "Tirol TV Ⓖ",
+    "logo": "https://i.imgur.com/1E7Nflo.jpg",
+    "url": "http://lb.hd-livestream.de:1935/live/TirolTV/playlist.m3u8"
+  },
+  {
+    "name": "R9",
+    "logo": "https://i.imgur.com/2fxVYsL.jpg",
+    "url": "https://ms01.w24.at/R9/smil:liveeventR9.smil/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 1",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Belarus_1_logo.svg/742px-Belarus_1_logo.svg.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus1.smil/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 2",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Belarus_2_logo.svg/742px-Belarus_2_logo.svg.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus2.smil/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 3",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Belarus_3_logo.svg/742px-Belarus_3_logo.svg.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus3.smil/playlist.m3u8"
+  },
+  {
+    "name": "ОНТ Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg/991px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%9E%D0%9D%D0%A2%C2%BB.svg.png",
+    "url": "https://stream.dc.beltelecom.by/ont/ont/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 5",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Belarus_5_logo.svg/742px-Belarus_5_logo.svg.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus5.smil/playlist.m3u8"
+  },
+  {
+    "name": "СТВ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg/640px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg.png",
+    "url": "https://ctv.dc.beltelecom.by/ctv/ctv.stream/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 24",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Belarus_24_logo.svg/742px-Belarus_24_logo.svg.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus24.smil/playlist.m3u8"
+  },
+  {
+    "name": "Беларусь 5 Интернет",
+    "logo": "https://i.imgur.com/rzPQ9Iz.png",
+    "url": "https://ngtrk.dc.beltelecom.by/ngtrk/smil:belarus5int.smil/playlist.m3u8"
+  },
+  {
+    "name": "1Mus",
+    "logo": "https://i.imgur.com/PozF9MT.png",
+    "url": "http://hz1.teleport.cc/HLS/HD.m3u8"
+  },
+  {
+    "name": "8 Kanal Vitebsk Ⓢ",
+    "logo": "https://i.imgur.com/tjwBSTF.jpg",
+    "url": "http://95.46.208.8:24433/art"
+  },
+  {
+    "name": "Belros Ⓢ",
+    "logo": "https://i.imgur.com/HWqxjGl.png",
+    "url": "https://live2.mediacdn.ru/sr1/tro/playlist.m3u8"
+  },
+  {
+    "name": "Belarus 4 Vitebsk Ⓢ",
+    "logo": "https://i.imgur.com/TW6Ap71.png",
+    "url": "http://95.46.208.8:26258/belarus4"
+  },
+  {
+    "name": "Hawe TV Vitebsk Ⓢ",
+    "logo": "https://i.imgur.com/HOb5m5f.jpg",
+    "url": "http://95.46.208.8:26259/nashe"
+  },
+  {
+    "name": "Pervyy Muzykal'nyy BY Ⓢ",
+    "logo": "https://i.imgur.com/7tFiG6S.jpg",
+    "url": "http://rtmp.one.by:1200"
+  },
+  {
+    "name": "Planeta RTR Ⓢ",
+    "logo": "https://i.imgur.com/yqRuEJd.png",
+    "url": "https://a3569455801-s26881.cdn.ngenix.net/live/smil:rtrp.smil/chunklist_b1600000.m3u8"
+  },
+  {
+    "name": "Radio HIT Orsk",
+    "logo": "https://i.imgur.com/e2RyN4r.jpg",
+    "url": "http://hithd.camsh.orsk.ru/hls/hithd.m3u8"
+  },
+  {
+    "name": "Vitebsk Telekanal",
+    "logo": "https://i.imgur.com/FXAqELU.jpg",
+    "url": "https://flu.vtv.by/tvt-non-by/tracks-v1a1/mono.m3u8"
+  },
+  {
+    "name": "RIK 1 Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Logo_RIK_1_2017.svg/640px-Logo_RIK_1_2017.svg.png",
+    "url": "http://l6.cloudskep.com/tvb6/rik1-1/mpeg.2ts"
+  },
+  {
+    "name": "RIK 2 Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Logo_RIK_2_2017.svg/640px-Logo_RIK_2_2017.svg.png",
+    "url": "http://l6.cloudskep.com/tvb6/rik2-1/mpeg.2ts"
+  },
+  {
+    "name": "RIK HD",
+    "logo": "https://upload.wikimedia.org/wikipedia/el/7/7d/RIKHD2.png",
+    "url": "http://l6.cloudskep.com/tvb6/rikhd1/mpeg.2ts"
+  },
+  {
+    "name": "RIK Sat",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Logo_RIK_Sat_2017.svg/640px-Logo_RIK_Sat_2017.svg.png",
+    "url": "https://l3.cloudskep.com/cybcsat/abr/playlist.m3u8"
+  },
+  {
+    "name": "BRT 1",
+    "logo": "https://i.imgur.com/gOPAi2c.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/brt1hd/bant1/playlist.m3u8"
+  },
+  {
+    "name": "BRT 2",
+    "logo": "https://i.imgur.com/t5kbIuj.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/brt2hd/bant1/playlist.m3u8"
+  },
+  {
+    "name": "Ada TV Ⓢ",
+    "logo": "https://i.imgur.com/LPQfdz2.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/adatv/bant1/playlist.m3u8"
+  },
+  {
+    "name": "Kıbrıs Genç TV Ⓢ",
+    "logo": "https://i.imgur.com/eBdQn9h.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/kibrisgenctv/bant1/playlist.m3u8"
+  },
+  {
+    "name": "Kanal T Ⓢ",
+    "logo": "https://i.imgur.com/4bA4pXT.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/kanalt/bantp1/playlist.m3u8"
+  },
+  {
+    "name": "Kıbrıs TV Ⓢ",
+    "logo": "https://i.imgur.com/5MJZPTo.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/kibristv/bant1/playlist.m3u8"
+  },
+  {
+    "name": "TV 2020 Ⓢ",
+    "logo": "https://i.imgur.com/rtfsNdd.png",
+    "url": "https://sc-kuzeykibrissmarttv.ercdn.net/tv2020/bantp1/playlist.m3u8"
+  },
+  {
+    "name": "Первый канал",
+    "logo": "https://i.imgur.com/1IqCGe9.png",
+    "url": "https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd"
+  },
+  {
+    "name": "Россия 1",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Russia-1.svg/1024px-Russia-1.svg.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/2961"
+  },
+  {
+    "name": "Матч ТВ Ⓢ",
+    "logo": "https://i.imgur.com/kFdooR4.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/6.m3u8"
+  },
+  {
+    "name": "НТВ Ⓢ",
+    "logo": "https://i.imgur.com/DtQX5P2.png",
+    "url": "http://ott-cdn.ucom.am/s17/index.m3u8"
+  },
+  {
+    "name": "Пятый канал Ⓢ",
+    "logo": "https://i.imgur.com/u8Q69D9.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/8.m3u8"
+  },
+  {
+    "name": "Россия-Культура Ⓢ",
+    "logo": "https://i.imgur.com/S12gaLc.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/19201"
+  },
+  {
+    "name": "Россия-24 Ⓢ",
+    "logo": "https://i.imgur.com/tpqsFzm.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/21"
+  },
+  {
+    "name": "Карусель Ⓢ",
+    "logo": "https://i.imgur.com/4fFMlVq.png",
+    "url": "https://streaming102.interskytech.com/live/232.m3u8"
+  },
+  {
+    "name": "ОТР Ⓢ",
+    "logo": "https://i.imgur.com/QyZvT3e.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/12.m3u8"
+  },
+  {
+    "name": "ТВ Центр Ⓢ",
+    "logo": "https://i.imgur.com/ZP0D6Rd.png",
+    "url": "http://ott-cdn.ucom.am/s54/index.m3u8"
+  },
+  {
+    "name": "Рен ТВ Ⓢ",
+    "logo": "https://i.imgur.com/18TAzYV.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/14.m3u8"
+  },
+  {
+    "name": "Спас Ⓢ",
+    "logo": "https://i.imgur.com/A6Cqsom.jpeg",
+    "url": "https://spas.mediacdn.ru/cdn/spas/playlist.m3u8"
+  },
+  {
+    "name": "СТС Ⓢ",
+    "logo": "https://i.imgur.com/y9bpqUD.png",
+    "url": "http://ott-cdn.ucom.am/s52/04.m3u8"
+  },
+  {
+    "name": "Домашний Ⓢ",
+    "logo": "https://i.imgur.com/e8wlMIt.png",
+    "url": "http://ott-cdn.ucom.am/s88/index.m3u8"
+  },
+  {
+    "name": "ТВ-3 Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/%D0%A2V3_logo_2023.svg/556px-%D0%A2V3_logo_2023.svg.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/18.m3u8"
+  },
+  {
+    "name": "Пятница! Ⓢ",
+    "logo": "https://i.imgur.com/rS11zVB.png",
+    "url": "https://streaming.televizor-24-tochka.ru/live/19.m3u8"
+  },
+  {
+    "name": "Звезда",
+    "logo": "https://i.imgur.com/c0L0ncA.png",
+    "url": "https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8"
+  },
+  {
+    "name": "Мир",
+    "logo": "https://i.imgur.com/L2slsbG.png",
+    "url": "http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8"
+  },
+  {
+    "name": "ТНТ Ⓢ",
+    "logo": "https://i.imgur.com/1WqIPOB.png",
+    "url": "http://ott-cdn.ucom.am/s19/index.m3u8"
+  },
+  {
+    "name": "Муз-ТВ Ⓢ",
+    "logo": "https://i.imgur.com/Ml3qqOF.png",
+    "url": "https://streaming102.interskytech.com/live/618.m3u8"
+  },
+  {
+    "name": "РБК",
+    "logo": "https://i.imgur.com/P2Qii5B.png",
+    "url": "http://92.50.128.180/utv/1358/index.m3u8"
+  },
+  {
+    "name": "RT Д Русский Ⓖ",
+    "logo": "https://i.imgur.com/v5fpEBo.png",
+    "url": "https://hls.rt.com/hls/rtdru.m3u8"
+  },
+  {
+    "name": "CGTN Pусский",
+    "logo": "https://i.imgur.com/fMsJYzl.png",
+    "url": "https://news.cgtn.com/resource/live/russian/cgtn-r.m3u8"
+  },
+  {
+    "name": "Euronews по-русски Ⓨ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Euronews_2022.svg/640px-Euronews_2022.svg.png",
+    "url": "https://www.youtube.com/euronewsru/live"
+  },
+  {
+    "name": "РТР-Планета Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/85/RTR_Planeta_Europe.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/63251"
+  },
+  {
+    "name": "Арктика 24 Ⓥ",
+    "logo": "https://i.imgur.com/CL0G88u.png",
+    "url": "https://vk.com/video-213370539_456239018"
+  },
+  {
+    "name": "Архыз 24",
+    "logo": "https://i.imgur.com/mve0sSS.png",
+    "url": "https://live.mediacdn.ru/sr1/arhis24/playlist_hdhigh.m3u8"
+  },
+  {
+    "name": "Астрахан 24",
+    "logo": "https://i.imgur.com/9WcnjQN.png",
+    "url": "https://streaming.astrakhan.ru/astrakhan24/playlist.m3u8"
+  },
+  {
+    "name": "Башкортостан 24",
+    "logo": "https://i.imgur.com/FQhWs1M.png",
+    "url": "https://vgtrkregion-reg.cdnvideo.ru/vgtrk/ufa/russia1-hd/index.m3u8"
+  },
+  {
+    "name": "Белгород 24",
+    "logo": "https://i.imgur.com/EEirvyx.png",
+    "url": "http://belnovosti.cdn.easyhoster.ru:8080/stream.m3u8"
+  },
+  {
+    "name": "Ветта 24",
+    "logo": "https://i.imgur.com/zKH1b5k.png",
+    "url": "http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8"
+  },
+  {
+    "name": "Волгоград 24 Ⓢ",
+    "logo": "https://i.imgur.com/gFMnaU5.png",
+    "url": "https://vgtrkregion-reg.cdnvideo.ru/vgtrk/volgograd/russia1-hd/index.m3u8"
+  },
+  {
+    "name": "Запад 24",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Zapad_24.jpg",
+    "url": "https://vgtrkregion-reg.cdnvideo.ru/vgtrk/kaliningrad/russia1-hd/index.m3u8"
+  },
+  {
+    "name": "Катунь 24 Ⓞ",
+    "logo": "https://i.imgur.com/mr2Peqj.png",
+    "url": "https://ok.ru/video/1166706155179"
+  },
+  {
+    "name": "Крым 24",
+    "logo": "https://i.imgur.com/k4C0uvp.png",
+    "url": "https://cdn.1tvcrimea.ru/24tvcrimea.m3u8"
+  },
+  {
+    "name": "Кубань 24 Ⓞ",
+    "logo": "https://i.imgur.com/atzrXcz.png",
+    "url": "https://ok.ru/video/4157442498242"
+  },
+  {
+    "name": "Луганск 24",
+    "logo": "https://i.imgur.com/YnLFQnt.png",
+    "url": "https://tv.gtrklnr.ru/hls/Lugansk24.m3u8"
+  },
+  {
+    "name": "Мир Белогорья",
+    "logo": "https://i.imgur.com/CCNAg7R.png",
+    "url": "http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8"
+  },
+  {
+    "name": "Москва 24",
+    "logo": "https://i.imgur.com/gXbUMVy.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/1661"
+  },
+  {
+    "name": "Нижний Новгород 24",
+    "logo": "https://i.imgur.com/ZWgPVIC.png",
+    "url": "https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8"
+  },
+  {
+    "name": "Самара 24",
+    "logo": "https://i.imgur.com/Xg7Xzna.png",
+    "url": "https://vgtrkregion.cdnvideo.ru/vgtrk/samara/regionHD/playlist.m3u8"
+  },
+  {
+    "name": "Саратов 24",
+    "logo": "https://i.imgur.com/Y5G3ET6.png",
+    "url": "https://saratov24.tv/online/playlist.php"
+  },
+  {
+    "name": "Сибирь 24",
+    "logo": "https://i.imgur.com/WxU6QUB.png",
+    "url": "https://vgtrkregion-reg.cdnvideo.ru/vgtrk/novosibirsk/russia1-hd/index.m3u8"
+  },
+  {
+    "name": "Тольятти 24",
+    "logo": "https://i.imgur.com/5jVKopE.png",
+    "url": "https://tvtogliatti24.ru/hls/live1080/index.m3u8"
+  },
+  {
+    "name": "Урал 24",
+    "logo": "https://i.imgur.com/EaxyGh0.png",
+    "url": "https://vgtrkregion-reg.cdnvideo.ru/vgtrk/chelyabinsk/russia1-hd/index.m3u8"
+  },
+  {
+    "name": "Якутия 24",
+    "logo": "https://i.imgur.com/2BAQklm.png",
+    "url": "https://live-saha.cdnvideo.ru/saha2/yak24rtmp_live.smil/playlist.m3u8"
+  },
+  {
+    "name": "360 Новости",
+    "logo": "https://i.imgur.com/YXDeX8q.png",
+    "url": "https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-03-srt.smil/playlist.m3u8"
+  },
+  {
+    "name": "Вести ФМ",
+    "logo": "https://cdn-st3.smotrim.ru/vh/pictures/r/371/033/8.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/52035"
+  },
+  {
+    "name": "Небеса ТВ7 Ⓢ",
+    "logo": "https://www.nebesatv7.com/wp-content/themes/tv7-theme/assets/img/logo_nebesa_short.png",
+    "url": "https://vod.tv7.fi/tv7-ru/tv7-ru.smil/playlist.m3u8"
+  },
+  {
+    "name": "Север",
+    "logo": "https://i.imgur.com/sTOQLYl.png",
+    "url": "https://live.mediacdn.ru/sr1/sever/playlist.m3u8"
+  },
+  {
+    "name": "Смотрим - Мелодрамы",
+    "logo": "https://cdn-st1.smotrim.ru/vh/pictures/r/456/967/6.png",
+    "url": "https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-02.smil/playlist.m3u8"
+  },
+  {
+    "name": "Смотрим - Тайны",
+    "logo": "https://cdn-st3.smotrim.ru/vh/pictures/r/456/396/2.png",
+    "url": "https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-07.smil/playlist.m3u8"
+  },
+  {
+    "name": "Смотрим - Честный Детектив",
+    "logo": "https://cdn-st3.smotrim.ru/vh/pictures/r/444/241/8.png",
+    "url": "https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-01.smil/playlist.m3u8"
+  },
+  {
+    "name": "Соловьёв Live",
+    "logo": "https://i.imgur.com/v0OYe1d.png",
+    "url": "https://player.smotrim.ru/iframe/stream/live_id/63338"
+  },
+  {
+    "name": "Ю Ⓢ",
+    "logo": "https://upload.wikimedia.org/wikipedia/ru/a/ac/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%AE%C2%BB_%28%D1%81_3_%D1%81%D0%B5%D0%BD%D1%82%D1%8F%D0%B1%D1%80%D1%8F_2018_%D0%B3%D0%BE%D0%B4%D0%B0%29.png",
+    "url": "https://strm.yandex.ru/kal/utv/utv0.m3u8"
+  },
+  {
+    "name": "Матч! Планета Ⓢ",
+    "logo": "https://i.imgur.com/vhyMb9D.png",
+    "url": "http://212.0.211.102:9999/play/a00b/index.m3u8"
+  },
+  {
+    "name": "Buzzr Ⓖ",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Buzzr_logo.svg/768px-Buzzr_logo.svg.png",
+    "url": "https://buzzrota-ono.amagi.tv/playlist1080.m3u8"
+  },
+  {
+    "name": "Retro TV",
+    "logo": "https://i.imgur.com/PNTYOgg.png",
+    "url": "https://bcovlive-a.akamaihd.net/5e531be3ed6c41229b2af2d9bffba88d/us-east-1/6183977686001/profile_1/chunklist.m3u8"
+  },
+  {
+    "name": "Stadium",
+    "logo": "https://i.imgur.com/6ae9E8d.png",
+    "url": "https://bcovlive-a.akamaihd.net/e64d564b9275484f85981d8c146fb915/us-east-1/5994000126001/profile_1/976f34cf5a614518b7b539cbf9812080/chunklist_ssaiV.m3u8"
+  },
+  {
+    "name": "Biz TV",
+    "logo": "https://i.imgur.com/cbGvXyF.jpg",
+    "url": "https://thegateway.app/BizTV/BizTV-Tones/chunks.m3u8?nimblesessionid=94690008"
+  },
+  {
+    "name": "Heartland",
+    "logo": "https://i.imgur.com/a67bbag.png",
+    "url": "https://bcovlive-a.akamaihd.net/1ad942d15d9643bea6d199b729e79e48/us-east-1/6183977686001/profile_1/chunklist.m3u8"
+  },
+  {
+    "name": "Rev'n",
+    "logo": "https://i.imgur.com/VUhqVgG.png",
+    "url": "https://bcovlive-a.akamaihd.net/a71236fdda1747999843bd3d55bdd6fa/us-east-1/6183977686001/profile_1/chunklist.m3u8"
+  },
+  {
+    "name": "CNN",
+    "logo": "https://i.imgur.com/vyrc1I1.png",
+    "url": "https://tve-live-lln.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8"
+  },
+  {
+    "name": "CNBC Ⓨ",
+    "logo": "https://i.imgur.com/BTasyOy.png",
+    "url": "https://www.youtube.com/c/CNBC/live"
+  },
+  {
+    "name": "Bloomberg",
+    "logo": "https://i.imgur.com/VnCcH73.png",
+    "url": "https://bloomberg.com/media-manifest/streams/us.m3u8"
+  },
+  {
+    "name": "ABC News",
+    "logo": "https://i.imgur.com/7sJLzKi.png",
+    "url": "https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8"
+  },
+  {
+    "name": "CBS News",
+    "logo": "https://i.imgur.com/nki2HDQ.png",
+    "url": "https://cbsnews.akamaized.net/hls/live/2020607/cbsnlineup_8/master.m3u8"
+  },
+  {
+    "name": "NBC News",
+    "logo": "https://i.imgur.com/v48mMRT.png",
+    "url": "http://dai2.xumo.com/xumocdn/p=roku/amagi_hls_data_xumo1212A-xumo-nbcnewsnow/CDN/playlist.m3u8"
+  },
+  {
+    "name": "Reuters TV",
+    "logo": "https://i.imgur.com/AbvCnoH.png",
+    "url": "https://reuters-reutersnow-1-eu.rakuten.wurl.tv/playlist.m3u8"
+  },
+  {
+    "name": "NASA TV Public",
+    "logo": "https://i.imgur.com/rmyfoOI.png",
+    "url": "https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master_2000.m3u8"
+  },
+  {
+    "name": "NASA TV Media",
+    "logo": "https://i.imgur.com/rmyfoOI.png",
+    "url": "https://ntv2.akamaized.net/hls/live/2013923/NASA-NTV2-HLS/master.m3u8"
+  },
+  {
+    "name": "BBC Food",
+    "logo": "https://i.imgur.com/N3xiz4m.png",
+    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5fb5844bf5514d0007945bda/master.m3u8?deviceId=channel&deviceModel=web&deviceVersion=1.0&appVersion=1.0&deviceType=rokuChannel&deviceMake=rokuChannel&deviceDNT=1&advertisingId=channel&embedPartner=rokuChannel&appName=rokuchannel&is_lat=1&bmodel=bm1&content=channel&platform=web&tags=ROKU_CONTENT_TAGS&coppa=false&content_type=livefeed&rdid=channel&genre=ROKU_ADS_CONTENT_GENRE&content_rating=ROKU_ADS_CONTENT_RATING&studio_id=viacom&channel_id=channel"
+  },
+  {
+    "name": "BBC Home",
+    "logo": "https://i.imgur.com/Ii8DX1x.png",
+    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5fb5836fe745b600070fc743/master.m3u8?deviceId=channel&deviceModel=web&deviceVersion=1.0&appVersion=1.0&deviceType=rokuChannel&deviceMake=rokuChannel&deviceDNT=1&advertisingId=channel&embedPartner=rokuChannel&appName=rokuchannel&is_lat=1&bmodel=bm1&content=channel&platform=web&tags=ROKU_CONTENT_TAGS&coppa=false&content_type=livefeed&rdid=channel&genre=ROKU_ADS_CONTENT_GENRE&content_rating=ROKU_ADS_CONTENT_RATING&studio_id=viacom&channel_id=channel"
+  },
+  {
+    "name": "Docurama",
+    "logo": "https://i.imgur.com/bNg8mze.png",
+    "url": "https://cinedigm.vo.llnwd.net/conssui/amagi_hls_data_xumo1234A-docuramaA/CDN/master.m3u8"
+  },
+  {
+    "name": "Drybar Comedy",
+    "logo": "https://i.imgur.com/EldlmTp.png",
+    "url": "https://drybar-drybarcomedy-1-ca.samsung.wurl.com/manifest/playlist.m3u8"
+  },
+  {
+    "name": "Music Channel",
+    "logo": "http://media.boni-records.com/logo.png",
+    "url": "http://media.boni-records.com/index.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Aurora Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c953819932c837b49397345/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV AutoMoto",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node01.powr.com/live/5bf220fad5eeee0f5a40941a/playlist.m3u8"
+  },
+  {
+    "name": "BumblebeeTV Beaches Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c95396f932c837b49397360/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Classics 2",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node05.powr.com/live/60f881602da3a5575eceb854/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV CoronaVirus.Gov",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e7559e8a46b495a2283c5e8/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Country Boy Kids Video.us",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf225aed5eeee0f5a4094bd/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Cute Zone",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22518d5eeee0f5a409486/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Epic M",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22225d5eeee0f5a40941d/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV FGTV",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e2624990145130f25474620/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Forest Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c953836932c837b49397355/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Fun Zone",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e2625030145130f25474622/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Giggle Zone",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22526d5eeee0f5a4094b8/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Lake Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c95385c932c837b49397356/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Lego Toons",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22549d5eeee0f5a4094ba/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Lets Play Minecraft",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e2625700145130f25474624/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV LifeBae",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22681932c8304fc453418/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Master Builder",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf2256ed5eeee0f5a4094bb/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Mountain Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c95387b932c837b49397357/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Now You Know",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node01.powr.com/live/5b284f40d5eeee07522b775e/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Recoil TV",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c7dff0f932c8368bdbfd5fd/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Rivers Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c95388f932c837b4939735a/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Smosh",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e2625af5748670f12a3bee9/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Sunset Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c9538a5932c837b4939735b/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Thinknoodles",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node04.powr.com/live/5afc8Bumblebee+TV10e932c833522744733/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Toy Zone",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5bf22491932c8304fc4533e4/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Trinity Beyond",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5e2626030145130f25474626/playlist.m3u8"
+  },
+  {
+    "name": "Bumblebee TV Tropics Live",
+    "logo": "",
+    "url": "https://stitcheraws.unreel.me/wse-node02.powr.com/live/5c9538b9932c837b4939735c/playlist.m3u8"
+  },
+  {
+    "name": "Cheddar News",
+    "logo": "https://i.imgur.com/tuP9GW8.png",
+    "url": "https://dbrb49pjoymg4.cloudfront.net/10001/99991220/hls/index.m3u8?ads.xumo_channelId=99991220&ads._fw_ifa_type=dpid&ads._fw_did=43135081-0e2e-2a3f-b10c-4ade81d0e829&ads.amznappId=[AMZN_APP_ID]&ads.lat=[LAT]&ads.lon=[LON]&ads.os=[OS]&ads.osv=[OS_VERSION]&ads.asnw=&ads.caid=Cheddar&ads.csid=xumo_desktopweb_cheddar_ssai&ads._fw_is_lat=0&ads._fw_us_privacy=1YNN&ads._fw_coppa=0&ads.genre=News&ads._fw_content_category=IAB12&ads._fw_content_language=en&ads._fw_content_genre=News&ads._fw_content_rating=TV-PG&ads.xumo_contentId=161&ads.xumo_contentName=Cheddar&ads.xumo_providerId=161&ads.xumo_providerName=Cheddar&ads._fw_deviceMake=&ads._fw_device_model=&ads.channelId=99991220&ads.xumo_platform=desktopweb&ads.site_id=26840&ads.appName=xumo&ads.appVersion=2.18.0&ads._fw_app_bundle=&ads._fw_app_store_url=&ads.site_name=XumoPlay&ads.site_page=https%253A%252F%252Fplay.xumo.com"
+  },
+  {
+    "name": "Bloomberg TV+",
+    "logo": "https://i.imgur.com/xGlToly.png",
+    "url": "https://bloomberg.com/media-manifest/streams/phoenix-us.m3u8"
+  },
+  {
+    "name": "Bloomberg Television (US)",
+    "logo": "https://i.imgur.com/OuogLHx.png",
+    "url": "https://bloomberg.com/media-manifest/streams/us.m3u8"
+  },
+  {
+    "name": "Bloomberg Television (Europe)",
+    "logo": "https://i.imgur.com/OuogLHx.png",
+    "url": "https://bloomberg.com/media-manifest/streams/eu.m3u8"
+  },
+  {
+    "name": "Yahoo! Finance",
+    "logo": "https://i.imgur.com/43oHsHL.png",
+    "url": "https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8"
+  },
+  {
+    "name": "CNBC Europe",
+    "logo": "https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1088.png",
+    "url": "https://amg01079-nbcuuk-amg01079c1-samsung-es-1261.playouts.now.amagi.tv/playlist/amg01079-nbcuukfast-cnbcpe-samsunges/playlist.m3u8"
+  },
+  {
+    "name": "CNBC Indonesia",
+    "logo": "https://i.imgur.com/bUfeG7Y.png",
+    "url": "https://live.cnbcindonesia.com/livecnbc/smil:cnbctv.smil/master.m3u8"
+  },
+  {
+    "name": "Ausbiz",
+    "logo": "https://i.imgur.com/8vGGdB0.png",
+    "url": "https://d9quh89lh7dtw.cloudfront.net/public-output/index.m3u8"
+  },
+  {
+    "name": "Moconomy",
+    "logo": "https://i.imgur.com/GvqbLZB.png",
+    "url": "https://amogonetworx-moconomy-2-us.tcl.wurl.tv/playlist.m3u8"
+  }
+]
