@@ -3,6 +3,11 @@
     "name": "Adesso TV",
     "logo": "https://www.adessotv.com.br/images/layout/logo.png",
     "url": "https://cdn.live.br1.jmvstream.com/w/LVW-9715/LVW9715_12B26T62tm/playlist.m3u8"
+  },  
+  {
+    "name": "RS Sport",
+    "logo": "https://www.rsnewswebtv.com.br/storage/47/config/0CnfK2H3EZvvfZjmrkOXjAjRGffeiL9JJMAjZl3g.png",
+    "url": "https://video07.logicahost.com.br/rssports01/rssports01/playlist.m3u8"
   },
   {
     "name": "COM Brasil",
@@ -12,7 +17,7 @@
   {
     "name": "SBT Ⓨ",
     "logo": "https://logodownload.org/wp-content/uploads/2013/12/sbt-logo.png",
-    "url": "https://www.youtube.com/watch?v=ABVQXgr2LW4"
+    "url": "https://cdn.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/playlist.m3u8"
   },
   {
     "name": "RBC Ⓨ",
@@ -21,10 +26,10 @@
   },
   {
     "name": "Record",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/4/46/Record_News_logo_2023.svg",
-    "url": "https://r9---sn-pmcg-bg0z.gvt1.com/videoplayback/id/031c27c2a4b4ebb0/aitags/15,18,22,37,106,109/itag/37/source/dclk_video_ads/requiressl/yes/xpc/EgVovf3BOg%3D%3D/acao/yes/ctier/L/ip/0.0.0.0/ipbits/0/expire/1804639043/sparams/acao,aitags,ctier,expire,id,ip,ipbits,met,mh,mip,mm,mn,ms,mv,mvi,pl,requiressl,rms,source,xpc/signature/5724376E27D4FC4CC9BA837634684856714A1872.74F864963877FD15D2531305F99517479A49C850/key/cms1/cpn/1VfDCy4c9Sf7VQRv/cms_redirect/yes/met/1773103046,/mh/p-/mip/185.194.205.187/mm/28/mn/sn-pmcg-bg0z/ms/nvh/mt/1773102529/mv/u/mvi/9/pl/24/rms/nvh,nvh/file/file.mp4"
-  },
-  {
+    "logo":"//upload.wikimedia.org/wikipedia/commons/4/46/Record_News_logo_2023.svg",
+    "url": "https://5cf4a2c2512a2.streamlock.net/8016/8016/playlist.m3u8"  
+    },
+    { 
     "name": "ISTV",
     "logo": "https://upload.wikimedia.org/wikipedia/pt/b/b5/Logotipo_da_ISTV.png",
     "url": "https://video08.logicahost.com.br/istvnacional/srt.stream/istvnacional.m3u8"
