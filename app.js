@@ -41,7 +41,7 @@ async function loadJSON() {
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro ao carregar ${currentCountry}. Verifique os arquivos JSON.</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro ao carregar conteúdo.</p>`;
     }
 }
 
@@ -60,10 +60,18 @@ function renderGrid(data) {
     });
 }
 
+// FUNÇÃO DO PLAYER - CORRIGIDA
 function playChannel(url, name) {
     document.getElementById('player-section').style.display = 'block';
     document.getElementById('playing-now').innerText = "Assistindo: " + name;
+    
+    // Força o vídeo a começar mudo (obrigatório para autoplay)
     video.muted = true;
+    
+    // SINCRONIZA O BOTÃO: Como o vídeo começa mudo, o botão deve dizer "ATIVAR SOM"
+    const btn = document.getElementById('btn-audio');
+    btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+    btn.className = "nav-btn btn-danger"; // Mantém vermelho para chamar atenção
 
     if (Hls.isSupported() && url.includes('.m3u8')) {
         hls.destroy();
@@ -78,21 +86,26 @@ function playChannel(url, name) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// FUNÇÃO DE TELA CHEIA
-window.toggleFullScreen = () => {
-    if (video.requestFullscreen) {
-        video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari e iOS */
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) { /* IE11 */
-        video.msRequestFullscreen();
-    }
-};
-
+// ALTERNAR MUDO - CORRIGIDA
 window.toggleMute = () => {
     video.muted = !video.muted;
     const btn = document.getElementById('btn-audio');
-    btn.innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> ATIVAR SOM' : '<i class="fas fa-volume-mute"></i> MUDO';
+    
+    if (video.muted) {
+        // Se ficou mudo
+        btn.innerHTML = '<i class="fas fa-volume-up"></i> ATIVAR SOM';
+        btn.className = "nav-btn btn-danger";
+    } else {
+        // Se ativou o som
+        btn.innerHTML = '<i class="fas fa-volume-mute"></i> MUDO';
+        btn.className = "nav-btn"; // Muda para a cor padrão (cinza)
+    }
+};
+
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) { video.requestFullscreen(); }
+    else if (video.webkitRequestFullscreen) { video.webkitRequestFullscreen(); }
+    else if (video.msRequestFullscreen) { video.msRequestFullscreen(); }
 };
 
 window.closePlayer = () => {
