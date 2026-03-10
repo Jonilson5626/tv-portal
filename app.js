@@ -1,4 +1,3 @@
-// Lista exata das pastas no seu GitHub
 const countries = [
     { name: "Brasil", path: "brazil" },
     { name: "China", path: "china" },
@@ -13,10 +12,9 @@ let currentType = "canais";
 const video = document.getElementById('tv-player');
 let hls = new Hls();
 
-// Inicia a lista lateral de países
 function init() {
     const list = document.getElementById('country-list');
-    list.innerHTML = ""; // Limpa a lista antes de preencher
+    list.innerHTML = ""; 
     countries.forEach(c => {
         const li = document.createElement('li');
         li.className = 'country-item';
@@ -31,7 +29,6 @@ function init() {
     });
 }
 
-// Busca o arquivo JSON dentro da pasta do país selecionado
 async function loadJSON() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('list-container').style.display = 'block';
@@ -44,11 +41,10 @@ async function loadJSON() {
         const data = await response.json();
         renderGrid(data);
     } catch (error) {
-        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro: Não foi possível carregar os canais de ${currentCountry}. Verifique se o arquivo JSON existe na pasta.</p>`;
+        grid.innerHTML = `<p style='padding:20px; color:#ef4444;'>Erro ao carregar ${currentCountry}. Verifique os arquivos JSON.</p>`;
     }
 }
 
-// Renderiza os cards dos canais
 function renderGrid(data) {
     const grid = document.getElementById('channel-grid');
     grid.innerHTML = '';
@@ -64,7 +60,6 @@ function renderGrid(data) {
     });
 }
 
-// Função do Player de Vídeo
 function playChannel(url, name) {
     document.getElementById('player-section').style.display = 'block';
     document.getElementById('playing-now').innerText = "Assistindo: " + name;
@@ -83,6 +78,17 @@ function playChannel(url, name) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// FUNÇÃO DE TELA CHEIA
+window.toggleFullScreen = () => {
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari e iOS */
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { /* IE11 */
+        video.msRequestFullscreen();
+    }
+};
+
 window.toggleMute = () => {
     video.muted = !video.muted;
     const btn = document.getElementById('btn-audio');
@@ -92,6 +98,7 @@ window.toggleMute = () => {
 window.closePlayer = () => {
     document.getElementById('player-section').style.display = 'none';
     video.pause();
+    video.src = "";
     if(hls) hls.destroy();
 };
 
