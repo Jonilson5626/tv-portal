@@ -1,7 +1,262 @@
 [
   {
-    "name": "NHK World Japan",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/NHK_World_Japan_logo.svg/1200px-NHK_World_Japan_logo.svg.png",
-    "url": "https://nhkwlive-ojp.akamaized.net/hls/live/2003459/nhkwlive-ojp-en/index.m3u8"
+    "name": "NHK総合 (東京)",
+    "logo": "https://i.imgur.com/fAZ2BEZ.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS291&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "NHK Eテレ（東京）",
+    "logo": "https://i.imgur.com/WxtftlO.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS292&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "日本テレビ",
+    "logo": "https://i.imgur.com/ecbM7QS.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS294&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "テレビ朝日",
+    "logo": "https://i.imgur.com/5XnMfcR.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS295&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "TBSテレビ",
+    "logo": "https://i.imgur.com/jIZ9TlO.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "テレビ東京",
+    "logo": "https://i.imgur.com/U8jBxEi.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS297&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "フジテレビ",
+    "logo": "https://i.imgur.com/epJYc7P.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS298&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "NHK BS",
+    "logo": "https://i.imgur.com/t0uZcSR.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS101&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "NHK BSP4K",
+    "logo": "https://i.imgur.com/uvPpFo5.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS103&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BS日テレ",
+    "logo": "https://i.imgur.com/26ATUNc.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS141&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BS朝日",
+    "logo": "https://i.imgur.com/Cl68ZMA.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS151&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BS-TBS",
+    "logo": "https://i.imgur.com/BSt9UG2.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS161&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BSテレ東",
+    "logo": "https://i.imgur.com/LsQlNcz.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS171&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BSフジ",
+    "logo": "https://i.imgur.com/N4xeDxJ.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS181&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "WOWOWプライム",
+    "logo": "https://www.lyngsat.com/logo/tv/ww/wowow_prime.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS191&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "WOWOWライブ",
+    "logo": "https://www.lyngsat.com/logo/tv/ww/wowow_live.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS192&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "WOWOWシネマ",
+    "logo": "https://www.lyngsat.com/logo/tv/ww/wowow_cinema.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS193&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BS10",
+    "logo": "https://i.imgur.com/KPZiuHl.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS263&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "BS10スターチャンネル",
+    "logo": "https://i.imgur.com/SN0ED0U.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS200&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "アニマックス",
+    "logo": "https://i.imgur.com/jO0qUvj.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS236&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "J SPORTS 1",
+    "logo": "https://www.starcat.co.jp/ch/upload/channel/69/jsports1_logo.jpg",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS242&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "J SPORTS 2",
+    "logo": "https://www.starcat.co.jp/ch/upload/channel/70/jsports2_logo.jpg",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS243&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "J SPORTS 3",
+    "logo": "https://www.starcat.co.jp/ch/upload/channel/71/jsports3_logo.jpg",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS244&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "J SPORTS 4",
+    "logo": "https://www.starcat.co.jp/ch/upload/channel/74/jsports4_logo.jpg",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS245&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "釣りビジョン",
+    "logo": "https://i.imgur.com/Yc7JvSK.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS251&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "日本映画専門チャンネル",
+    "logo": "https://i.imgur.com/HdC3Hdc.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS255&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "ショップチャンネル",
+    "logo": "https://i.imgur.com/CCMAF7W.png",
+    "url": "https://stream3.shopch.jp/HLS/master.m3u8"
+  },
+  {
+    "name": "QVC",
+    "logo": "https://i.imgur.com/FznYA39.png",
+    "url": "https://cdn-live1.qvc.jp/iPhone/1501/1501.m3u8"
+  },
+  {
+    "name": "東映チャンネル",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/tt/toei_channel.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS218&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "チャンネルNECO",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/cc/channel-neco-jp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS223&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "ムービープラス",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/mm/movie_plus_jp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS240&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "GAORA",
+    "logo": "https://i.imgur.com/Myh0PWD.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS254&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "日テレジータス",
+    "logo": "https://i.imgur.com/xq1VG0E.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS257&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "ゴルフネットワーク",
+    "logo": "https://i.imgur.com/EVd8Vvp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS262&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "時代劇専門チャンネル",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/jj/jidaigeki.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS292&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "ファミリー劇場",
+    "logo": "https://i.postimg.cc/k5fXKzj3/o023302751417597653027.jpg",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS293&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "ホームドラマチャンネル",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/hh/home-drama-channelpng-jp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS294&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "チャンネル銀河",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/cc/channel_ginga.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS305&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "スーパー！ドラマTV",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/ss/super_drama_tv.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS310&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "アクションチャンネル",
+    "logo": "https://i.imgur.com/K0YyPwC.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS311&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "Dlife",
+    "logo": "https://i.imgur.com/6gJZHPv.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS312&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "LaLa TV",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/ll/lala_tv.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS314&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "Mnet",
+    "logo": "https://www.lyngsat.com/logo/tv/mm/m_net_jp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS241&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "Music ON TV!（エムオン）",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/mm/music_on_tv.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS325&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "歌謡ポップスチャンネル",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/kk/kayo-pops-jp.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS329&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "キッズステーション",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/kk/kidsstation.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS330&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "日テレNEWS24",
+    "logo": "https://i.imgur.com/jtSYegn.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS349&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "囲碁・将棋チャンネル",
+    "logo": "https://www.lyngsat-logo.com/logo/tv/ii/igoshogi.png",
+    "url": "https://stream01.willfonk.com/live_playlist.m3u8?cid=CS363&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+  },
+  {
+    "name": "GSTV",
+    "logo": "https://i.imgur.com/ECnVG5I.png",
+    "url": "https://gstv-tnz-gsmediastreaming.preview-jpea.channel.media.azure.net/dfd06b62-e9d1-4a7f-bcbb-89d2ecbc82ee/preview.ism/manifest(format=mpd-time-csf,audio-only=false)"
+  },
+  {
+    "name": "NHK WORLD JAPAN",
+    "logo": "https://i.imgur.com/Mhw1Ihk.png",
+    "url": "https://master.nhkworld.jp/nhkworld-tv/playlist/live.m3u8"
+  },
+  {
+    "name": "ウェザーニュースLiVE",
+    "logo": "https://channel.rakuten.co.jp/service/img/logo/chlogo-with-number/106_whethernews.png",
+    "url": "https://rch01e-alive-hls.akamaized.net/38fb45b25cdb05a1/out/v1/4e907bfabc684a1dae10df8431a84d21/index.m3u8"
+  },
+  {
+    "name": "TOKYO MX チャンネル",
+    "logo": "https://channel.rakuten.co.jp/service/img/logo/chlogo-with-number/108_mx.png",
+    "url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01287-rakutentvjapan-tokyomx-cmaf-rakutenjp/playlist.m3u8"
   }
 ]
