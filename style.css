@@ -1659,6 +1659,81 @@ select {
 .footer-column {
 
     display: flex;
+    /* =========================================================
+   LOADING / ERROR
+========================================================= */
+
+.loading-card {
+
+    grid-column: 1 / -1;
+
+    min-height: 180px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: var(--muted);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 17px;
+
+    background:
+        var(--surface);
+
+    font-size: 12px;
+}
+
+
+.loading-card > i {
+
+    font-size: 26px;
+
+    color: var(--purple-light);
+}
+
+
+.error-card {
+
+    color: #fca5a5;
+
+}
+
+
+.error-card strong {
+
+    color: #f87171;
+
+}
+
+
+.country-flag {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        rgba(124,58,237,0.1);
+
+    font-size: 20px;
+}
 
     flex-direction: column;
 
