@@ -2,55 +2,729 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TV PORTAL GLOBAL</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08070d"
+    >
+
+    <meta
+        name="description"
+        content="TV Portal — assista televisão ao vivo pela internet."
+    >
+
+    <title>TV Portal — TV ao Vivo</title>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- HLS -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
     <header class="top-header">
-        <h1><i class="fas fa-satellite-dish"></i> TV PORTAL</h1>
-        <div id="status-msg" class="status-bar">Selecione um país para começar</div>
+
+        <div class="header-inner">
+
+            <a
+                href="#"
+                class="brand"
+                aria-label="TV Portal"
+            >
+
+                <div class="brand-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+
+                <div class="brand-name">
+                    <strong>TV</strong>
+                    <span>PORTAL</span>
+                </div>
+
+            </a>
+
+
+            <nav class="desktop-nav">
+
+                <a
+                    href="#inicio"
+                    class="nav-link active"
+                >
+                    Início
+                </a>
+
+                <a
+                    href="#paises"
+                    class="nav-link"
+                >
+                    Países
+                </a>
+
+                <a
+                    href="#conteudo"
+                    class="nav-link"
+                >
+                    Canais
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-button"
+                    id="headerSearchButton"
+                    aria-label="Pesquisar"
+                >
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <button
+                    class="header-button"
+                    id="mobileMenuButton"
+                    aria-label="Abrir menu"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MENU MOBILE -->
+
+        <div
+            class="mobile-nav"
+            id="mobileNav"
+        >
+
+            <a href="#inicio">
+                <i class="fas fa-house"></i>
+                Início
+            </a>
+
+            <a href="#paises">
+                <i class="fas fa-globe"></i>
+                Países
+            </a>
+
+            <a href="#conteudo">
+                <i class="fas fa-tv"></i>
+                Canais
+            </a>
+
+        </div>
+
     </header>
 
-    <main class="main-layout">
-        <aside class="sidebar">
-            <div class="search-box">
-                <input type="text" id="country-search" placeholder="🔍 Procurar país..." onkeyup="filterCountries()">
-            </div>
-            <ul id="country-list" class="country-list"></ul>
-        </aside>
 
-        <section class="content-area">
-            <div id="player-section" class="player-container" style="display: none;">
-                <div class="player-nav">
-                    <button class="nav-btn" onclick="closePlayer()"><i class="fas fa-arrow-left"></i> VOLTAR</button>
-                    <button id="btn-audio" class="nav-btn btn-danger" onclick="toggleMute()"><i class="fas fa-volume-up"></i> ATIVAR SOM</button>
-                    <button class="nav-btn btn-fullscreen" onclick="toggleFullScreen()"><i class="fas fa-expand"></i> TELA CHEIA</button>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main id="inicio">
+
+        <section class="hero">
+
+            <div class="hero-glow glow-one"></div>
+            <div class="hero-glow glow-two"></div>
+
+            <div class="hero-content">
+
+                <div class="live-badge">
+                    <span></span>
+                    TRANSMISSÃO AO VIVO
                 </div>
-                <div class="video-wrapper">
-                    <video id="tv-player" playsinline muted></video>
+
+                <h1>
+                    Sua televisão.
+                    <br>
+
+                    <span>
+                        Em qualquer lugar.
+                    </span>
+                </h1>
+
+                <p>
+                    Explore canais de televisão de diferentes
+                    países e assista diretamente pelo navegador.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#paises"
+                        class="primary-button"
+                    >
+                        <i class="fas fa-play"></i>
+                        Explorar canais
+                    </a>
+
+                    <a
+                        href="#paises"
+                        class="secondary-button"
+                    >
+                        <i class="fas fa-globe"></i>
+                        Explorar países
+                    </a>
+
                 </div>
-                <h2 id="playing-now" class="playing-title"></h2>
+
             </div>
 
-            <div id="list-container" style="display: none;">
-                <div class="type-selector">
-                    <button id="btn-tv" class="type-btn active" onclick="switchType('canais')">CANAIS TV</button>
-                    <button id="btn-radio" class="type-btn" onclick="switchType('radios')">RÁDIOS</button>
+
+            <div class="hero-decoration">
+
+                <div class="tv-screen">
+
+                    <div class="tv-screen-top">
+                        <span class="red-dot"></span>
+                        AO VIVO
+                    </div>
+
+                    <div class="tv-screen-content">
+                        <i class="fas fa-tv"></i>
+                    </div>
+
+                    <div class="tv-screen-bottom">
+                        TV PORTAL
+                    </div>
+
                 </div>
-                <div id="channel-grid" class="items-grid"></div>
+
             </div>
 
-            <div id="welcome-screen" class="welcome-msg">
-                <i class="fas fa-globe"></i>
-                <h2>Escolha um país na lista lateral</h2>
-            </div>
         </section>
+
+
+        <!-- =================================================
+             ESTATÍSTICAS
+        ================================================== -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fas fa-tv"></i>
+                </div>
+
+                <div>
+                    <strong id="totalChannels">
+                        —
+                    </strong>
+
+                    <span>
+                        Canais disponíveis
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+
+                <div>
+                    <strong id="totalCountries">
+                        6
+                    </strong>
+
+                    <span>
+                        Países
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fas fa-radio"></i>
+                </div>
+
+                <div>
+                    <strong>
+                        TV + Rádio
+                    </strong>
+
+                    <span>
+                        Conteúdo ao vivo
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAÍSES
+        ================================================== -->
+
+        <section
+            class="content-section"
+            id="paises"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        EXPLORE O MUNDO
+                    </span>
+
+                    <h2>
+                        Escolha um país
+                    </h2>
+
+                    <p>
+                        Selecione um país para visualizar
+                        os canais disponíveis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="country-search">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="search"
+                    id="country-search"
+                    placeholder="Pesquisar país..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <ul
+                id="country-list"
+                class="country-grid"
+            ></ul>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTEÚDO
+        ================================================== -->
+
+        <section
+            class="content-section content-area"
+            id="conteudo"
+        >
+
+            <!-- =================================================
+                 PLAYER
+            ================================================== -->
+
+            <div
+                id="player-section"
+                class="player-container"
+                style="display:none;"
+            >
+
+                <div class="player-header">
+
+                    <div>
+
+                        <span class="player-live">
+                            <span></span>
+                            AO VIVO
+                        </span>
+
+                        <h2 id="playing-now">
+                            Canal
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="player-close"
+                        onclick="closePlayer()"
+                        aria-label="Fechar player"
+                    >
+                        <i class="fas fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="video-wrapper">
+
+                    <video
+                        id="tv-player"
+                        playsinline
+                        muted
+                        controls
+                    ></video>
+
+                    <div
+                        class="video-overlay"
+                        id="video-loading"
+                    >
+
+                        <div class="spinner"></div>
+
+                        <span>
+                            Carregando transmissão...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="player-controls">
+
+                    <button
+                        id="btn-audio"
+                        class="player-control audio-button"
+                        onclick="toggleMute()"
+                    >
+                        <i class="fas fa-volume-high"></i>
+                        ATIVAR SOM
+                    </button>
+
+
+                    <button
+                        class="player-control fullscreen-button"
+                        onclick="toggleFullScreen()"
+                    >
+                        <i class="fas fa-expand"></i>
+                        TELA CHEIA
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SELETOR TV/RÁDIO
+            ================================================== -->
+
+            <div
+                id="list-container"
+                class="channel-content"
+                style="display:none;"
+            >
+
+                <div class="content-top">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            CONTEÚDO DISPONÍVEL
+                        </span>
+
+                        <h2>
+                            Canais
+                        </h2>
+
+                    </div>
+
+
+                    <div class="type-selector">
+
+                        <button
+                            id="btn-tv"
+                            class="type-btn active"
+                            onclick="switchType('canais')"
+                        >
+                            <i class="fas fa-tv"></i>
+                            TV
+                        </button>
+
+                        <button
+                            id="btn-radio"
+                            class="type-btn"
+                            onclick="switchType('radios')"
+                        >
+                            <i class="fas fa-radio"></i>
+                            Rádio
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="selected-country" id="status-msg">
+                    Selecione um país
+                </div>
+
+
+                <div
+                    id="channel-grid"
+                    class="items-grid"
+                ></div>
+
+            </div>
+
+
+            <!-- =================================================
+                 WELCOME
+            ================================================== -->
+
+            <div
+                id="welcome-screen"
+                class="welcome-screen"
+            >
+
+                <div class="welcome-icon">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+
+                <span class="section-kicker">
+                    TV PORTAL
+                </span>
+
+                <h2>
+                    Comece escolhendo um país
+                </h2>
+
+                <p>
+                    Encontre canais de televisão e rádios
+                    disponíveis para transmissão.
+                </p>
+
+                <a
+                    href="#paises"
+                    class="primary-button"
+                >
+                    <i class="fas fa-globe"></i>
+                    Ver países
+                </a>
+
+            </div>
+
+        </section>
+
     </main>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                <div class="brand">
+
+                    <div class="brand-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+
+                    <div class="brand-name">
+                        <strong>TV</strong>
+                        <span>PORTAL</span>
+                    </div>
+
+                </div>
+
+                <p>
+                    Televisão ao vivo diretamente
+                    pelo navegador.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Navegação
+                </h3>
+
+                <a href="#inicio">
+                    Início
+                </a>
+
+                <a href="#paises">
+                    Países
+                </a>
+
+                <a href="#conteudo">
+                    Canais
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Conteúdo
+                </h3>
+
+                <a href="#conteudo">
+                    TV ao vivo
+                </a>
+
+                <a href="#conteudo">
+                    Rádios
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="currentYear"></span> TV Portal
+            </span>
+
+            <span>
+                Todos os direitos reservados.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        const mobileMenuButton =
+            document.getElementById("mobileMenuButton");
+
+        const mobileNav =
+            document.getElementById("mobileNav");
+
+
+        mobileMenuButton?.addEventListener("click", () => {
+
+            mobileNav.classList.toggle("open");
+
+        });
+
+
+        mobileNav?.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileNav.classList.remove("open");
+
+            });
+
+        });
+
+
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(link => {
+
+                link.addEventListener("click", event => {
+
+                    const target =
+                        document.querySelector(
+                            link.getAttribute("href")
+                        );
+
+                    if (!target) return;
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                });
+
+            });
+
+
+        document
+            .getElementById("headerSearchButton")
+            ?.addEventListener("click", () => {
+
+                document
+                    .getElementById("country-search")
+                    ?.focus();
+
+                document
+                    .getElementById("paises")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            });
+
+
+        window.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+
+                const player =
+                    document.getElementById("player-section");
+
+                if (
+                    player &&
+                    player.style.display !== "none"
+                ) {
+                    closePlayer();
+                }
+
+            }
+
+        });
+    </script>
+
+
     <script src="app.js"></script>
+
 </body>
-</html>
+                    </html>
