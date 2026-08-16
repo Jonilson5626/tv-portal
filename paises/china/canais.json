@@ -2,7 +2,7 @@
   {
     "name": "CCTV-1 综合",
     "logo": "https://i.imgur.com/uHU6Vc0.png",
-    "url": "https://node1.olelive.com:6443/live/CCTV1HD/hls.m3u8"
+    "url": "http://31.43.191.125:8080/vip6671769357668/9c933f68998a/4908"
   },
   {
     "name": "CCTV-2 财经",
